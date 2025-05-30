@@ -47,7 +47,7 @@ public class Attribute
     // returns true iff dead 
     public bool CheckDeath()
     {
-        if (this.HP <= 0.0)
+        if (this.HP <= 0.0f)
         {
             this.isDead = true;
             return true;

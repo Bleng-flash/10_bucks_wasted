@@ -13,5 +13,11 @@ public abstract class Entity : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         this.stats.DecreaseHealthBy(dmg);
+        if (stats.CheckDeath())
+        {
+            Die();
+        }
     }
+
+    public abstract void Die();
 }
