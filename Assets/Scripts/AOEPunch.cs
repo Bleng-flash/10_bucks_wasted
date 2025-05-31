@@ -2,15 +2,18 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
+// Basic starting attack for player character
 public class AOEPunch : Attack
 {
     [SerializeField]
-    private float cooldown = 2.0f; // in seconds
+    private float AOEPunchCooldown = 2.0f; // in seconds
 
     [SerializeField]
-    private float damage = 10;
+    private float AOEPunchDamage = 10;
     private List<Collider2D> hitEnemies = new List<Collider2D>();
 
+    // Figure out a way to link the above fields into the constuctor??
     public AOEPunch(float cooldown, float damage) : base(cooldown, damage, true)
     {
         this.cooldown = cooldown;
@@ -42,8 +45,8 @@ public class AOEPunch : Attack
     {
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(damage);
+            enemy.GetComponent<PlayerScript>().TakeDamage(damage);
         }
     }
-    
+
 }

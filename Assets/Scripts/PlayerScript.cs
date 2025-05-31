@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 /* 
@@ -16,16 +17,17 @@ public class PlayerScript : Entity
     private bool isDead;
 
     // At start, initialise player.stats with maxHP and starting ATK
-    // Initialise player.attacks with AOEPunch attack
+    // Initialise player.attacks with AOEPunch attack (starting basic attack)
     void Start()
     {
         stats = new Attribute(maxHP, maxHP, ATK);
         attacks = new Attack[1];   // For now just put 1
-        // Add AOE punch to attacks
+        // add AOE punch somehow
     }
 
     public override void Die()
     {
+        // Freeze player
         // Send out Death event to bring up GameOver UI
     }
 }

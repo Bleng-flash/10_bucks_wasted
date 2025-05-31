@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// Enemy inherits from entity, contains hp and atk
 public class EnemyScript : Entity
 {
     [SerializeField] // just for easier testing in editor
