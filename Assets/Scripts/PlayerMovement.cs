@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
     [SerializeField]
     private float movementSpeed = 5f;
+    private Rigidbody2D rb;
 
     // Method matches user input with input actions key bindings
     public void OnMove(InputAction.CallbackContext context)
@@ -16,13 +17,13 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    // Use fixed update for rigidbody movement
+    void FixedUpdate()
     {
-        Vector3 movement = new Vector3(moveInput.x, moveInput.y, 0) * movementSpeed * Time.deltaTime;
-        transform.position += movement;
+        Vector2 direction = new Vector2(moveInput.x, moveInput.y);
+        rb.MovePosition(rb.position + direction * movementSpeed * Time.fixedDeltaTime);
     }
 }
