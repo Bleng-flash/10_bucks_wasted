@@ -3,17 +3,21 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField]
-    private PlayerMovement player;
+    private Transform player;
+    [SerializeField]
+    private float movementSpeed;
+    private Rigidbody2D rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    // Fixed Update better for Rigidbody movement cause it depends on real time instead of frame rate
+    void FixedUpdate()
     {
-        // Move towards player every frame
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0) * Time.deltaTime;
+        // Move towards player
+        Vector2 direction = (player.transform.position - transform.position).normalized;
+        rb.MovePosition(rb.position + direction * movementSpeed * Time.fixedDeltaTime);
     }
 }
