@@ -2,8 +2,7 @@ using UnityEngine;
 
 /* 
     Player inherits from Entity
-    In addition to stats and attacks provided by Entity, player has player movement 
-    and player health bar (KIV) as well
+    In addition to stats and attacks provided by Entity, player has player health bar (KIV) as well
 */
 
 public class PlayerScript : Entity
@@ -15,7 +14,6 @@ public class PlayerScript : Entity
     [SerializeField]
     private float ATK;
     private bool isDead;
-    private PlayerMovement playerMovement;
 
     // At start, initialise player.stats with maxHP and starting ATK
     // Initialise player.attacks with AOEPunch attack
