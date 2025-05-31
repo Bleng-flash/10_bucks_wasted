@@ -14,13 +14,13 @@ public abstract class Attack : MonoBehaviour
     protected float cooldown; // in seconds
     protected float damage;
     protected float timeSinceLastAttack = 0.0f; // time from last attack to now (current frame)
-    protected bool autoAttack;
+    protected bool isAutoAttack;
 
-    public Attack(float cooldown, float dmg, bool autoAttack)
+    protected void Initialise(float cooldown, float damage, bool isAutoAttack)
     {
         this.cooldown = cooldown;
-        this.damage = dmg;
-        this.autoAttack = autoAttack;
+        this.damage = damage;
+        this.isAutoAttack = isAutoAttack;
     }
     public void SetDamage(float dmg)
     {
