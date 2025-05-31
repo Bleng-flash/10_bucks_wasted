@@ -7,8 +7,8 @@ Player and Enemies will inherit from Entity
 */
 public abstract class Entity : MonoBehaviour
 {
-    public Attribute stats;
-    public Attack[] attacks; // stores the attacks owned by this entity
+    private Attribute stats;
+    private Attack[] attacks; // stores the attacks owned by this entity
 
     public void TakeDamage(float dmg)
     {
