@@ -3,6 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public bool isPlayerAlive = true;
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -11,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayerDeath()
     {
+        isPlayerAlive = false;
         // Bring up Game Over UI
-        // Stop all attacks
     }
 }
