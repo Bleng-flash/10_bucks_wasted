@@ -11,16 +11,16 @@ An Attack can only be called on a Entity and be dealt to another Entity.
 */
 public abstract class Attack : MonoBehaviour
 {
-    protected float cooldown = 2.0f; // in seconds
-    protected float damage = 10.0f;
+    protected float cooldown; // in seconds
+    protected float damage;
     protected float timeSinceLastAttack = 0.0f; // time from last attack to now (current frame)
-    protected bool autoAttack;
+    protected bool isAutoAttack;
 
-    public Attack(float cooldown, float dmg, bool autoAttack)
+    protected void Initialise(float cooldown, float damage, bool isAutoAttack)
     {
         this.cooldown = cooldown;
-        this.damage = dmg;
-        this.autoAttack = autoAttack;
+        this.damage = damage;
+        this.isAutoAttack = isAutoAttack;
     }
     public void SetDamage(float dmg)
     {
@@ -36,7 +36,12 @@ public abstract class Attack : MonoBehaviour
             PerformAttack();
             timeSinceLastAttack = 0.0f;
         }
+
+        // Call visual update if child class has it
+        OnUpdate();
     }
+
+    protected virtual void OnUpdate() { }
 
     // PerformAttack() 
     protected abstract void PerformAttack();

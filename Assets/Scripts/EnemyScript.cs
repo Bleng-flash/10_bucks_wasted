@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// Enemy inherits from entity, contains hp and atk
 public class EnemyScript : Entity
 {
     [SerializeField] // just for easier testing in editor
@@ -12,7 +13,7 @@ public class EnemyScript : Entity
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        stats = new Attribute(maxHP, HP, ATK);
     }
 
     // Update is called once per frame
@@ -24,5 +25,6 @@ public class EnemyScript : Entity
     public override void Die()
     {
         Destroy(gameObject);
+        Debug.Log("Enemy killed!");
     }
 }
