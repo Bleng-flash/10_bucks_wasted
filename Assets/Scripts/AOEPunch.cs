@@ -6,17 +6,14 @@ using UnityEngine;
 // Basic starting attack for player character
 public class AOEPunch : Attack
 {
-    [SerializeField] private float AOEPunchCooldown = 2.0f; // in seconds
-
-    [SerializeField] private float AOEPunchDamage = 10;
-    [SerializeField] private float attackRadius = 2f;
+    [SerializeField] private float attackRadius = 2.0f;
     [SerializeField] private float attackAngle = 90f;       // Half-angle — so 90 = 180° cone
     [SerializeField] private LayerMask enemyLayer;          // Detects all objects in enemy layer
 
     void Start()
     {
-        Debug.Log($"AOEPunch Start() — Cooldown: {AOEPunchCooldown}, Damage: {AOEPunchDamage}");
-        Initialise(AOEPunchCooldown, AOEPunchDamage, true);
+        Debug.Log($"AOEPunch Start() — Cooldown: {this.cooldown}, Damage: {this.damage}");
+        Initialise(2.0f, 10.0f, true);
     }
 
     protected override bool CanAttack()
@@ -43,7 +40,7 @@ public class AOEPunch : Attack
                 EnemyScript enemy = collider.GetComponent<EnemyScript>();
                 if (enemy != null)
                 {
-                    Debug.Log($"Hit {collider.name} with {AOEPunchDamage} damage!");
+                    Debug.Log($"Hit {collider.name} with {this.damage} damage!");
                     enemy.TakeDamage(damage);
                 }
                 else

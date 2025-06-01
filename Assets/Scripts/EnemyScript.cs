@@ -3,17 +3,12 @@ using UnityEngine;
 // Enemy inherits from entity, contains hp and atk
 public class EnemyScript : Entity
 {
-    [SerializeField] // just for easier testing in editor
-    private float maxHP;
-    [SerializeField]
-    private float HP;
-    [SerializeField]
-    private float ATK;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        stats = new Attribute(maxHP, HP, ATK);
+        this.stats.Initialise(20.0f, 20.0f, 5.0f);
     }
 
     // Update is called once per frame

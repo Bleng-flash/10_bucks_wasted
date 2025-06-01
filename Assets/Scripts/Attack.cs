@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -9,10 +10,14 @@ An Attack can only be called on a Entity and be dealt to another Entity.
 - Enemy attacks should all be single target. Enemies should not use auto-attack.
 - Player attacks can be single target or AOE. Player should use auto attack for AOE attacks only.
 */
+[System.Serializable]
 public abstract class Attack : MonoBehaviour
 {
+    [SerializeField]
     protected float cooldown; // in seconds
+    [SerializeField]
     protected float damage;
+
     protected float timeSinceLastAttack = 0.0f; // time from last attack to now (current frame)
     protected bool isAutoAttack;
 

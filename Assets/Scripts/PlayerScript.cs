@@ -8,19 +8,12 @@ using UnityEngine;
 
 public class PlayerScript : Entity
 {
-    [SerializeField] // just for easier testing in editor
-    private float maxHP;
-    [SerializeField]
-    private float HP;
-    [SerializeField]
-    private float ATK;
-    private bool isDead;
 
-    // At start, initialise player.stats with maxHP and starting ATK
+    // At start, initialise player.stats 
     // Initialise player.attacks with AOEPunch attack (starting basic attack)
     void Start()
     {
-        stats = new Attribute(maxHP, maxHP, ATK);
+        this.stats.Initialise(100.0f, 100.0f, 5.0f);
         attacks = new Attack[1];   // For now just put 1
         // add AOE punch somehow
     }

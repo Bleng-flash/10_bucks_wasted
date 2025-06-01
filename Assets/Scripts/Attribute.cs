@@ -7,14 +7,14 @@ using UnityEngine;
 public class Attribute
 {
     [SerializeField] // makes the private field appear in Inspector
-    private float maxHP;
+    protected float maxHP;
     [SerializeField]
-    private float HP;
+    protected float HP;
     [SerializeField]
-    private float ATK;
-    private bool isDead;
+    protected float ATK;
+    protected bool isDead;
 
-    public Attribute(float maxHP, float HP, float ATK)
+    public void Initialise(float maxHP, float HP, float ATK)
     {
         this.maxHP = maxHP;
         this.HP = HP;

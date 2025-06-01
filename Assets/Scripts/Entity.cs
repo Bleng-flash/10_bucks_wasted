@@ -7,7 +7,9 @@ Player and Enemies will inherit from Entity
 */
 public abstract class Entity : MonoBehaviour
 {
+    [SerializeField]
     protected Attribute stats;
+    [SerializeField]
     protected Attack[] attacks; // stores the attacks owned by this entity
 
     public void TakeDamage(float dmg)
