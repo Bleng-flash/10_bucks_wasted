@@ -8,7 +8,6 @@ using UnityEngine;
 
 public class PlayerScript : Entity
 {
-
     // At start, initialise player.stats 
     // Initialise player.attacks with AOEPunch attack (starting basic attack)
     void Start()
@@ -20,7 +19,11 @@ public class PlayerScript : Entity
 
     public override void Die()
     {
+        Debug.Log("You die!!");
         // Freeze player
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+
         // Send out Death event to bring up GameOver UI
     }
 }
