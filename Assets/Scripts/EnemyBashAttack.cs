@@ -38,7 +38,6 @@ public class EnemyBashAttack : Attack
 
     protected override void PerformAttack()
     {
-        Debug.Log("Perform Attack: PlayerInRange = " + playerInRange);
         if (playerInRange)
         {
             Debug.Log("Hit Player for " + damage + " damage!");
