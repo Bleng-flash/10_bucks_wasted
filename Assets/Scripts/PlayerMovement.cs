@@ -1,12 +1,14 @@
+using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     private Vector2 moveInput;
-    [SerializeField] private float movementSpeed = 5f;
+    [SerializeField]
+    private float movementSpeed = 5f;
     private Rigidbody2D rb;
-    [SerializeField] private AOEPunch aoePunch;
 
     // Method matches user input with input actions key bindings
     public void OnMove(InputAction.CallbackContext context)
@@ -23,8 +25,15 @@ public class PlayerMovement : MonoBehaviour
     // Use fixed update for rigidbody movement
     void FixedUpdate()
     {
+        // Move player in direction based on input
         Vector2 direction = new Vector2(moveInput.x, moveInput.y);
         rb.MovePosition(rb.position + direction * movementSpeed * Time.fixedDeltaTime);
-        aoePunch.UpdateFacingDirection(moveInput);      // Changes direction for AOE punch (not very extendable)
+
+        // Rotate the player to face movement direction
+        if (moveInput != Vector2.zero)
+        {
+            float angle = Mathf.Atan2(moveInput.y, moveInput.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
     }
 }

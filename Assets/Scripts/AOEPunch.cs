@@ -12,7 +12,6 @@ public class AOEPunch : Attack
     [SerializeField] private float attackRadius = 2f;
     [SerializeField] private float attackAngle = 90f;       // Half-angle — so 90 = 180° cone
     [SerializeField] private LayerMask enemyLayer;          // Detects all objects in enemy layer
-    private Vector2 currentFacingDirection = Vector2.right; // Consider adding this to Attack class instead
 
     void Start()
     {
@@ -25,18 +24,10 @@ public class AOEPunch : Attack
         return true;
     }
 
-    public void UpdateFacingDirection(Vector2 moveInput)
-    {
-        if (moveInput != Vector2.zero)
-        {
-            currentFacingDirection = moveInput.normalized;
-        }
-    }
-
     protected override void PerformAttack()
     {
         Vector2 attackOrigin = transform.position;
-        Vector2 attackDirection = currentFacingDirection;
+        Vector2 attackDirection = transform.right;      // This will point to wherever player is facing
 
         // Detects all objects will colliders that are in enemy layer and add them to hitColliders
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackOrigin, attackRadius, enemyLayer);
@@ -68,7 +59,7 @@ public class AOEPunch : Attack
     {
         Gizmos.color = Color.red;
         Vector3 origin = transform.position;
-        Vector2 direction = Application.isPlaying ? currentFacingDirection : Vector2.right;
+        Vector2 direction = transform.right;
         if (direction == Vector2.zero) direction = Vector2.right;
 
         // Draw semicircle arc
@@ -91,9 +82,9 @@ public class AOEPunch : Attack
     private void DrawAOEArea()
     {
         Vector2 origin = transform.position;
-        Vector2 attackDir = currentFacingDirection;
-        float angle = 90f;
-        float radius = 5f;
+        Vector2 attackDir = transform.right;
+        float angle = attackAngle;
+        float radius = attackRadius;
 
         // Draw center direction
         Debug.DrawRay(origin, attackDir * radius, Color.red);
