@@ -20,6 +20,7 @@ public class EnemyScript : Entity
     public override void Die()
     {
         Destroy(gameObject);
+        ScoreManager.Instance.AddScore(1);
         Debug.Log("Enemy killed!");
     }
 }

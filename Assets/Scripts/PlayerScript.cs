@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 /* 
@@ -20,10 +19,6 @@ public class PlayerScript : Entity
     public override void Die()
     {
         Debug.Log("You die!!");
-        // Freeze player
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
-
         // Send out Death event to GameManager
         GameManager.Instance.OnPlayerDeath();
     }

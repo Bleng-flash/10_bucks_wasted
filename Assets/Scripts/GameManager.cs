@@ -1,11 +1,12 @@
-using TMPro;
 using UnityEngine;
 // Singleton class used to keep track and coordinate game events
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public bool isPlayerAlive = true;
     [SerializeField] private GameObject gameOverText;
+    
     void Awake()
     {
         if (Instance == null) Instance = this;
