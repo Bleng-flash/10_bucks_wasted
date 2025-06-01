@@ -27,4 +27,11 @@ public class PlayerScript : Entity
     {
         return this.stats.GetHealth();
     }
+
+    // Overriding Takedamage to send out event whenever player receives damage
+    public override void TakeDamage(float dmg)
+    {
+        base.TakeDamage(dmg);
+        GameManager.Instance.OnPlayerDamage();
+    }
 }
