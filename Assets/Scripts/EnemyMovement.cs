@@ -20,4 +20,8 @@ public class EnemyMovement : MonoBehaviour
         Vector2 direction = (player.transform.position - transform.position).normalized;
         rb.MovePosition(rb.position + direction * movementSpeed * Time.fixedDeltaTime);
     }
+    public void SetPlayerTarget(Transform player)
+    {
+        this.player = player;
+    }
 }
