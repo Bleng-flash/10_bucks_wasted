@@ -11,7 +11,7 @@ public class PlayerScript : Entity
     // Initialise player.attacks with AOEPunch attack (starting basic attack)
     void Start()
     {
-        this.stats.Initialise(100.0f, 100.0f, 5.0f);
+        this.stats.Initialise(this.stats.GetMaxHP(), this.stats.GetHealth(), this.stats.GetATK());
         attacks = new Attack[1];   // For now just put 1
         // add AOE punch somehow
     }
