@@ -26,7 +26,6 @@ public class AOEPunch : Attack
 
         // Detects all objects will colliders that are in enemy layer and add them to hitColliders
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackOrigin, attackRadius, enemyLayer);
-        Debug.Log("Enemies in circle: " + hitColliders.Length);
 
         foreach (Collider2D collider in hitColliders)
         {
