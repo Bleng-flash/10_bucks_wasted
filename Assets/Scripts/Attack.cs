@@ -35,6 +35,11 @@ public abstract class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Stops all attacks once player is dead
+        if (!GameManager.Instance.isPlayerAlive)
+        {
+            return;
+        }
         timeSinceLastAttack += Time.deltaTime;
         if (CooldownOver() && CanAttack())
         {
