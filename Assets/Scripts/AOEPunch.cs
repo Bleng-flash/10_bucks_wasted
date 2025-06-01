@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -13,7 +11,7 @@ public class AOEPunch : Attack
     void Start()
     {
         Debug.Log($"AOEPunch Start() — Cooldown: {this.cooldown}, Damage: {this.damage}");
-        Initialise(2.0f, 10.0f, true);
+        Initialise(this.cooldown, this.damage, true);
     }
 
     protected override bool CanAttack()
