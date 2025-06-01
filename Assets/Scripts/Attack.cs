@@ -40,6 +40,7 @@ public abstract class Attack : MonoBehaviour
         {
             return;
         }
+        
         timeSinceLastAttack += Time.deltaTime;
         if (CooldownOver() && CanAttack())
         {

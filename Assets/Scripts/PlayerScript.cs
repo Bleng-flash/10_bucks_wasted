@@ -24,6 +24,7 @@ public class PlayerScript : Entity
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
-        // Send out Death event to bring up GameOver UI
+        // Send out Death event to GameManager
+        GameManager.Instance.OnPlayerDeath();
     }
 }

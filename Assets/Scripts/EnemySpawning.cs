@@ -25,6 +25,12 @@ public class EnemySpawning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Stop spawner if player dies
+        if (!GameManager.Instance.isPlayerAlive)
+        {
+            return;
+        }
+        
         this.timer += Time.deltaTime;
         if (timer >= spawnInterval)
         {

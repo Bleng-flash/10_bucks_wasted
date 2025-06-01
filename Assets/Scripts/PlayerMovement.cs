@@ -23,8 +23,15 @@ public class PlayerMovement : MonoBehaviour
     // Use fixed update for rigidbody movement
     void FixedUpdate()
     {
+        // Freeze movement once player dies
+        if (!GameManager.Instance.isPlayerAlive)
+        {
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            return;
+        }
         // Move player in direction based on input
-        Vector2 direction = new Vector2(moveInput.x, moveInput.y);
+            Vector2 direction = new Vector2(moveInput.x, moveInput.y);
         rb.MovePosition(rb.position + direction * movementSpeed * Time.fixedDeltaTime);
 
         // Rotate the player to face movement direction
