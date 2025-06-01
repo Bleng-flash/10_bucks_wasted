@@ -22,4 +22,9 @@ public class PlayerScript : Entity
         // Send out Death event to GameManager
         GameManager.Instance.OnPlayerDeath();
     }
+
+    public float GetHealth()
+    {
+        return this.stats.GetHealth();
+    }
 }
