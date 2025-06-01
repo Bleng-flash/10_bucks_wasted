@@ -56,4 +56,17 @@ public class Attribute
         return false;
     }
 
+    public float GetMaxHP()
+    {
+        return this.maxHP;
+    }
+    public float GetHealth()
+    {
+        return this.HP;
+    }
+
+    public float GetATK()
+    {
+        return this.ATK;
+    }
 }
