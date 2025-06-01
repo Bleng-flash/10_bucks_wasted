@@ -36,7 +36,12 @@ public abstract class Attack : MonoBehaviour
             PerformAttack();
             timeSinceLastAttack = 0.0f;
         }
+
+        // Call visual update if child class has it
+        OnUpdate();
     }
+
+    protected virtual void OnUpdate() { }
 
     // PerformAttack() 
     protected abstract void PerformAttack();
