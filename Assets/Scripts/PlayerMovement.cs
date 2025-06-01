@@ -4,9 +4,9 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     private Vector2 moveInput;
-    [SerializeField]
-    private float movementSpeed = 5f;
+    [SerializeField] private float movementSpeed = 5f;
     private Rigidbody2D rb;
+    [SerializeField] private AOEPunch aoePunch;
 
     // Method matches user input with input actions key bindings
     public void OnMove(InputAction.CallbackContext context)
@@ -25,5 +25,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 direction = new Vector2(moveInput.x, moveInput.y);
         rb.MovePosition(rb.position + direction * movementSpeed * Time.fixedDeltaTime);
+        aoePunch.UpdateFacingDirection(moveInput);      // Changes direction for AOE punch (not very extendable)
     }
 }
