@@ -29,6 +29,7 @@ public class Attribute
     public void DecreaseHealthBy(float dec)
     {
         this.HP = Mathf.Max(0, this.HP - dec);      // Ensure minimum is 0
+        Debug.Log("Current HP: " + this.HP);
         CheckDeath();
     }
     public void RestoreAllHealth()
