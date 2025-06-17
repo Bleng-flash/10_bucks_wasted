@@ -3,8 +3,9 @@ using UnityEngine;
 // Enemy inherits from entity, contains hp and atk
 public class EnemyScript : Entity
 {
-
-
+    [SerializeField] private int xpAmount;
+    [SerializeField] private XpSpawner xpSpawner;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,6 +22,7 @@ public class EnemyScript : Entity
     {
         Destroy(gameObject);
         ScoreManager.Instance.AddScore(1);
+        xpSpawner.DropXp(xpAmount, transform.position);
         Debug.Log("Enemy killed!");
     }
 }
