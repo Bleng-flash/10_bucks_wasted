@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameOverText;
     [SerializeField] private PlayerUIManager playerUI;
 
+     [Header("References")]
+    public XpSpawner xpSpawner;
+
     void Awake()
     {
         if (Instance == null) Instance = this;

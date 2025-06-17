@@ -196,6 +196,8 @@ MonoBehaviour:
     HP: 20
     ATK: 5
   attacks: []
+  xpAmount: 50
+  xpSpawner: {fileID: 0}
 --- !u!114 &-7861718612539674995
 MonoBehaviour:
   m_ObjectHideFlags: 0
