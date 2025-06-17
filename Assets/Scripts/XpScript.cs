@@ -2,15 +2,12 @@ using UnityEngine;
 
 public class XpScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    // SerializeField is temperory for testing purposes
+    [SerializeField] private int xpAmount;
 
-    // Update is called once per frame
-    void Update()
+    // Method should be called by enemies after they are killed
+    public void SetXpAmount(int amount)
     {
-        
+        xpAmount = amount;
     }
 }
