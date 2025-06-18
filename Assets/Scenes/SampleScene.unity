@@ -503,6 +503,11 @@ MonoBehaviour:
     ATK: 5
   attacks:
   - {fileID: 0}
+  xpScript: {fileID: 900880441}
+  xpPickUpRadius: 2
+  xpLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &120402683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1349,6 +1354,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799534736}
   m_CullTransparentMesh: 1
+--- !u!114 &900880441 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2065693885721782235, guid: 43a0f822ab8ffcf4299921cbac54d464, type: 3}
+  m_PrefabInstance: {fileID: 7069041704275967917}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6c4998b16b915b4baf670b4327d1b3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1085448086
 GameObject:
   m_ObjectHideFlags: 0
@@ -2281,6 +2297,10 @@ PrefabInstance:
     - target: {fileID: 4153218569533065800, guid: 43a0f822ab8ffcf4299921cbac54d464, type: 3}
       propertyPath: m_Name
       value: Xp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153218569533065800, guid: 43a0f822ab8ffcf4299921cbac54d464, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4153218569533065800, guid: 43a0f822ab8ffcf4299921cbac54d464, type: 3}
       propertyPath: m_IsActive

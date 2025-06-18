@@ -8,4 +8,14 @@ public class XpScript : MonoBehaviour
     {
         xpAmount = amount;
     }
+
+    public int GetXpAmount()
+    {
+        return xpAmount;
+    }
+    public int PickUpXp()
+    {
+        Destroy(gameObject);
+        return GetXpAmount();
+    }
 }
