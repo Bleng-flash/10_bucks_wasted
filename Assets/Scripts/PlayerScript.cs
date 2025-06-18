@@ -9,15 +9,20 @@ using UnityEngine;
 public class PlayerScript : Entity
 {
     private int xpAmount;
+    private int xpToNextLevel;
+    private int level;
+
     [SerializeField] private XpScript xpScript;
     [SerializeField] private float xpPickUpRadius = 2.0f;
-    [SerializeField] private LayerMask xpLayer; 
+    [SerializeField] private LayerMask xpLayer;
 
     // At start, initialise player.stats 
     // Initialise player.attacks with AOEPunch attack (starting basic attack)
     void Start()
     {
         xpAmount = 0;
+        xpToNextLevel = 100;
+        level = 1;
         this.stats.Initialise(this.stats.GetMaxHP(), this.stats.GetHealth(), this.stats.GetATK());
         attacks = new Attack[1];   // For now just put 1
         // add AOE punch somehow
@@ -26,6 +31,12 @@ public class PlayerScript : Entity
     void Update()
     {
         PickUpXp();
+        if (xpAmount >= xpToNextLevel)
+        {
+            LevelUp();
+            Debug.Log("Next xp required to level up: " + xpToNextLevel);
+            Debug.Log("Current level: " + level);
+        }
     }
     public override void Die()
     {
@@ -62,5 +73,12 @@ public class PlayerScript : Entity
                 Debug.Log("Current xp: " + xpAmount);
             }
         }
+    }
+
+    public void LevelUp()
+    {
+        xpAmount -= xpToNextLevel;
+        level++;
+        xpToNextLevel = (int) (xpToNextLevel * 1.5);    // Temporary formula for xp required to level up
     }
 }  
