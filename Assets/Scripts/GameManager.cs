@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameOverText;
     [SerializeField] private PlayerUIManager playerUI;
 
-     [Header("References")]
+    [Header("References")]
     public XpSpawner xpSpawner;
 
     void Awake()
@@ -31,5 +31,10 @@ public class GameManager : MonoBehaviour
     public void OnPlayerDamage(float current, float max)
     {
         playerUI.UpdateHealth(current, max);
+    }
+
+    public void UpdateXp(float current, float max)
+    {
+        playerUI.UpdateXp(current, max);
     }
 }
