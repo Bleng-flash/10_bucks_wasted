@@ -18,16 +18,19 @@ public class PlayerScript : Entity
 
     // At start, initialise player.stats 
     // Initialise player.attacks with AOEPunch attack (starting basic attack)
+    // Initialise xp stats
     void Start()
     {
         xpAmount = 0;
         xpToNextLevel = 100;
+        GameManager.Instance.UpdateXp(xpAmount, xpToNextLevel);     // Initialise xp bar to be empty
         level = 1;
-        this.stats.Initialise(this.stats.GetMaxHP(), this.stats.GetHealth(), this.stats.GetATK());
+        this.stats.Initialise(stats.GetMaxHP(), stats.GetHealth(), stats.GetATK());
         attacks = new Attack[1];   // For now just put 1
         // add AOE punch somehow
     }
 
+    // Every frame, pick up any xp in range and check if can level up
     void Update()
     {
         PickUpXp();
@@ -54,15 +57,16 @@ public class PlayerScript : Entity
     public override void TakeDamage(float dmg)
     {
         base.TakeDamage(dmg);
-        GameManager.Instance.OnPlayerDamage();
+        GameManager.Instance.OnPlayerDamage(stats.GetHealth(), stats.GetMaxHP());
     }
 
     // Pick up XP
     public void PickUpXp()
     {
-        // Detects all objects will colliders that are in xp layer and add them to pickupXps
+        // Detects all objects will colliders that are in xp layer and add them to pickupXps array
         Collider2D[] pickupXps = Physics2D.OverlapCircleAll(transform.position, xpPickUpRadius, xpLayer);
 
+        // Get each xp object and add the xp amount to player's xp, updating xp bar through GameManager
         foreach (Collider2D collider in pickupXps)
         {
             XpScript xp = collider.GetComponent<XpScript>();
@@ -71,6 +75,7 @@ public class PlayerScript : Entity
                 Debug.Log("Picked up " + xp.GetXpAmount() + " xp");
                 xpAmount += xp.PickUpXp();
                 Debug.Log("Current xp: " + xpAmount);
+                GameManager.Instance.UpdateXp(xpAmount, xpToNextLevel);
             }
         }
     }
@@ -79,6 +84,7 @@ public class PlayerScript : Entity
     {
         xpAmount -= xpToNextLevel;
         level++;
-        xpToNextLevel = (int) (xpToNextLevel * 1.5);    // Temporary formula for xp required to level up
+        xpToNextLevel = (int)(xpToNextLevel * 1.5);    // Temporary formula for xp required to level up
+        GameManager.Instance.UpdateXp(xpAmount, xpToNextLevel);
     }
 }  

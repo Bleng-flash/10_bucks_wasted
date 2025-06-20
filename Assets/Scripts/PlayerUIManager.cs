@@ -1,18 +1,21 @@
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerUIManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private PlayerScript player;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private Image healthBar;
+    [SerializeField] private Image xpBar;
+
+
+
+    public void UpdateHealth(float current, float max)
     {
-        UpdateHealth();
+        healthBar.fillAmount = current / max;
     }
 
-    public void UpdateHealth()
+    public void UpdateXp(float current, float max)
     {
-        healthText.text = "Health: " + player.GetHealth();
+        xpBar.fillAmount = current / max;
     }
 }
