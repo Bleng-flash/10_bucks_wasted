@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
     }
 
     // Tells playerUI to update health when player receives damage
-    public void OnPlayerDamage()
+    public void OnPlayerDamage(float current, float max)
     {
-        playerUI.UpdateHealth();
+        playerUI.UpdateHealth(current, max);
     }
 }

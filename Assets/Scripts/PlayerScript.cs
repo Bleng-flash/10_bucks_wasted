@@ -23,7 +23,7 @@ public class PlayerScript : Entity
         xpAmount = 0;
         xpToNextLevel = 100;
         level = 1;
-        this.stats.Initialise(this.stats.GetMaxHP(), this.stats.GetHealth(), this.stats.GetATK());
+        this.stats.Initialise(stats.GetMaxHP(), stats.GetHealth(), stats.GetATK());
         attacks = new Attack[1];   // For now just put 1
         // add AOE punch somehow
     }
@@ -54,7 +54,7 @@ public class PlayerScript : Entity
     public override void TakeDamage(float dmg)
     {
         base.TakeDamage(dmg);
-        GameManager.Instance.OnPlayerDamage();
+        GameManager.Instance.OnPlayerDamage(stats.GetHealth(), stats.GetMaxHP());
     }
 
     // Pick up XP
