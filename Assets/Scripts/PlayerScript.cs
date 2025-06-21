@@ -84,6 +84,7 @@ public class PlayerScript : Entity
     {
         xpAmount -= xpToNextLevel;
         level++;
+        LevelManager.Instance.LevelUp();
         xpToNextLevel = (int)(xpToNextLevel * 1.5);    // Temporary formula for xp required to level up
         GameManager.Instance.UpdateXp(xpAmount, xpToNextLevel);
     }
