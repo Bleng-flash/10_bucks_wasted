@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 // Basic starting attack for player character
-public class AOEPunch : Attack
+public class AOEPunch : AutoAttack
 {
     [SerializeField] private float attackRadius = 2.0f;
     [SerializeField] private float attackAngle = 90f;       // Half-angle — so 90 = 180° cone
@@ -10,8 +10,14 @@ public class AOEPunch : Attack
 
     void Start()
     {
-        Debug.Log($"AOEPunch Start() — Cooldown: {this.cooldown}, Damage: {this.damage}");
-        Initialise(this.cooldown, this.damage, true);
+        // Debug.Log($"AOEPunch Start() — Cooldown: {this.cooldown}, Damage: {this.damage}");
+        Entity ownerEntity = GetComponent<Entity>();
+        if (ownerEntity == null)
+        {
+            Debug.LogError("Entity component missing on AOEPunch GameObject.");
+            return;
+        }
+        Initialise(this.cooldown, this.damage, true, ownerEntity);
     }
 
     protected override bool CanAttack()

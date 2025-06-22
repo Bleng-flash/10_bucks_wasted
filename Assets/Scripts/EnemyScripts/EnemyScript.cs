@@ -4,11 +4,11 @@ using UnityEngine;
 public class EnemyScript : Entity
 {
     [SerializeField] private int xpAmount;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    void Awake()
     {
         this.stats.Initialise(20.0f, 20.0f, 5.0f);
+        team = Team.Enemy;
     }
 
     // Update is called once per frame
