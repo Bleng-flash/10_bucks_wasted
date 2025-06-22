@@ -20,18 +20,31 @@ public class TimerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Only increase elapsedTime when game is not paused
-        if (isRunning)
+        // Freeze timer on GameOver
+        if (!GameManager.Instance.isPlayerAlive)
         {
-            elapsedTime += Time.deltaTime;
+            return;
         }
+        // Only increase elapsedTime when game is not paused
+            if (isRunning)
+            {
+                elapsedTime += Time.deltaTime;
+            }
 
         // Update timer
         float startTimeInSeconds = minutesStart * 60 + secondsStart;
         float timeLeft = startTimeInSeconds - elapsedTime;
-        int minutes = Mathf.FloorToInt(timeLeft / 60f);
-        int seconds = Mathf.FloorToInt(timeLeft % 60f);
+        // Make sure timer doesn't go negative
+        int minutes = Mathf.Max(Mathf.FloorToInt(timeLeft / 60f), 0);
+        int seconds = Mathf.Max(Mathf.FloorToInt(timeLeft % 60f), 0);
         timerText.text = $"{minutes:00}:{seconds:00}";
+
+        // GameOver if timer hits 0
+        if (timeLeft <= 0f)
+        {
+            Debug.Log("Time's up! You lose!");
+            GameManager.Instance.OnPlayerDeath();
+        }
     }
 
     public void ResetTimer()
