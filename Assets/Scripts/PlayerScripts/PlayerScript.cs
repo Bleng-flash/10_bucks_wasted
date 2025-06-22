@@ -43,7 +43,6 @@ public class PlayerScript : Entity
     }
     public override void Die()
     {
-        Debug.Log("You die!!");
         // Send out Death event to GameManager
         GameManager.Instance.OnPlayerDeath();
     }

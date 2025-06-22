@@ -12,6 +12,13 @@ public abstract class Entity : MonoBehaviour
     [SerializeField]
     protected Attack[] attacks; // stores the attacks owned by this entity
 
+    public Team team;
+
+    public enum Team
+    {
+        Player,
+        Enemy
+    }
     public virtual void TakeDamage(float dmg)
     {
         this.stats.DecreaseHealthBy(dmg);
@@ -22,4 +29,9 @@ public abstract class Entity : MonoBehaviour
     }
 
     public abstract void Die();
+
+    public bool IsEnemyTo(Entity other)
+    {
+        return this.team != other.team;
+    }
 }
