@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public bool isPlayerAlive = true;
-    [SerializeField] private GameObject gameOverText;
+    [SerializeField] private SwitchScene sceneSwitcher;
     [SerializeField] private PlayerUIManager playerUI;
 
     [Header("References")]
@@ -23,8 +23,8 @@ public class GameManager : MonoBehaviour
         isPlayerAlive = false;
 
         // Bring up Game Over UI
-        gameOverText.SetActive(true);
-        Debug.Log("Game Over!");
+        sceneSwitcher.LoadGameOverScene();
+        // Debug.Log("Game Over!");
     }
 
     // Tells playerUI to update health when player receives damage
