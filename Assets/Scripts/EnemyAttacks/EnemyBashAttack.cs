@@ -11,7 +11,13 @@ public class EnemyBashAttack : Attack
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Initialise(this.cooldown, this.damage, true);
+        Entity ownerEntity = GetComponent<Entity>();
+        if (ownerEntity == null)
+        {
+            Debug.LogError("Entity component missing on EnemyBashAttack GameObject.");
+            return;
+        }
+        Initialise(this.cooldown, this.damage, true, ownerEntity);
     }
 
     // Enemy attacks are non-auto attacks

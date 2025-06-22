@@ -16,6 +16,10 @@ public class PlayerScript : Entity
     [SerializeField] private float xpPickUpRadius = 2.0f;
     [SerializeField] private LayerMask xpLayer;
 
+    private void Awake()
+    {
+        team = Team.Player;
+    }
     // At start, initialise player.stats 
     // Initialise player.attacks with AOEPunch attack (starting basic attack)
     // Initialise xp stats
@@ -43,7 +47,6 @@ public class PlayerScript : Entity
     }
     public override void Die()
     {
-        Debug.Log("You die!!");
         // Send out Death event to GameManager
         GameManager.Instance.OnPlayerDeath();
     }

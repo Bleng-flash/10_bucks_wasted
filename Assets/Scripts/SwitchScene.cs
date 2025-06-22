@@ -12,4 +12,9 @@ public class SwitchScene : MonoBehaviour
     {
         SceneManager.LoadScene("StartScene"); // match scene name exactly
     }
+
+    public void LoadGameOverScene()
+    {
+        SceneManager.LoadScene("GameOverScene");
+    }
 }
