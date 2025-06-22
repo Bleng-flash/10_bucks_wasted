@@ -1,16 +1,51 @@
+using System.Xml.Serialization;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
 
 public class TimerManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private int minutesStart;
+    [SerializeField] private int secondsStart;
+    private float elapsedTime = 0f;     // This subtracts from startTime and only increases if game is not paused
+    private bool isRunning = true;      // This pauses the game when choosing upgrades etc.
+
+    // Have the timer start from the set start time
     void Start()
     {
-        
+        timerText.text = $"{minutesStart:00}:{secondsStart:00}";
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // Only increase elapsedTime when game is not paused
+        if (isRunning)
+        {
+            elapsedTime += Time.deltaTime;
+        }
+
+        // Update timer
+        float startTimeInSeconds = minutesStart * 60 + secondsStart;
+        float timeLeft = startTimeInSeconds - elapsedTime;
+        int minutes = Mathf.FloorToInt(timeLeft / 60f);
+        int seconds = Mathf.FloorToInt(timeLeft % 60f);
+        timerText.text = $"{minutes:00}:{seconds:00}";
+    }
+
+    public void ResetTimer()
+    {
+        elapsedTime = 0f;
+    }
+
+    public void StopTimer()
+    {
+        isRunning = false;
+    }
+
+    public void ResumeTimer()
+    {
+        isRunning = true;
     }
 }
