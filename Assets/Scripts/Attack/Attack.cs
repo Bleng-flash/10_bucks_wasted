@@ -1,4 +1,3 @@
-using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -20,12 +19,14 @@ public abstract class Attack : MonoBehaviour
 
     protected float timeSinceLastAttack = 0.0f; // time from last attack to now (current frame)
     protected bool isAutoAttack;
+    protected Entity owner; // the entity that this attack belongs to 
 
-    protected void Initialise(float cooldown, float damage, bool isAutoAttack)
+    protected void Initialise(float cooldown, float damage, bool isAutoAttack, Entity owner)
     {
         this.cooldown = cooldown;
         this.damage = damage;
         this.isAutoAttack = isAutoAttack;
+        this.owner = owner;
     }
     public void SetDamage(float dmg)
     {
@@ -33,14 +34,15 @@ public abstract class Attack : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    // DO NOT provide implementation for Update() in any subclasses of Attack
+    protected void Update()
     {
         // Stops all attacks once player is dead
         if (!GameManager.Instance.isPlayerAlive)
         {
             return;
         }
-        
+
         timeSinceLastAttack += Time.deltaTime;
         if (CooldownOver() && CanAttack())
         {
@@ -54,7 +56,7 @@ public abstract class Attack : MonoBehaviour
 
     protected virtual void OnUpdate() { }
 
-    // PerformAttack() 
+    // PerformAttack() -- we only provide this implementation in concrete attack scripts
     protected abstract void PerformAttack();
 
     // CanAttack() will return always true for auto-attacks, and
