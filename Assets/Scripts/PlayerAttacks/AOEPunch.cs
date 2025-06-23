@@ -11,7 +11,7 @@ public class AOEPunch : AutoAttack
     void Start()
     {
         // Debug.Log($"AOEPunch Start() — Cooldown: {this.cooldown}, Damage: {this.damage}");
-        Entity ownerEntity = GetComponent<Entity>();
+        Entity ownerEntity = GetComponentInParent<Entity>();
         if (ownerEntity == null)
         {
             Debug.LogError("Entity component missing on AOEPunch GameObject.");
