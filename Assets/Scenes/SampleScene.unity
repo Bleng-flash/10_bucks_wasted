@@ -504,6 +504,7 @@ MonoBehaviour:
     ATK: 5
   attacks:
   - {fileID: 0}
+  team: 0
   xpScript: {fileID: 900880441}
   xpPickUpRadius: 2
   xpLayer:
@@ -523,7 +524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 1
   damage: 10
-  attackRadius: 2
+  attackRadius: 5
   attackAngle: 90
   enemyLayer:
     serializedVersion: 2
