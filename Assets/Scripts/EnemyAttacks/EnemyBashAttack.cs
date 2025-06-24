@@ -3,7 +3,7 @@ using UnityEngine;
 
 // Simple attack that deals damage when enemy comes into contact with player
 
-public class EnemyBashAttack : Attack
+public class EnemyBashAttack : NonAutoAttack
 {
     private bool playerInRange = false;
     private PlayerScript player;
@@ -22,7 +22,7 @@ public class EnemyBashAttack : Attack
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (((1 << collision.gameObject.layer) & targetLayer) != 0)
         {
             Debug.Log("Collision!");
             playerInRange = true;
@@ -32,7 +32,7 @@ public class EnemyBashAttack : Attack
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (((1 << collision.gameObject.layer) & targetLayer) != 0)
         {
             playerInRange = false;
         }
@@ -40,7 +40,7 @@ public class EnemyBashAttack : Attack
 
     protected override void PerformAttack()
     {
-        Debug.Log("Hit Player for " + damage + " damage!");
+        Debug.Log("Bash Attack Player for " + damage + " damage!");
         player.TakeDamage(this.damage);
     }
 }
