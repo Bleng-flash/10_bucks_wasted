@@ -22,6 +22,7 @@ public class EnemyBashAttack : NonAutoAttack
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Check for collision!");
         if (((1 << collision.gameObject.layer) & targetLayer) != 0)
         {
             Debug.Log("Collision!");
@@ -32,6 +33,7 @@ public class EnemyBashAttack : NonAutoAttack
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        Debug.Log("Check for leaving collision!");
         if (((1 << collision.gameObject.layer) & targetLayer) != 0)
         {
             playerInRange = false;

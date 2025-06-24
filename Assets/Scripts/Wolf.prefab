@@ -197,7 +197,7 @@ MonoBehaviour:
     ATK: 5
   attacks: []
   team: 0
-  xpAmount: 100
+  xpAmount: 50
 --- !u!1 &6448848433642682829
 GameObject:
   m_ObjectHideFlags: 0
