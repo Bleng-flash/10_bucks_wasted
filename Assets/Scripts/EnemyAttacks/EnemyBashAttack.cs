@@ -15,7 +15,7 @@ public class EnemyBashAttack : Attack
     }
 
     // Enemy attacks are non-auto attacks
-    protected override bool CanAttack()
+    protected override bool TargetInRange()
     {
         return playerInRange;
     }
