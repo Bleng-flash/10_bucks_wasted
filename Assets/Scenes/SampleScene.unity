@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 120402680}
   - component: {fileID: 120402681}
   - component: {fileID: 120402682}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -657,7 +657,7 @@ GameObject:
   - component: {fileID: 231017113}
   - component: {fileID: 231017114}
   - component: {fileID: 231017115}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: TopBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1073,7 +1073,7 @@ GameObject:
   - component: {fileID: 688901431}
   - component: {fileID: 688901433}
   - component: {fileID: 688901432}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: BottomBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1668,7 +1668,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1101768364}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Borders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1922,7 +1922,7 @@ GameObject:
   - component: {fileID: 1369264796}
   - component: {fileID: 1369264798}
   - component: {fileID: 1369264797}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: RightBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2360,13 +2360,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d64f514cd34ea43bbfba4ad218b417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 2
+  cooldown: 0.5
   damage: 10
-  attackRadius: 5
-  attackAngle: 90
-  enemyLayer:
+  targetLayer:
     serializedVersion: 2
     m_Bits: 0
+  attackRadius: 5
+  attackAngle: 90
 --- !u!1 &1893843676
 GameObject:
   m_ObjectHideFlags: 0
@@ -2378,7 +2378,7 @@ GameObject:
   - component: {fileID: 1893843677}
   - component: {fileID: 1893843679}
   - component: {fileID: 1893843678}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: LeftBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2933,6 +2933,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8266744873680795946, guid: a2548005d994f1a4ebac9db7d42dd334, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2952,7 +2956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4153218569533065800, guid: 43a0f822ab8ffcf4299921cbac54d464, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4153218569533065800, guid: 43a0f822ab8ffcf4299921cbac54d464, type: 3}
       propertyPath: m_IsActive

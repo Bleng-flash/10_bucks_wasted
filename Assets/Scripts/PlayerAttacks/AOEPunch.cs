@@ -6,18 +6,11 @@ public class AOEPunch : AutoAttack
 {
     [SerializeField] private float attackRadius = 2.0f;
     [SerializeField] private float attackAngle = 90f;       // Half-angle — so 90 = 180° cone
-    [SerializeField] private LayerMask enemyLayer;          // Detects all objects in enemy layer
 
     void Start()
     {
         // Debug.Log($"AOEPunch Start() — Cooldown: {this.cooldown}, Damage: {this.damage}");
-        Entity ownerEntity = GetComponentInParent<Entity>();
-        if (ownerEntity == null)
-        {
-            Debug.LogError("Entity component missing on AOEPunch GameObject.");
-            return;
-        }
-        Initialise(this.cooldown, this.damage, true, ownerEntity);
+        Initialise(this.cooldown, this.damage);
     }
 
     protected override bool CanAttack()
@@ -31,7 +24,7 @@ public class AOEPunch : AutoAttack
         Vector2 attackDirection = transform.right;      // This will point to wherever player is facing
 
         // Detects all objects will colliders that are in enemy layer and add them to hitColliders
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackOrigin, attackRadius, enemyLayer);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackOrigin, attackRadius, targetLayer);
 
         foreach (Collider2D collider in hitColliders)
         {
