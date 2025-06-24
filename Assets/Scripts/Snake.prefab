@@ -247,4 +247,4 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
-  attackRadius: 1
+  attackRadius: 2
