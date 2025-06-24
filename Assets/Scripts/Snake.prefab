@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1959182017906537170}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 4, z: 0}
+  m_LocalPosition: {x: 6, y: 1.2535, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -197,7 +197,7 @@ MonoBehaviour:
     ATK: 5
   attacks: []
   team: 0
-  xpAmount: 50
+  xpAmount: 100
 --- !u!1 &3484661248289840128
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6804132633348971871}
-  - component: {fileID: 47885684050700854}
+  - component: {fileID: 3837830705193524381}
   m_Layer: 0
   m_Name: EnemyAttack
   m_TagString: Untagged
@@ -230,7 +230,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1859895290410686647}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &47885684050700854
+--- !u!114 &3837830705193524381
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -239,11 +239,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3484661248289840128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ac2530de32516b4b9222660e3cb3b5e, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b5aabec2f5b7f24cab24086cc4b6a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 1
-  damage: 5
+  cooldown: 2
+  damage: 10
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
+  attackRadius: 1
