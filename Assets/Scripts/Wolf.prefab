@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1473691036301071063}
   - component: {fileID: 8140248896747810511}
   - component: {fileID: 3008847482849320093}
+  - component: {fileID: -6001721255960774392}
   m_Layer: 7
   m_Name: Wolf
   m_TagString: Enemy
@@ -198,6 +199,18 @@ MonoBehaviour:
   attacks: []
   team: 0
   xpAmount: 50
+--- !u!114 &-6001721255960774392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504691361793258061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637047a3d2da761408aa0b38ae7f439e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6448848433642682829
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +222,7 @@ GameObject:
   - component: {fileID: 317829729206564688}
   - component: {fileID: 6346276634925681552}
   m_Layer: 0
-  m_Name: EnemyAttack
+  m_Name: BashAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ac2530de32516b4b9222660e3cb3b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0
+  cooldown: 0.5
   damage: 5
   targetLayer:
     serializedVersion: 2
