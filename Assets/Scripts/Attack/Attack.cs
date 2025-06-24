@@ -1,3 +1,4 @@
+using System.Xml.Serialization;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,22 +13,39 @@ An Attack can only be called on a Entity and be dealt to another Entity.
 [System.Serializable]
 public abstract class Attack : MonoBehaviour
 {
-    [SerializeField]
-    protected float cooldown; // in seconds
-    [SerializeField]
-    protected float damage;
-
+    [SerializeField] protected float cooldown; // in seconds
+    [SerializeField] protected float damage;
     protected float timeSinceLastAttack = 0.0f; // time from last attack to now (current frame)
-    protected bool isAutoAttack;
     protected Entity owner; // the entity that this attack belongs to 
+    [SerializeField] protected LayerMask targetLayer; // the layer of the targets that the attack can hit
 
-    protected void Initialise(float cooldown, float damage, bool isAutoAttack, Entity owner)
+
+    // We call Initialise on attacks at runtime in the Start() method of the concrete attacks
+    protected void Initialise(float cooldown, float damage)
     {
         this.cooldown = cooldown;
         this.damage = damage;
-        this.isAutoAttack = isAutoAttack;
-        this.owner = owner;
+        owner = GetComponentInParent<Entity>();
+        if (owner == null)
+        {
+            Debug.LogError("Owner missing on GameObject.");
+            return;
+        }
+        SetTargetLayer();
     }
+
+    protected void SetTargetLayer()
+    {
+        if (owner is PlayerScript)
+        {
+            targetLayer = LayerMask.GetMask("Enemy");
+        }
+        if (owner is EnemyScript)
+        {
+            targetLayer = LayerMask.GetMask("Player");
+        }
+    }
+
     public void SetDamage(float dmg)
     {
         this.damage = dmg;
