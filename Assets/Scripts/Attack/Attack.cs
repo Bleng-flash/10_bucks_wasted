@@ -62,7 +62,7 @@ public abstract class Attack : MonoBehaviour
         }
 
         timeSinceLastAttack += Time.deltaTime;
-        if (CooldownOver() && CanAttack())
+        if (CooldownOver() && TargetInRange())
         {
             PerformAttack();
             timeSinceLastAttack = 0.0f;
@@ -77,9 +77,8 @@ public abstract class Attack : MonoBehaviour
     // PerformAttack() -- we only provide this implementation in concrete attack scripts
     protected abstract void PerformAttack();
 
-    // CanAttack() will return always true for auto-attacks, and
-    // it returns true for non auto-attacks iff there is a target in range
-    protected abstract bool CanAttack();
+    // TargetInRange will always return true for auto-attacks, and depends on implementation for non-auto attacks
+    protected abstract bool TargetInRange();
 
     private bool CooldownOver()
     {

@@ -4,7 +4,7 @@ public abstract class NonAutoAttack : Attack
 {
     // DO NOT provide an implementation for Update(), game will autocall Attack's implementation
 
-    protected override bool CanAttack()
+    protected override bool TargetInRange()
     {
         return FindValidTarget() != null;
     }

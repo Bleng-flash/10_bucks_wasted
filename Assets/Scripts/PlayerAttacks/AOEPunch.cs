@@ -13,7 +13,7 @@ public class AOEPunch : AutoAttack
         Initialise(this.cooldown, this.damage);
     }
 
-    protected override bool CanAttack()
+    protected override bool TargetInRange()
     {
         return true;
     }
