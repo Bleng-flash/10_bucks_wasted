@@ -4,7 +4,7 @@ using UnityEngine;
 
 /* 
 Attack is an abstract class which specific attack scripts will inherit from.
-At runtime, an Attack will be a GameObject that is a child of an Entity GameObject.
+At runtime, an Attack will be attached to a GameObject that is a child of an Entity GameObject.
 We separate Attacks into auto-attacks (attacks regardless of whether there is a target
     in range), and those that are not; aka requires hitbox collisiions (target in range)
 - Enemies should use non-auto-attack.
