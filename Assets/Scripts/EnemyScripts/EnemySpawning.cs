@@ -15,7 +15,13 @@ public class EnemySpawning : MonoBehaviour
     // Border widths and heights
     public float width = 60.0f;
     public float height = 40.0f;
+    int enemyLayer;
 
+
+    void Start()
+    {
+        enemyLayer = LayerMask.NameToLayer("Enemy");
+    }
 
     public void SetSpawnInterval(float interval)
     {
@@ -89,6 +95,8 @@ public class EnemySpawning : MonoBehaviour
             {
                 movement.SetPlayerTarget(player);
             }
+            enemy.layer = enemyLayer;
+
         }
         
     }

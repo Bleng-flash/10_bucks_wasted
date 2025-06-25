@@ -3,7 +3,7 @@ using UnityEngine;
 
 // Simple attack that deals damage when enemy comes into contact with player
 
-public class EnemyBashAttack : Attack
+public class EnemyBashAttack : NonAutoAttack
 {
     private bool playerInRange = false;
     private PlayerScript player;
@@ -11,24 +11,19 @@ public class EnemyBashAttack : Attack
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Entity ownerEntity = GetComponent<Entity>();
-        if (ownerEntity == null)
-        {
-            Debug.LogError("Entity component missing on EnemyBashAttack GameObject.");
-            return;
-        }
-        Initialise(this.cooldown, this.damage, true, ownerEntity);
+        Initialise(this.cooldown, this.damage);
     }
 
     // Enemy attacks are non-auto attacks
-    protected override bool CanAttack()
+    protected override bool TargetInRange()
     {
         return playerInRange;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnParentCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        Debug.Log("Check for collision!");
+        if (((1 << collision.gameObject.layer) & targetLayer) != 0)
         {
             Debug.Log("Collision!");
             playerInRange = true;
@@ -36,9 +31,10 @@ public class EnemyBashAttack : Attack
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    public void OnParentCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        Debug.Log("Check for leaving collision!");
+        if (((1 << collision.gameObject.layer) & targetLayer) != 0)
         {
             playerInRange = false;
         }
@@ -46,7 +42,7 @@ public class EnemyBashAttack : Attack
 
     protected override void PerformAttack()
     {
-        Debug.Log("Hit Player for " + damage + " damage!");
+        Debug.Log("Bash Attack Player for " + damage + " damage!");
         player.TakeDamage(this.damage);
     }
 }
