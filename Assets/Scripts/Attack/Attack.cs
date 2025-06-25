@@ -4,11 +4,11 @@ using UnityEngine;
 
 /* 
 Attack is an abstract class which specific attack scripts will inherit from.
-An Attack can only be called on a Entity and be dealt to another Entity.
-- I need to separate Attacks into auto-attacks (attacks regardless of whether there is a target
+At runtime, an Attack will be a GameObject that is a child of an Entity GameObject.
+We separate Attacks into auto-attacks (attacks regardless of whether there is a target
     in range), and those that are not; aka requires hitbox collisiions (target in range)
-- Enemy attacks should all be single target. Enemies should not use auto-attack.
-- Player attacks can be single target or AOE. Player should use auto attack for AOE attacks only.
+- Enemies should use non-auto-attack.
+- Player should use auto attack.
 */
 [System.Serializable]
 public abstract class Attack : MonoBehaviour
@@ -25,7 +25,7 @@ public abstract class Attack : MonoBehaviour
     {
         this.cooldown = cooldown;
         this.damage = damage;
-        owner = GetComponentInParent<Entity>();
+        owner = GetComponentInParent<Entity>(); // checks for script that is subclass of Entity
         if (owner == null)
         {
             Debug.LogError("Owner missing on GameObject.");
@@ -77,7 +77,8 @@ public abstract class Attack : MonoBehaviour
     // PerformAttack() -- we only provide this implementation in concrete attack scripts
     protected abstract void PerformAttack();
 
-    // TargetInRange will always return true for auto-attacks, and depends on implementation for non-auto attacks
+    // TargetInRange will always return true for auto-attacks, 
+    // and depends on implementation for non-auto attacks
     protected abstract bool TargetInRange();
 
     private bool CooldownOver()
