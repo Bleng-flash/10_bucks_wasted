@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// This script acts as a bridging method to link the collider in the parent object to the script in the child object
+
 public class ParentColliderToChild : MonoBehaviour
 {
     private EnemyBashAttack bashAttack;
