@@ -1,10 +1,11 @@
+
 using UnityEngine;
 using System;
 
 // Upon every level up of the player, the game freezes and 3 upgrade cards appear on the screen (UI)
 // the player will pick 1 of the 3 upgrades
 
-public class Upgrade : MonoBehaviour
+public class UpgradeManager : MonoBehaviour
 {
     // This callback will be called when upgrade is finished
     private Action onUpgradeComplete; // Action is a type that represents a method that returns void
@@ -42,4 +43,3 @@ public class Upgrade : MonoBehaviour
 
     // Implement upgrade logic here (e.g., selecting a card, applying upgrades, etc.)
 }
-
