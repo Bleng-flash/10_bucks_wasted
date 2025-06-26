@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         // Move player in direction based on input
-            Vector2 direction = new Vector2(moveInput.x, moveInput.y);
+        Vector2 direction = new Vector2(moveInput.x, moveInput.y);
         rb.MovePosition(rb.position + direction * movementSpeed * Time.fixedDeltaTime);
 
         // Rotate the player to face movement direction

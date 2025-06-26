@@ -37,4 +37,15 @@ public class GameManager : MonoBehaviour
     {
         playerUI.UpdateXp(current, max);
     }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0f; // pauses any timers that depend on Time.deltaTime
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+    }
+
 }

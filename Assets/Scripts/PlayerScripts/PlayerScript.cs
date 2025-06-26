@@ -38,7 +38,7 @@ public class PlayerScript : Entity
     void Update()
     {
         PickUpXp();
-        if (xpAmount >= xpToNextLevel)
+        while (xpAmount >= xpToNextLevel)
         {
             LevelUp();
             Debug.Log("Next xp required to level up: " + xpToNextLevel);
@@ -88,7 +88,13 @@ public class PlayerScript : Entity
         xpAmount -= xpToNextLevel;
         level++;
         LevelManager.Instance.LevelUp();
-        xpToNextLevel = (int)(xpToNextLevel * 1.5);    // Temporary formula for xp required to level up
+        UpdateXpToNextLevel();
         GameManager.Instance.UpdateXp(xpAmount, xpToNextLevel);
+    }
+
+    public void UpdateXpToNextLevel() // scales positively with current player level
+    {
+        // Temporary formula 
+        xpToNextLevel = (int)(xpToNextLevel * 1.5); 
     }
 }  
