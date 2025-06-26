@@ -93,10 +93,9 @@ public class PlayerScript : Entity
         level++;
         isLevelingUp = true;
         LevelManager.Instance.LevelUp();
-        GameManager.Instance.PauseGame();
-        // GameManager.Instance.ShowUpgradeScreen(OnUpgradeComplete);
         UpdateXpToNextLevel();
         GameManager.Instance.UpdateXp(xpAmount, xpToNextLevel);
+        GameManager.Instance.ShowUpgradeScreen(OnUpgradeComplete);
     }
 
     // Called when player finished choosing an upgrade and closing the upgrade screen 

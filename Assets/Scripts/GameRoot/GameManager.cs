@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 // Singleton class used to keep track and coordinate game events
 
 public class GameManager : MonoBehaviour
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     [Header("References")]
     public XpSpawner xpSpawner;
+    [SerializeField] private Upgrade upgradeManager;
 
     void Awake()
     {
@@ -54,7 +56,7 @@ public class GameManager : MonoBehaviour
         SetEnemyState(true);
     }
 
-    
+
     // PauseGame() restarts movement and attacks for player and all enemies
     private void SetPlayerState(bool isActive)
     {
@@ -73,6 +75,18 @@ public class GameManager : MonoBehaviour
         {
             EnemyMovement move = enemy.GetComponent<EnemyMovement>();
             if (move) move.enabled = isActive;
+        }
+    }
+
+    public void ShowUpgradeScreen(Action onUpgradeComplete)
+    {
+        if (upgradeManager != null)
+        {
+            upgradeManager.ShowUpgradeScreen(onUpgradeComplete);
+        }
+        else
+        {
+            Debug.LogError("Upgrade Manager not assigned in GameManager.");
         }
     }
 
