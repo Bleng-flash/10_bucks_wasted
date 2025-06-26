@@ -11,6 +11,7 @@ public class PlayerScript : Entity
     private int xpAmount;
     private int xpToNextLevel;
     private int level;
+    private bool isLevelingUp = false;
 
     [SerializeField] private XpScript xpScript;
     [SerializeField] private float xpPickUpRadius = 2.0f;
@@ -37,8 +38,11 @@ public class PlayerScript : Entity
     // Every frame, pick up any xp in range and check if can level up
     void Update()
     {
+        if (isLevelingUp) return;
+        // Disallows XP pickup and multiple level ups while player is picking upgrade
+
         PickUpXp();
-        while (xpAmount >= xpToNextLevel)
+        if (xpAmount >= xpToNextLevel)
         {
             LevelUp();
             Debug.Log("Next xp required to level up: " + xpToNextLevel);
@@ -87,14 +91,23 @@ public class PlayerScript : Entity
     {
         xpAmount -= xpToNextLevel;
         level++;
+        isLevelingUp = true;
         LevelManager.Instance.LevelUp();
+        GameManager.Instance.PauseGame();
+        // GameManager.Instance.ShowUpgradeScreen(OnUpgradeComplete);
         UpdateXpToNextLevel();
         GameManager.Instance.UpdateXp(xpAmount, xpToNextLevel);
+    }
+
+    // Called when player finished choosing an upgrade and closing the upgrade screen 
+    public void OnUpgradeComplete()
+    {
+        isLevelingUp = false;
     }
 
     public void UpdateXpToNextLevel() // scales positively with current player level
     {
         // Temporary formula 
-        xpToNextLevel = (int)(xpToNextLevel * 1.5); 
+        xpToNextLevel = (int)(xpToNextLevel * 1.5);
     }
 }  

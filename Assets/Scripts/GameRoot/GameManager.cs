@@ -38,14 +38,42 @@ public class GameManager : MonoBehaviour
         playerUI.UpdateXp(current, max);
     }
 
+    // PauseGame() forcibly pauses movement for player and all enemies
+    // and pauses any enemy spawning, any attacks, and the timer since they use Time.deltaTime
     public void PauseGame()
     {
-        Time.timeScale = 0f; // pauses any timers that depend on Time.deltaTime
+        Time.timeScale = 0f; // sets Time.deltaTime to 0 (stops advancing time)
+        SetPlayerState(false);
+        SetEnemyState(false);
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1f;
+        SetPlayerState(true);
+        SetEnemyState(true);
+    }
+
+    
+    // PauseGame() restarts movement and attacks for player and all enemies
+    private void SetPlayerState(bool isActive)
+    {
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            PlayerMovement move = player.GetComponent<PlayerMovement>();
+            if (move) move.enabled = isActive;
+        }
+    }
+
+    private void SetEnemyState(bool isActive)
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            EnemyMovement move = enemy.GetComponent<EnemyMovement>();
+            if (move) move.enabled = isActive;
+        }
     }
 
 }
