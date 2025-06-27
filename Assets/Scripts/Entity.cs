@@ -57,6 +57,10 @@ public abstract class Entity : MonoBehaviour
     {
         return HP / maxHP;
     }
+    public float getLostHealth()
+    {
+        return maxHP - HP;
+    }
     public void IncreaseATKBy(float inc)
     {
         ATK += inc;
