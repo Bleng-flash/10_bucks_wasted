@@ -8,7 +8,7 @@ public class EnemyScript : Entity
 
     void Awake()
     {
-        this.stats.Initialise(20.0f, 20.0f, 5.0f);
+        Initialise(20.0f, 20.0f, 5.0f);
         team = Team.Enemy;
     }
 
