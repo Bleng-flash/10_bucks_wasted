@@ -498,12 +498,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 020f4e1b96d66b14cae4f2ec6629e792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats:
-    maxHP: 100
-    HP: 100
-    ATK: 5
   attacks:
   - {fileID: 0}
+  maxHP: 0
+  HP: 0
+  ATK: 0
   team: 0
   xpScript: {fileID: 900880441}
   xpPickUpRadius: 2
@@ -3186,6 +3185,7 @@ SceneRoots:
   - {fileID: 777022163}
   - {fileID: 120402679}
   - {fileID: 7427395376369488592}
+  - {fileID: 381515252}
   - {fileID: 756562432}
   - {fileID: 1364309834}
   - {fileID: 92880267}
@@ -3193,4 +3193,3 @@ SceneRoots:
   - {fileID: 7069041704275967917}
   - {fileID: 1981432874}
   - {fileID: 862871788}
-  - {fileID: 381515252}

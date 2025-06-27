@@ -7,11 +7,12 @@ Player and Enemies will inherit from Entity
 */
 public abstract class Entity : MonoBehaviour
 {
-    [SerializeField]
-    protected Attribute stats;
-    [SerializeField]
-    protected Attack[] attacks; // stores the attacks owned by this entity
+    [SerializeField] protected Attack[] attacks; // stores the attacks owned by this entity
 
+    [SerializeField] protected float maxHP;
+    [SerializeField] protected float HP;
+    [SerializeField] protected float ATK;
+    protected bool isDead;
     public Team team;
 
     public enum Team
@@ -19,13 +20,65 @@ public abstract class Entity : MonoBehaviour
         Player,
         Enemy
     }
-    public virtual void TakeDamage(float dmg)
+
+    public void Initialise(float maxHP, float HP, float ATK)
     {
-        this.stats.DecreaseHealthBy(dmg);
-        if (stats.CheckDeath())
+        this.maxHP = maxHP;
+        this.HP = HP;
+        this.ATK = ATK;
+        this.isDead = false;
+    }
+
+    public void IncreaseHealthBy(float inc)
+    {
+        HP += inc;
+    }
+    public void DecreaseHealthBy(float dec)
+    {
+        HP = Mathf.Max(0, HP - dec);      // Ensure minimum is 0
+        Debug.Log("Current HP: " + HP);
+        CheckDeath();
+    }
+    public void RestoreAllHealth()
+    {
+        HP = maxHP;
+    }
+    public void SetMaxHealthTo(float newMaxHP)
+    {
+        maxHP = newMaxHP;
+    }
+    public void SetAttackTo(float newATK)
+    {
+        ATK = newATK;
+    }
+
+    // called when the entity takes damage (decrease health)
+    public void CheckDeath()
+    {
+        if (HP <= 0.0f)
         {
+            isDead = true;
             Die();
         }
+    }
+
+    public float GetMaxHP()
+    {
+        return maxHP;
+    }
+    public float GetHealth()
+    {
+        return HP;
+    }
+
+    public float GetATK()
+    {
+        return ATK;
+    }
+
+    public virtual void TakeDamage(float dmg)
+    {
+        DecreaseHealthBy(dmg);
     }
 
     public abstract void Die();
