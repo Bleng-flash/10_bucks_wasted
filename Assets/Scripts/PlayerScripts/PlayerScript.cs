@@ -29,7 +29,7 @@ public class PlayerScript : Entity
         xpToNextLevel = 100;
         GameManager.Instance.UpdateXp(xpAmount, xpToNextLevel);     // Initialise xp bar to be empty
         level = 1;
-        this.stats.Initialise(stats.GetMaxHP(), stats.GetHealth(), stats.GetATK());
+        Initialise(maxHP, HP, ATK);
         attacks = new Attack[1];   // For now just put 1
         // add AOE punch somehow
     }
@@ -51,16 +51,18 @@ public class PlayerScript : Entity
         GameManager.Instance.OnPlayerDeath();
     }
 
+    /*
     public float GetHealth()
     {
-        return this.stats.GetHealth();
+        return thisGetHealth();
     }
+    */
 
     // Overriding Takedamage to send out event whenever player receives damage
     public override void TakeDamage(float dmg)
     {
         base.TakeDamage(dmg);
-        GameManager.Instance.OnPlayerDamage(stats.GetHealth(), stats.GetMaxHP());
+        GameManager.Instance.OnPlayerDamage(HP, maxHP);
     }
 
     // Pick up XP
