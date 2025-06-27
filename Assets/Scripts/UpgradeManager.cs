@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
 using TMPro;
+using System.Data;
 
 // Upon every level up of the player, the game freezes and 3 upgrade cards appear on the screen (UI)
 // the player will pick 1 of the 3 upgrades
@@ -51,25 +52,42 @@ public class UpgradeManager : MonoBehaviour
         foreach (Upgrade upgrade in options)
         {
             GameObject card = Instantiate(cardPrefab, cardContainer); // instantiates a card gameobject 
-            // based on the prefab as a child of cardContainer
+                // based on the prefab as a child of cardContainer
             SetupCardUI(card, upgrade);
             activeCards.Add(card);
         }
 
     }
 
+    // Weighted selection of upgrade options
     private List<Upgrade> GetRandomUpgrades(int count)
     {
         List<Upgrade> pool = new(allUpgrades);
         List<Upgrade> selected = new();
 
-        while (selected.Count < count && pool.Count > 0)
+        float totalWeight = 0f;
+        foreach (Upgrade upgrade in pool)
         {
-            int index = UnityEngine.Random.Range(0, pool.Count);
-            selected.Add(pool[index]);
-            pool.RemoveAt(index);
+            totalWeight += upgrade.weight; // weight >= 0 for all upgrades
         }
 
+        while (selected.Count < count && pool.Count > 0)
+        {
+            // each iteration of while loop adds 1 card to selected
+            float randomThreshold = UnityEngine.Random.Range(0, totalWeight);
+            float cumulative = 0f;
+            for (int i = 0; i < pool.Count; i++)
+            {
+                cumulative += pool[i].weight;
+                if (cumulative >= randomThreshold)
+                {
+                    selected.Add(pool[i]);
+                    totalWeight -= pool[i].weight;
+                    pool.RemoveAt(i);
+                    break;
+                }
+            }
+        }
         return selected;
     }
 
