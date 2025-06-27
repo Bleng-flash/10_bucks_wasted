@@ -1174,6 +1174,8 @@ MonoBehaviour:
   upgradeUI: {fileID: 300840417}
   allUpgrades:
   - {fileID: 11400000, guid: 3e7889139c092b748a1d66d0d6b2712a, type: 2}
+  - {fileID: 11400000, guid: 10de946c5a0f61f4da6fc4dcfaa4576a, type: 2}
+  - {fileID: 11400000, guid: ff02337ba52fb4b4580531d053d7f46e, type: 2}
   cardPrefab: {fileID: 6877663276512389695, guid: 2e0b677c5fa0bcf4fa48c32240e415e5, type: 3}
   cardContainer: {fileID: 1872827613}
   confirmButton: {fileID: 1041646824}

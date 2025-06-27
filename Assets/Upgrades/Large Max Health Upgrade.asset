@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8230e8c9d885233419d80ebeb001d1db, type: 3}
-  m_Name: MaxHealthUpgrade
+  m_Name: Large Max Health Upgrade
   m_EditorClassIdentifier: 
-  upgradeName: Max Health +100
-  description: Increase maxHP by 100, HP% is maintained
+  upgradeName: Large MaxHP upgrade
+  description: MaxHP +200, HP% is maintained
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  extraMaxHP: 100
+  extraMaxHP: 200
