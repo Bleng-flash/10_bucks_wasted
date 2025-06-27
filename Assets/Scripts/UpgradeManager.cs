@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 // Upon every level up of the player, the game freezes and 3 upgrade cards appear on the screen (UI)
 // the player will pick 1 of the 3 upgrades
+// Don't make UpgradeManager a singleton bcos it is referenced as a field in GameManager
 
 public class UpgradeManager : MonoBehaviour
 {
@@ -46,7 +47,8 @@ public class UpgradeManager : MonoBehaviour
         List<Upgrade> options = GetRandomUpgrades(3);
         foreach (Upgrade upgrade in options)
         {
-            GameObject card = Instantiate(cardPrefab, cardContainer);
+            GameObject card = Instantiate(cardPrefab, cardContainer); // instantiates a card gameobject 
+            // based on the prefab as a child of cardContainer
             SetupCardUI(card, upgrade);
             activeCards.Add(card);
         }
@@ -100,7 +102,7 @@ public class UpgradeManager : MonoBehaviour
         }
         activeCards.Clear();
     }
-    
+
     public void ConfirmSelection(PlayerScript player)
     {
         if (selectedUpgrade != null)
