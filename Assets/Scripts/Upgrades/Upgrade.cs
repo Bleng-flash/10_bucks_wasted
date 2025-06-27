@@ -8,7 +8,7 @@ public abstract class Upgrade : ScriptableObject
     public string upgradeName;
     public string description;
     public Sprite icon;
-    public float weight = 1f; // default likelihood weight, minimum value: set to 0 (do not set negative!)
+    public float weight = 1f; // default likelihood weight, minimum value: set to 0 (do not set)
     // we use weight to set the relative likelihoods of Upgrade assets being displayed to players
 
     // Called when player selects the upgrade

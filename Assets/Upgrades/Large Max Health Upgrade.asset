@@ -15,4 +15,5 @@ MonoBehaviour:
   upgradeName: Large MaxHP upgrade
   description: MaxHP +200, HP% is maintained
   icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  weight: 0.5
   extraMaxHP: 200

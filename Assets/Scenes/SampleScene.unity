@@ -1176,6 +1176,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3e7889139c092b748a1d66d0d6b2712a, type: 2}
   - {fileID: 11400000, guid: 10de946c5a0f61f4da6fc4dcfaa4576a, type: 2}
   - {fileID: 11400000, guid: ff02337ba52fb4b4580531d053d7f46e, type: 2}
+  - {fileID: 11400000, guid: aee31eb118096fc48a18bad91e2c335b, type: 2}
+  - {fileID: 11400000, guid: 824aab6131d8201409f7263e8fcd541e, type: 2}
+  - {fileID: 11400000, guid: bf7776e75f836324c85d0714281d806c, type: 2}
   cardPrefab: {fileID: 6877663276512389695, guid: 2e0b677c5fa0bcf4fa48c32240e415e5, type: 3}
   cardContainer: {fileID: 1872827613}
   confirmButton: {fileID: 1041646824}

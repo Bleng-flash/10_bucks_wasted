@@ -10,11 +10,10 @@ public class MaxHealthUpgrade : Upgrade
     // and increases maxHP (and thus HP accordingly)
     public override void ApplyUpgrade(PlayerScript player)
     {
-        float healthPercentage = player.GetHealth() / player.GetMaxHP();
-        float extraHP = (float) Math.Round(healthPercentage * extraMaxHP, 2);
+        float extraHP = (float)Math.Round(player.getHealthPercentage() * extraMaxHP, 2);
         // rounds to 2dp 
         player.IncreaseMaxHPBy(extraMaxHP);
         player.IncreaseHealthBy(extraHP);
-        Debug.Log($"Applied Max Health Upgrade: + {extraMaxHP} HP");
+        Debug.Log($"Applied {upgradeName}, +{extraMaxHP}MaxHP");       
     }
 }
