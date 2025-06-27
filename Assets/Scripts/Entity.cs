@@ -31,14 +31,20 @@ public abstract class Entity : MonoBehaviour
 
     public void IncreaseHealthBy(float inc)
     {
-        HP += inc;
+        HP = Mathf.Min(maxHP, HP + inc);  // cannot exceed maxHP
     }
     public void DecreaseHealthBy(float dec)
     {
         HP = Mathf.Max(0, HP - dec);      // Ensure minimum is 0
-        Debug.Log("Current HP: " + HP);
+        // Debug.Log("Current HP: " + HP);
         CheckDeath();
     }
+
+    public void IncreaseMaxHPBy(float inc)
+    {
+        maxHP += inc;
+    }
+
     public void RestoreAllHealth()
     {
         HP = maxHP;
@@ -47,9 +53,17 @@ public abstract class Entity : MonoBehaviour
     {
         maxHP = newMaxHP;
     }
-    public void SetAttackTo(float newATK)
+    public float getHealthPercentage()
     {
-        ATK = newATK;
+        return HP / maxHP;
+    }
+    public void IncreaseATKBy(float inc)
+    {
+        ATK += inc;
+    }
+    public void DecreaseATKBy(float dec)
+    {
+        ATK = Mathf.Max(0, ATK - dec);      // Ensure minimum is 0
     }
 
     // called when the entity takes damage (decrease health)
@@ -60,20 +74,6 @@ public abstract class Entity : MonoBehaviour
             isDead = true;
             Die();
         }
-    }
-
-    public float GetMaxHP()
-    {
-        return maxHP;
-    }
-    public float GetHealth()
-    {
-        return HP;
-    }
-
-    public float GetATK()
-    {
-        return ATK;
     }
 
     public virtual void TakeDamage(float dmg)

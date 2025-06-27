@@ -3,7 +3,8 @@ using UnityEngine;
 // Enemy inherits from entity, contains hp and atk
 public class EnemyScript : Entity
 {
-    [SerializeField] private int xpAmount;
+    [SerializeField] private int xpAmount; // xp amount dropped by this enemy upon death
+    [SerializeField] private int score; // score that the player gets when killing this enemy
 
     void Awake()
     {
@@ -20,7 +21,7 @@ public class EnemyScript : Entity
     public override void Die()
     {
         Destroy(gameObject);
-        ScoreManager.Instance.AddScore(1);
+        ScoreManager.Instance.AddScore(score);
         GameManager.Instance.xpSpawner.DropXp(xpAmount, transform.position);
         Debug.Log("Enemy killed!");
     }
