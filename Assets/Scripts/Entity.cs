@@ -32,6 +32,7 @@ public abstract class Entity : MonoBehaviour
     public void IncreaseHealthBy(float inc)
     {
         HP += inc;
+        Debug.Log("Health increased");
     }
     public void DecreaseHealthBy(float dec)
     {
@@ -43,6 +44,7 @@ public abstract class Entity : MonoBehaviour
     public void IncreaseMaxHPBy(float inc)
     {
         maxHP += inc;
+        Debug.Log("Max health increased");
     }
     public void RestoreAllHealth()
     {

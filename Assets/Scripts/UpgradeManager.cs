@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
+using TMPro;
 
 // Upon every level up of the player, the game freezes and 3 upgrade cards appear on the screen (UI)
 // the player will pick 1 of the 3 upgrades
@@ -75,11 +76,13 @@ public class UpgradeManager : MonoBehaviour
 
     private void SetupCardUI(GameObject card, Upgrade upgrade)
     {
-        card.transform.Find("Title").GetComponent<Text>().text = upgrade.upgradeName;
-        card.transform.Find("Description").GetComponent<Text>().text = upgrade.description;
+        Debug.Log($"Set up card for upgrade: {upgrade.upgradeName}");
+        card.transform.Find("Title").GetComponent<TextMeshProUGUI>().text = upgrade.upgradeName;
+        card.transform.Find("Description").GetComponent<TextMeshProUGUI>().text = upgrade.description;
         card.transform.Find("Icon").GetComponent<Image>().sprite = upgrade.icon;
 
         Button button = card.GetComponent<Button>();
+        button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() =>
         {
             selectedUpgrade = upgrade;
@@ -116,6 +119,14 @@ public class UpgradeManager : MonoBehaviour
             upgradeUI.SetActive(false); // exit UI screen
             GameManager.Instance.ResumeGame();
             onUpgradeComplete?.Invoke();
+        }
+    }
+    public void ConfirmSelectionButtonHandler()
+    {
+        PlayerScript player = GameObject.FindWithTag("Player")?.GetComponent<PlayerScript>();
+        if (player != null)
+        {
+            ConfirmSelection(player);
         }
     }
 
