@@ -39,6 +39,11 @@ public abstract class Entity : MonoBehaviour
         Debug.Log("Current HP: " + HP);
         CheckDeath();
     }
+
+    public void IncreaseMaxHPBy(float inc)
+    {
+        maxHP += inc;
+    }
     public void RestoreAllHealth()
     {
         HP = maxHP;

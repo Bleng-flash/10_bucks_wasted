@@ -15,6 +15,7 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] private List<Upgrade> allUpgrades; // list of upgrades available
     [SerializeField] private GameObject cardPrefab;
     [SerializeField] private Transform cardContainer;
+    [SerializeField] private Button confirmButton;
     private Action onUpgradeComplete; // Action is a type that represents a method that returns void
     private Upgrade selectedUpgrade;
     private List<GameObject> activeCards = new(); // the 3 upgrade cards that player can pick from
@@ -25,6 +26,7 @@ public class UpgradeManager : MonoBehaviour
         {
             upgradeUI.SetActive(false);  // upgradeUI is hidden initially
         }
+        confirmButton.interactable = false; // we make it interactable after the player has chosen a card
     }
 
     // Called by GameManager to open the upgrade screen
@@ -82,6 +84,7 @@ public class UpgradeManager : MonoBehaviour
         {
             selectedUpgrade = upgrade;
             HighlightCard(card);
+            confirmButton.interactable = true;
         });
     }
 
@@ -103,17 +106,17 @@ public class UpgradeManager : MonoBehaviour
         activeCards.Clear();
     }
 
+    // this ends the upgradeUI and resumes game
     public void ConfirmSelection(PlayerScript player)
     {
         if (selectedUpgrade != null)
         {
             selectedUpgrade.ApplyUpgrade(player);
+            ClearOldCards();
             upgradeUI.SetActive(false); // exit UI screen
             GameManager.Instance.ResumeGame();
             onUpgradeComplete?.Invoke();
         }
     }
 
-
-    // Implement upgrade logic here (e.g., selecting a card, applying upgrades, etc.)
 }
