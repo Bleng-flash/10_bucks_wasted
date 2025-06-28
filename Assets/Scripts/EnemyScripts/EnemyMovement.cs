@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField]
-    private Transform player;
-    [SerializeField]
-    private float movementSpeed;
+    [SerializeField] private Transform player;
+    [SerializeField] private float movementSpeed;
     private Rigidbody2D rb;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    // Below fields are for repulsive field attack, to stop enemy movement when repelled
+    [SerializeField] private float repelDuration = 0.5f;
+    private float repelTimer = 0f;
+    private bool isRepelled = false;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -16,6 +18,15 @@ public class EnemyMovement : MonoBehaviour
     // Fixed Update better for Rigidbody movement cause it depends on real time instead of frame rate
     void FixedUpdate()
     {
+        if (isRepelled)
+        {
+            repelTimer -= Time.fixedDeltaTime;
+            if (repelTimer <= 0.0)
+            {
+                isRepelled = false;
+            }
+            return;     // Stop moving towards player when repelled
+        }
         // Move towards player
         Vector2 direction = (player.transform.position - transform.position).normalized;
         rb.MovePosition(rb.position + direction * movementSpeed * Time.fixedDeltaTime);
@@ -23,5 +34,11 @@ public class EnemyMovement : MonoBehaviour
     public void SetPlayerTarget(Transform player)
     {
         this.player = player;
+    }
+
+    public void Repel()
+    {
+        isRepelled = true;
+        repelTimer = repelDuration;
     }
 }

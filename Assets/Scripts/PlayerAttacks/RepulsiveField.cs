@@ -22,10 +22,13 @@ public class RepulsiveField : AutoAttack
         foreach (Collider2D collider in hitColliders)
         {
             Rigidbody2D enemyBody = collider.GetComponent<Rigidbody2D>();
+            EnemyMovement enemyMovement = collider.GetComponent<EnemyMovement>();
+
             if (enemyBody != null)
             {
                 Debug.Log($"Pushing {collider.name} with {this.force} force!");
                 Vector2 direction = (enemyBody.transform.position - transform.position).normalized;
+                enemyMovement.Repel();
                 enemyBody.AddForce(direction * force, ForceMode2D.Impulse);     // Pushes enemies in direction with specified force
             }
             else
