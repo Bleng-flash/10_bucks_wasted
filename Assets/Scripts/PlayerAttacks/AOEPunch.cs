@@ -13,11 +13,6 @@ public class AOEPunch : AutoAttack
         Initialise(this.cooldown, this.damage);
     }
 
-    protected override bool TargetInRange()
-    {
-        return true;
-    }
-
     protected override void PerformAttack()
     {
         Vector2 attackOrigin = transform.position;
