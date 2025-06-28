@@ -1115,6 +1115,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snake
       objectReference: {fileID: 0}
+    - target: {fileID: 3837830705193524381, guid: 353bb3a363889d447aa7a8119ef82006, type: 3}
+      propertyPath: delayToAttack
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5293647026989184201, guid: 353bb3a363889d447aa7a8119ef82006, type: 3}
       propertyPath: player
       value: 
@@ -3161,7 +3165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1778996129
 Transform:
   m_ObjectHideFlags: 0
@@ -3787,7 +3791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2093713206
 Transform:
   m_ObjectHideFlags: 0

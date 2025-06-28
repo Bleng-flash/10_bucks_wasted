@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class TailWhip : NonAutoAttack
@@ -13,12 +14,21 @@ public class TailWhip : NonAutoAttack
     // TailWhip is similar to AOEpunch, just 360 degrees 
     protected override void PerformAttack()
     {
-        Debug.Log("Attacking player!");
+        Debug.Log("Starting attack!");
+        StartCoroutine(DelayedAttack());
 
+    }
+    private IEnumerator DelayedAttack()
+    {
+        yield return new WaitForSeconds(delayToAttack);     // This delays the code below until time is over, while letting other scripts run
+
+        Debug.Log("Attacking player!");
+        
         // Detects player
         Collider2D playerObject = Physics2D.OverlapCircle(owner.transform.position, attackRadius, targetLayer);
-
-        PlayerScript player = playerObject.GetComponent<PlayerScript>();
+        if (playerObject != null)
+        {
+            PlayerScript player = playerObject.GetComponent<PlayerScript>();
             if (player != null)
             {
                 Debug.Log($"TailWhip {playerObject.name} with {this.damage} damage!");
@@ -28,6 +38,11 @@ public class TailWhip : NonAutoAttack
             {
                 Debug.LogWarning("PlayerScript missing on: " + playerObject.name);
             }
+        }
+        else
+        {
+            Debug.Log("Player escaped before taking damage!");
+        }
     }
 
     protected override bool TargetInRange()
