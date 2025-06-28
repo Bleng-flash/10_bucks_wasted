@@ -12,6 +12,7 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected float maxHP;
     [SerializeField] protected float HP;
     [SerializeField] protected float ATK;
+    private Animator animator;
     protected bool isDead;
     public Team team;
 
@@ -27,6 +28,7 @@ public abstract class Entity : MonoBehaviour
         this.HP = HP;
         this.ATK = ATK;
         this.isDead = false;
+        animator = GetComponent<Animator>();
     }
 
     public void IncreaseHealthBy(float inc)
@@ -90,6 +92,8 @@ public abstract class Entity : MonoBehaviour
 
     public virtual void TakeDamage(float dmg)
     {
+        if (isDead) return;     // Don't trigger take damage animation when enemy is dying
+        animator.SetTrigger("TakeDamage");
         DecreaseHealthBy(dmg);
     }
 

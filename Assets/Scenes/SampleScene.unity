@@ -1115,6 +1115,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snake
       objectReference: {fileID: 0}
+    - target: {fileID: 1959182017906537170, guid: 353bb3a363889d447aa7a8119ef82006, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3837830705193524381, guid: 353bb3a363889d447aa7a8119ef82006, type: 3}
       propertyPath: delayToAttack
       value: 5
