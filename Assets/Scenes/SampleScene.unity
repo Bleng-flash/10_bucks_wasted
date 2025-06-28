@@ -1347,6 +1347,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wolf
       objectReference: {fileID: 0}
+    - target: {fileID: 504691361793258061, guid: a2548005d994f1a4ebac9db7d42dd334, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6940029396146243196, guid: a2548005d994f1a4ebac9db7d42dd334, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
@@ -1719,7 +1723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 120402679}
-  enemyPrefab: {fileID: 504691361793258061, guid: a2548005d994f1a4ebac9db7d42dd334, type: 3}
+  enemyPrefab: {fileID: 1959182017906537170, guid: 353bb3a363889d447aa7a8119ef82006, type: 3}
   spawnInterval: 3
   spawnCount: 2
   width: 60

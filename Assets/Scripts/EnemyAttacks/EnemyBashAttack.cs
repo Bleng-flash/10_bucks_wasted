@@ -7,13 +7,11 @@ public class EnemyBashAttack : NonAutoAttack
 {
     private bool playerInRange = false;
     private PlayerScript player;
-    private Animator animator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Initialise(this.cooldown, this.damage);
-        animator = GetComponentInParent<Animator>();
     }
 
     // Enemy attacks are non-auto attacks

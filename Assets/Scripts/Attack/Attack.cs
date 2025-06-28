@@ -18,6 +18,7 @@ public abstract class Attack : MonoBehaviour
     protected float timeSinceLastAttack = 0.0f; // time from last attack to now (current frame)
     protected Entity owner; // the entity that this attack belongs to 
     [SerializeField] protected LayerMask targetLayer; // the layer of the targets that the attack can hit
+    protected Animator animator;    // Access the animator of the parent
 
 
     // We call Initialise on attacks at runtime in the Start() method of the concrete attacks
@@ -26,6 +27,7 @@ public abstract class Attack : MonoBehaviour
         this.cooldown = cooldown;
         this.damage = damage;
         owner = GetComponentInParent<Entity>(); // checks for script that is subclass of Entity
+        animator = GetComponentInParent<Animator>();
         if (owner == null)
         {
             Debug.LogError("Owner missing on GameObject.");

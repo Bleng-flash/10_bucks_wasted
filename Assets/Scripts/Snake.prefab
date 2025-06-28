@@ -285,7 +285,7 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
-  delayToAttack: 5
+  delayToAttack: 1
   attackRadius: 2
 --- !u!1 &9158145923392191568
 GameObject:
