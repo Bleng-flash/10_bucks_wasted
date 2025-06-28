@@ -1073,11 +1073,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1859895290410686647, guid: 353bb3a363889d447aa7a8119ef82006, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6
+      value: 4.29
       objectReference: {fileID: 0}
     - target: {fileID: 1859895290410686647, guid: 353bb3a363889d447aa7a8119ef82006, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2535
+      value: -1.7
       objectReference: {fileID: 0}
     - target: {fileID: 1859895290410686647, guid: 353bb3a363889d447aa7a8119ef82006, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1115,22 +1115,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snake
       objectReference: {fileID: 0}
-    - target: {fileID: 1959182017906537170, guid: 353bb3a363889d447aa7a8119ef82006, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837830705193524381, guid: 353bb3a363889d447aa7a8119ef82006, type: 3}
-      propertyPath: delayToAttack
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5293647026989184201, guid: 353bb3a363889d447aa7a8119ef82006, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 120402679}
-    - target: {fileID: 9066133373684035055, guid: 353bb3a363889d447aa7a8119ef82006, type: 3}
-      propertyPath: score
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
