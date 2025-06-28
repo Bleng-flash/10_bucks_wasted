@@ -5,11 +5,13 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private float movementSpeed;
     private Rigidbody2D rb;
+    private bool isAttacking = false;
 
     // Below fields are for repulsive field attack, to stop enemy movement when repelled
     [SerializeField] private float repelDuration = 0.5f;
     private float repelTimer = 0f;
     private bool isRepelled = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -18,6 +20,10 @@ public class EnemyMovement : MonoBehaviour
     // Fixed Update better for Rigidbody movement cause it depends on real time instead of frame rate
     void FixedUpdate()
     {
+        if (isAttacking) return;    // Have the enemy stop moving while performing certain attacks
+
+        // Have the enemy stop moving when repelled 
+        // (seperate from above logic because one is attacking and one is being attacked)
         if (isRepelled)
         {
             repelTimer -= Time.fixedDeltaTime;
@@ -25,8 +31,9 @@ public class EnemyMovement : MonoBehaviour
             {
                 isRepelled = false;
             }
-            return;     // Stop moving towards player when repelled
+            return;
         }
+
         // Move towards player
         Vector2 direction = (player.transform.position - transform.position).normalized;
         rb.MovePosition(rb.position + direction * movementSpeed * Time.fixedDeltaTime);
@@ -40,5 +47,10 @@ public class EnemyMovement : MonoBehaviour
     {
         isRepelled = true;
         repelTimer = repelDuration;
+    }
+
+    public void SetAttacking(bool isAttacking)
+    {
+        this.isAttacking = isAttacking;
     }
 }
