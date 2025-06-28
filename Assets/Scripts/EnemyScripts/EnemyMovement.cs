@@ -7,6 +7,7 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody2D rb;
     private bool isAttacking = false;
     private Animator animator;
+    private EnemyScript enemy;
 
     // Below fields are for repulsive field attack, to stop enemy movement when repelled
     [SerializeField] private float repelDuration = 0.5f;
@@ -17,15 +18,17 @@ public class EnemyMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        enemy = GetComponent<EnemyScript>();
     }
 
     // Fixed Update better for Rigidbody movement cause it depends on real time instead of frame rate
     void FixedUpdate()
     {
-        if (isAttacking)
+        // Stop moving if attacking or dead
+        if (isAttacking || enemy.IsDead())
         {
-            animator.SetBool("isWalking", false);   // Have the enemy stop moving while performing certain attacks
-            return;    
+            animator.SetBool("isWalking", false);
+            return;
         }
 
         // Have the enemy stop moving when repelled 

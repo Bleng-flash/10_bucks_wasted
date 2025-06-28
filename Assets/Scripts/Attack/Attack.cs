@@ -55,8 +55,8 @@ public abstract class Attack : MonoBehaviour
     // DO NOT provide implementation for Update() in any subclasses of Attack
     protected void Update()
     {
-        // Stops all attacks once player is dead
-        if (!GameManager.Instance.isPlayerAlive)
+        // Stops all attacks once player or enemy is dead
+        if (!GameManager.Instance.isPlayerAlive || owner.IsDead())
         {
             return;
         }

@@ -75,9 +75,17 @@ public abstract class Entity : MonoBehaviour
     {
         if (HP <= 0.0f)
         {
+            // Avoids death animation loops by repeating Die() every Update check
+            if (isDead) return;
+
             isDead = true;
             Die();
         }
+    }
+
+    public bool IsDead()
+    {
+        return isDead;
     }
 
     public virtual void TakeDamage(float dmg)
