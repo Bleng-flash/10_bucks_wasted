@@ -28,17 +28,11 @@ public class AOEPunch : AutoAttack
         // Plays punch animation
         if (punchAnimator != null)
         {
-            // 1. Get LOCAL offset (before rotation)
-            //Vector2 localOffset = punchOverlay.transform.localPosition;
-
             // Rotate animation to face attack direction, while keeping offset in front of player
             float angle = Mathf.Atan2(attackDirection.y, attackDirection.x) * Mathf.Rad2Deg;
             Vector2 rotatedOffset = Quaternion.Euler(0, 0, angle) * originalOffset;
             punchOverlay.transform.localPosition = rotatedOffset;
             punchOverlay.transform.localRotation = Quaternion.Euler(0, 0, angle);
-            // Ensure animation remains in same position relative to player
-            //Vector2 rotatedOffset = Quaternion.Euler(0, 0, angle) * localOffset;
-            //punchOverlay.transform.localPosition = rotatedOffset;
 
             punchOverlay.PrepareSlashAnimation();
             punchAnimator.Play("slash attack", 0, 0f);
