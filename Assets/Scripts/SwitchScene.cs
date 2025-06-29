@@ -3,10 +3,17 @@ using UnityEngine.SceneManagement;
 
 public class SwitchScene : MonoBehaviour
 {
-    public void LoadGameScene()
+    public void LoadChapter1Wave()
     {
-        SceneManager.LoadScene("SampleScene"); // Match the scene name exactly
+        SceneManager.LoadScene("Chapter1-Wave"); // Match the scene name exactly
     }
+
+    /*
+    public void LoadChapter1Boss()
+    {
+        SceneManager.LoadScene("Chapter1-Boss");
+    }
+    */
 
     public void LoadStartScene()
     {
@@ -16,5 +23,19 @@ public class SwitchScene : MonoBehaviour
     public void LoadGameOverScene()
     {
         SceneManager.LoadScene("GameOverScene");
+    }
+
+    public void LoadNextScene()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            Debug.LogWarning("No more scenes in build settings");
+        }
     }
 }

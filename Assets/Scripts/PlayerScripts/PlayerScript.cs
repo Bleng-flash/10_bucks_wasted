@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /* 
     Player inherits from Entity
@@ -16,6 +17,7 @@ public class PlayerScript : Entity
     // player must only use autoattacks
     private Dictionary<string, AutoAttack> allAttacks = new(); // keyed on attack scripts name
     private List<AutoAttack> activeAttacks = new();
+    private bool hasTeleporter = false;
 
     [SerializeField] private XpScript xpScript;
     [SerializeField] private float xpPickUpRadius = 2.0f;
@@ -61,12 +63,25 @@ public class PlayerScript : Entity
             Debug.Log("Next xp required to level up: " + xpToNextLevel);
             Debug.Log("Current level: " + level);
         }
+
+        if (hasTeleporter && Keyboard.current.tKey.wasPressedThisFrame)
+        {
+            hasTeleporter = false;
+            GameManager.Instance.DisplayMessage("Teleporting", 1f, 48);
+            GameManager.Instance.TeleportPlayer();
+        }
+
     }
     public override void Die()
     {
         // Send out Death event to GameManager
         GameManager.Instance.OnPlayerDeath();
     }
+    public void EnableTeleport()
+    {
+        hasTeleporter = true;
+    }
+
 
     // Overriding Takedamage to send out event whenever player receives damage
     public override void TakeDamage(float dmg)

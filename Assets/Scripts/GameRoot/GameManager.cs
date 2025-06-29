@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     public XpSpawner xpSpawner;
     [SerializeField] private UpgradeManager upgradeManager;
+    [SerializeField] private StageManager stageManager;
+    [SerializeField] private MessageDisplay messageDisplayer;
 
     void Awake()
     {
@@ -90,4 +92,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void TeleportPlayer()
+    {
+        stageManager.ProceedToNextStage(sceneSwitcher);
+    }
+
+    public void DisplayMessage(String message, float duration, int fontSize)
+    {
+        messageDisplayer.ShowMessage(message, duration, fontSize);
+    }
 }
