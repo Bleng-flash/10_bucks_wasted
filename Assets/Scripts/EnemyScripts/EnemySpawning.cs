@@ -2,19 +2,18 @@ using UnityEngine;
 
 public class EnemySpawning : MonoBehaviour
 {
-    [SerializeField]
-    private Transform player;
-    [SerializeField]
-    private GameObject enemyPrefab;
-    [SerializeField]
-    private float spawnInterval = 3.0f;   // in seconds
-    [SerializeField]
-    private int spawnCount = 1; // number of enemies spawned per cycle
+    [SerializeField] private Transform player;
+    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private float spawnInterval = 3.0f;   // in seconds
+    [SerializeField] private int spawnCount = 1; // number of enemies spawned per cycle
+    [SerializeField] private float HPMultiplier;
+    [SerializeField] private float ATKMultiplier;
+
     private float timer = 0.0f; // time in seconds since last spawn
 
     // Border widths and heights
-    public float width = 60.0f;
-    public float height = 40.0f;
+    private float width = 60.0f;
+    private float height = 40.0f;
     int enemyLayer;
 
 
@@ -25,7 +24,19 @@ public class EnemySpawning : MonoBehaviour
 
     public void SetSpawnInterval(float interval)
     {
-        this.spawnInterval = interval;
+        spawnInterval = interval;
+    }
+    public void SetSpawnCount(int count)
+    {
+        spawnCount = count;
+    }
+    public void SetHPMultiplier(float val)
+    {
+        HPMultiplier = val;
+    }
+    public void SetATKMultiplier(float val)
+    {
+        ATKMultiplier = val;
     }
 
     // Update is called once per frame
@@ -37,11 +48,11 @@ public class EnemySpawning : MonoBehaviour
             return;
         }
         
-        this.timer += Time.deltaTime;
+        timer += Time.deltaTime;
         if (timer >= spawnInterval)
         {
             SpawnEnemies();
-            this.timer = 0.0f;
+            timer = 0.0f;
         }
 
     }
@@ -81,7 +92,7 @@ public class EnemySpawning : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        if (this.spawnCount <= 0) return;
+        if (spawnCount <= 0) return;
 
         for (int i = 0; i < spawnCount; i++)
         {
@@ -97,6 +108,7 @@ public class EnemySpawning : MonoBehaviour
             }
             enemy.layer = enemyLayer;
 
+            // scale enemy stats here
         }
         
     }
