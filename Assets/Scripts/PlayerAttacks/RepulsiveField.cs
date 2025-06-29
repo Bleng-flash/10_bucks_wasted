@@ -42,4 +42,9 @@ public class RepulsiveField : AutoAttack
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
+
+    public override void Recalculate()
+    {
+        return;
+    }
 }

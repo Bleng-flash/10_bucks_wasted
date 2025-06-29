@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,9 @@ public class PlayerScript : Entity
     private int xpToNextLevel;
     private int level;
     private bool isLevelingUp = false;
+    // player must only use autoattacks
+    private Dictionary<string, AutoAttack> allAttacks = new(); // keyed on attack scripts name
+    private List<AutoAttack> activeAttacks = new();
     private bool hasTeleporter = false;
 
     [SerializeField] private XpScript xpScript;
@@ -21,20 +25,29 @@ public class PlayerScript : Entity
 
     private void Awake()
     {
+        // Initialising player stats and xp 
         team = Team.Player;
-    }
-    // At start, initialise player.stats 
-    // Initialise player.attacks with AOEPunch attack (starting basic attack)
-    // Initialise xp stats
-    void Start()
-    {
         xpAmount = 0;
         xpToNextLevel = 100;
-        GameManager.Instance.UpdateXp(xpAmount, xpToNextLevel);     // Initialise xp bar to be empty
         level = 1;
         Initialise(maxHP, HP, ATK);
-        attacks = new Attack[1];   // For now just put 1
-        // add AOE punch somehow
+    }
+
+    void Start()
+    {
+        GameManager.Instance.UpdateXp(xpAmount, xpToNextLevel);     // Initialise xp bar to be empty
+
+        // Find all attack components in children 
+        AutoAttack[] attacks = GetComponentsInChildren<AutoAttack>(true); // include inactive
+        foreach (AutoAttack attack in attacks)
+        {
+            attack.gameObject.SetActive(false);  // disable everything first
+            attack.tier = 0;
+            allAttacks[attack.GetType().Name] = attack;  // use class name as key
+        }
+
+        // Enable starting attack
+        UnlockOrUpgradeAttack("AOEPunch");
     }
 
     // Every frame, pick up any xp in range and check if can level up
@@ -119,4 +132,21 @@ public class PlayerScript : Entity
         // Temporary formula 
         xpToNextLevel = (int)(xpToNextLevel * 1.5);
     }
+
+    // UnlockOrUpgradeAttack will check if the attack is already unlocked:
+    // if not unlocked, then unlock it;
+    // if unlocked, upgrades the attack tier (capped to maxTier)
+    public void UnlockOrUpgradeAttack(string attackName)
+    {
+        if (allAttacks.TryGetValue(attackName, out AutoAttack attack))
+        {
+            if (!attack.gameObject.activeSelf)
+            {
+                attack.gameObject.SetActive(true);
+                activeAttacks.Add(attack);
+            }
+            attack.UpgradeAttack();
+        }
+    }
+
 }  

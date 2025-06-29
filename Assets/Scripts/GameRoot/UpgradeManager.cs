@@ -71,6 +71,11 @@ public class UpgradeManager : MonoBehaviour
             totalWeight += upgrade.weight; // weight >= 0 for all upgrades
         }
 
+        if (totalWeight <= 0f)
+        {
+            return selected;
+        }
+
         while (selected.Count < count && pool.Count > 0)
         {
             // each iteration of while loop adds 1 card to selected

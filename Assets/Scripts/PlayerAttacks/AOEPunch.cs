@@ -90,4 +90,10 @@ public class AOEPunch : AutoAttack
         }
     }
 
+    public override void Recalculate()
+    {
+        return;
+    }
+
+
 }

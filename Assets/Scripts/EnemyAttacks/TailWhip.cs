@@ -19,7 +19,7 @@ public class TailWhip : NonAutoAttack
         StartCoroutine(DelayedAttack());
 
     }
-    
+
     // Using Coroutine for delayed attack (meaning damage is taken by player only after delayToAttack ends)
     private IEnumerator DelayedAttack()
     {
@@ -64,5 +64,9 @@ public class TailWhip : NonAutoAttack
     {
         Collider2D playerObject = Physics2D.OverlapCircle(owner.transform.position, attackRadius, targetLayer);
         return playerObject != null;
+    }
+    public override void Recalculate()
+    {
+        return;
     }
 }
