@@ -7,6 +7,8 @@ public class AOEPunch : AutoAttack
     [SerializeField] private float attackRadius = 2.0f;
     [SerializeField] private float attackAngle = 90f;       // Half-angle — so 90 = 180° cone
     private PlayerMovement playerMovement;
+    [SerializeField] private Animator punchAnimator;
+    [SerializeField] private PunchOverlay punchOverlay;
 
     void Start()
     {
@@ -20,6 +22,18 @@ public class AOEPunch : AutoAttack
         Vector2 attackOrigin = transform.position;
         Vector2 attackDirection = playerMovement.FacingDirection;     // This will point to wherever player is facing
         if (attackDirection == Vector2.zero) attackDirection = Vector2.right;   // Failsafe if vector2 is zero
+
+        // Plays punch animation
+        if (punchAnimator != null)
+        {
+            punchAnimator.transform.position = attackOrigin;
+            punchOverlay.PrepareSlashAnimation();
+            punchAnimator.Play("slash attack", 0, 0f);
+        }
+        else
+        {
+            Debug.Log("No punchAnimator found!");
+        }
 
         // Detects all objects will colliders that are in enemy layer and add them to hitColliders
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackOrigin, attackRadius, targetLayer);
