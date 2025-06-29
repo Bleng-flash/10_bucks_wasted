@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     public XpSpawner xpSpawner;
     [SerializeField] private UpgradeManager upgradeManager;
+    [SerializeField] private StageManager stageManager;
 
     void Awake()
     {
