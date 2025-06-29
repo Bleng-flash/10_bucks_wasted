@@ -194,12 +194,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 198f30f7b38e8e143ab9c60028dc19ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attacks: []
   maxHP: 0
   HP: 0
   ATK: 0
   team: 0
-  xpAmount: 50
+  xpAmount: 100
   score: 0
 --- !u!114 &-6001721255960774392
 MonoBehaviour:
