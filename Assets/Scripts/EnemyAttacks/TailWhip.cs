@@ -14,6 +14,7 @@ public class TailWhip : NonAutoAttack
     // TailWhip is similar to AOEpunch, just 360 degrees 
     protected override void PerformAttack()
     {
+        animator.SetTrigger("TailWhip");
         Debug.Log("Starting attack!");
         StartCoroutine(DelayedAttack());
 
@@ -26,6 +27,13 @@ public class TailWhip : NonAutoAttack
         enemyMovement?.SetAttacking(true);      // Tells enemyMovement to stop while enemy attacking
 
         yield return new WaitForSeconds(delayToAttack);     // This delays the code below until time is over, while letting other scripts run
+
+        // Before damaging player, check if enemy died between initiating attack and end of delay
+        if (owner.IsDead())
+        {
+            Debug.Log("Enemy died before attack!");
+            yield break;
+        }
 
         Debug.Log("Attacking player!");
 
