@@ -39,5 +39,9 @@ public class PlayerMovement : MonoBehaviour
         {
             FacingDirection = moveInput.normalized;
         }
+
+        // Flips sprite when changing direction in x-axis only
+        if (moveInput.x < 0) GetComponent<SpriteRenderer>().flipX = true;
+        else if (moveInput.x > 0) GetComponent<SpriteRenderer>().flipX = false;
     }
 }
