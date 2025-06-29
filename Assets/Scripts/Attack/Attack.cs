@@ -88,4 +88,7 @@ public abstract class Attack : MonoBehaviour
         return timeSinceLastAttack >= cooldown;
     }
 
+    // Recalculate damage/cooldown/range, etc.
+    public abstract void Recalculate();
+
 }

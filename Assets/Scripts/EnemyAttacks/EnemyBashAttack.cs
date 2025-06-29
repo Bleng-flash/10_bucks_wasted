@@ -48,4 +48,9 @@ public class EnemyBashAttack : NonAutoAttack
         Debug.Log("Bash Attack Player for " + damage + " damage!");
         player.TakeDamage(this.damage);
     }
+
+    public override void Recalculate()
+    {
+        return;
+    }
 }
