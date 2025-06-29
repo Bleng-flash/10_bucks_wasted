@@ -12,6 +12,7 @@ public class PlayerScript : Entity
     private int xpToNextLevel;
     private int level;
     private bool isLevelingUp = false;
+    private bool hasTeleporter = false;
 
     [SerializeField] private XpScript xpScript;
     [SerializeField] private float xpPickUpRadius = 2.0f;
@@ -48,19 +49,23 @@ public class PlayerScript : Entity
             Debug.Log("Next xp required to level up: " + xpToNextLevel);
             Debug.Log("Current level: " + level);
         }
+
+        if (hasTeleporter && Input.GetKeyDown(KeyCode.T))
+        {
+            hasTeleporter = false;
+            GameManager.Instance.TeleportPlayer();
+        }
     }
     public override void Die()
     {
         // Send out Death event to GameManager
         GameManager.Instance.OnPlayerDeath();
     }
-
-    /*
-    public float GetHealth()
+    public void EnableTeleport()
     {
-        return thisGetHealth();
+        hasTeleporter = true;
     }
-    */
+
 
     // Overriding Takedamage to send out event whenever player receives damage
     public override void TakeDamage(float dmg)
