@@ -25,8 +25,8 @@ public class StageManager : MonoBehaviour
         }
         StageData stageData = stages[index];
         ConfigureEnemySpawning(stageData.spawnCounts, stageData.spawnIntervals,
-            stageData.enemyHealthMultiplier, stageData.enemyHealthMultiplier);
-        DisplayStageName();
+            stageData.enemyHealthMultiplier, stageData.enemyAttackMultiplier);
+        DisplayStageName(stageData.stageName);
         ConfigureTeleporter(60f, 40f);
     }
     private void ConfigureEnemySpawning(List<int> spawnCounts, List<float> spawnIntervals,
@@ -49,20 +49,24 @@ public class StageManager : MonoBehaviour
 
     }
 
-    private void DisplayStageName()
+    private void DisplayStageName(string name)
     {
-        
+        GameManager.Instance.DisplayMessage(name, 3f, 60);
     }
-    
+
     // spawns a Teleporter gameobject somewhere within the boundary
     private void ConfigureTeleporter(float width, float height)
     {
+        if (currentTeleporter != null)
+        {
+            Destroy(currentTeleporter);
+        }
         width -= 0.5f; // don't spawn on border
         height -= 0.5f;
         float xPos = Random.Range(-width / 2, width / 2);
-        float yPos = Random.Range(height / 2, height / 2);
+        float yPos = Random.Range(-height / 2, height / 2);
         Vector2 spawnPos = new Vector2(xPos, yPos);
-        GameObject teleporter = Instantiate(teleporterPrefab, spawnPos, Quaternion.identity);
+        currentTeleporter = Instantiate(teleporterPrefab, spawnPos, Quaternion.identity);
     }
 
     public void ProceedToNextStage(SwitchScene sceneSwitcher)
@@ -71,7 +75,6 @@ public class StageManager : MonoBehaviour
         if (currentStageIndex >= stages.Count)
         {
             sceneSwitcher.LoadNextScene(); // change scene
-            // initialise scenemanager upon loading new scene 
         }
         else
         {

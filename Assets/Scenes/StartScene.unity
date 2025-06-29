@@ -837,8 +837,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1918582322}
-        m_TargetAssemblyTypeName: StartGame, Assembly-CSharp
-        m_MethodName: LoadGameScene
+        m_TargetAssemblyTypeName: SwitchScene, Assembly-CSharp
+        m_MethodName: LoadChapter1Wave
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

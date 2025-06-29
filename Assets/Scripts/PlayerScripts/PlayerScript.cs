@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /* 
     Player inherits from Entity
@@ -50,11 +51,13 @@ public class PlayerScript : Entity
             Debug.Log("Current level: " + level);
         }
 
-        if (hasTeleporter && Input.GetKeyDown(KeyCode.T))
+        if (hasTeleporter && Keyboard.current.tKey.wasPressedThisFrame)
         {
             hasTeleporter = false;
+            GameManager.Instance.DisplayMessage("Teleporting", 1f, 48);
             GameManager.Instance.TeleportPlayer();
         }
+
     }
     public override void Die()
     {
