@@ -32,6 +32,7 @@ public abstract class Entity : MonoBehaviour
     public void IncreaseHealthBy(float inc)
     {
         HP = Mathf.Min(maxHP, HP + inc);  // cannot exceed maxHP
+        GameManager.Instance.OnPlayerDamage(HP, maxHP);
     }
     public void DecreaseHealthBy(float dec)
     {
@@ -43,6 +44,7 @@ public abstract class Entity : MonoBehaviour
     public void IncreaseMaxHPBy(float inc)
     {
         maxHP += inc;
+        GameManager.Instance.OnPlayerDamage(HP, maxHP);
     }
 
     public void RestoreAllHealth()
