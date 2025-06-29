@@ -9,24 +9,37 @@ public class AOEPunch : AutoAttack
     private PlayerMovement playerMovement;
     [SerializeField] private Animator punchAnimator;
     [SerializeField] private PunchOverlay punchOverlay;
+    private Vector2 originalOffset;
 
     void Start()
     {
         // Debug.Log($"AOEPunch Start() — Cooldown: {this.cooldown}, Damage: {this.damage}");
         Initialise(this.cooldown, this.damage);
         playerMovement = GetComponentInParent<PlayerMovement>();
+        originalOffset = punchOverlay.transform.localPosition;
     }
 
     protected override void PerformAttack()
     {
         Vector2 attackOrigin = transform.position;
-        Vector2 attackDirection = playerMovement.FacingDirection;     // This will point to wherever player is facing
+        Vector2 attackDirection = playerMovement.FacingDirection.normalized;     // This will point to wherever player is facing
         if (attackDirection == Vector2.zero) attackDirection = Vector2.right;   // Failsafe if vector2 is zero
 
         // Plays punch animation
         if (punchAnimator != null)
         {
-            punchAnimator.transform.position = attackOrigin;
+            // 1. Get LOCAL offset (before rotation)
+            //Vector2 localOffset = punchOverlay.transform.localPosition;
+
+            // Rotate animation to face attack direction, while keeping offset in front of player
+            float angle = Mathf.Atan2(attackDirection.y, attackDirection.x) * Mathf.Rad2Deg;
+            Vector2 rotatedOffset = Quaternion.Euler(0, 0, angle) * originalOffset;
+            punchOverlay.transform.localPosition = rotatedOffset;
+            punchOverlay.transform.localRotation = Quaternion.Euler(0, 0, angle);
+            // Ensure animation remains in same position relative to player
+            //Vector2 rotatedOffset = Quaternion.Euler(0, 0, angle) * localOffset;
+            //punchOverlay.transform.localPosition = rotatedOffset;
+
             punchOverlay.PrepareSlashAnimation();
             punchAnimator.Play("slash attack", 0, 0f);
         }
