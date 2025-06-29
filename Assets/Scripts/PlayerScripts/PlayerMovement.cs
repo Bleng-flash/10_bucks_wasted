@@ -4,9 +4,9 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     private Vector2 moveInput;
-    [SerializeField]
-    private float movementSpeed = 5f;
+    [SerializeField] private float movementSpeed = 5f;
     private Rigidbody2D rb;
+    public Vector2 FacingDirection { get; private set; } = Vector2.right;   // Stores the direction the player is facing
 
     // Method matches user input with input actions key bindings
     public void OnMove(InputAction.CallbackContext context)
@@ -34,11 +34,10 @@ public class PlayerMovement : MonoBehaviour
         Vector2 direction = new Vector2(moveInput.x, moveInput.y);
         rb.MovePosition(rb.position + direction * movementSpeed * Time.fixedDeltaTime);
 
-        // Rotate the player to face movement direction
+        // Updates facing direction
         if (moveInput != Vector2.zero)
         {
-            float angle = Mathf.Atan2(moveInput.y, moveInput.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, angle);
+            FacingDirection = moveInput.normalized;
         }
     }
 }
