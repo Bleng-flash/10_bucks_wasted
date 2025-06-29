@@ -3506,7 +3506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d64f514cd34ea43bbfba4ad218b417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0.5
+  cooldown: 2
   damage: 10
   targetLayer:
     serializedVersion: 2
@@ -3514,7 +3514,7 @@ MonoBehaviour:
   tier: 0
   maxTier: 5
   upgradeData: {fileID: 11400000, guid: cef3843dafdd78c4a851bb5d5a074139, type: 2}
-  attackRadius: 5
+  attackRadius: 3
   attackAngle: 90
 --- !u!1 &1872827612
 GameObject:
