@@ -23,12 +23,22 @@ public class StageManager : MonoBehaviour
             Debug.Log("Invalid index to load stage");
             return;
         }
+        ClearAllEnemies();
         StageData stageData = stages[index];
         ConfigureEnemySpawning(stageData.spawnCounts, stageData.spawnIntervals,
             stageData.enemyHealthMultiplier, stageData.enemyAttackMultiplier);
         DisplayStageName(stageData.stageName);
         ConfigureTeleporter(60f, 40f);
     }
+    private void ClearAllEnemies()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
+    }
+
     private void ConfigureEnemySpawning(List<int> spawnCounts, List<float> spawnIntervals,
             float enemyHealthMultiplier, float enemyAttackMultipler)
     {
