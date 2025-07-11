@@ -5,7 +5,7 @@ public class XpSpawner : MonoBehaviour
     [SerializeField] private GameObject xpPrefab;
 
     // Method should be called by enemies after they are killed
-    public void DropXp(int amount, Vector2 enemyPos)
+    public void DropXp(float amount, Vector2 enemyPos)
     {
         GameObject xp = Instantiate(xpPrefab, enemyPos, Quaternion.identity);
 

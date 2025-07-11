@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Xml.XPath;
 
 public class StageManager : MonoBehaviour
 {
@@ -26,7 +27,8 @@ public class StageManager : MonoBehaviour
         ClearAllEnemies();
         StageData stageData = stages[index];
         ConfigureEnemySpawning(stageData.spawnCounts, stageData.spawnIntervals,
-            stageData.enemyHealthMultiplier, stageData.enemyAttackMultiplier);
+            stageData.enemyHealthMultiplier, stageData.enemyAttackMultiplier, 
+            stageData.XPDropMultiplier, stageData.scoreMultiplier);
         DisplayStageName(stageData.stageName);
         ConfigureTeleporter(60f, 40f);
     }
@@ -40,7 +42,8 @@ public class StageManager : MonoBehaviour
     }
 
     private void ConfigureEnemySpawning(List<int> spawnCounts, List<float> spawnIntervals,
-            float enemyHealthMultiplier, float enemyAttackMultipler)
+            float enemyHealthMultiplier, float enemyAttackMultipler,
+            float XPDropMultiplier, float scoreMultiplier)
     {
         if (spawnCounts.Count != spawners.Count || spawnIntervals.Count != spawners.Count)
         {
@@ -54,9 +57,9 @@ public class StageManager : MonoBehaviour
             spawner.SetSpawnInterval(spawnIntervals[i]);
             spawner.SetHPMultiplier(enemyHealthMultiplier);
             spawner.SetATKMultiplier(enemyAttackMultipler);
-
+            spawner.SetXPMultiplier(XPDropMultiplier);
+            spawner.SetScoreMultiplier(scoreMultiplier);
         }
-
     }
 
     private void DisplayStageName(string name)

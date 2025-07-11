@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class XpScript : MonoBehaviour
 {
-    private int xpAmount;
+    private float xpAmount;
 
-    public void SetXpAmount(int amount)
+    public void SetXpAmount(float amount)
     {
         xpAmount = amount;
     }
 
-    public int GetXpAmount()
+    public float GetXpAmount()
     {
         return xpAmount;
     }
-    public int PickUpXp()
+    public float PickUpXp()
     {
         Destroy(gameObject);
         return GetXpAmount();

@@ -17,5 +17,5 @@ MonoBehaviour:
   spawnIntervals:
   - 3
   - 3
-  enemyHealthMultiplier: 1
-  enemyAttackMultiplier: 1
+  enemyHealthMultiplier: 1.5
+  enemyAttackMultiplier: 1.5

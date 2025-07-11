@@ -8,6 +8,8 @@ public class EnemySpawning : MonoBehaviour
     [SerializeField] private int spawnCount = 1; // number of enemies spawned per cycle
     [SerializeField] private float HPMultiplier;
     [SerializeField] private float ATKMultiplier;
+    [SerializeField] private float XPDropMultiplier;
+    [SerializeField] private float scoreMultiplier;
 
     private float timer = 0.0f; // time in seconds since last spawn
 
@@ -37,6 +39,14 @@ public class EnemySpawning : MonoBehaviour
     public void SetATKMultiplier(float val)
     {
         ATKMultiplier = val;
+    }
+    public void SetXPMultiplier(float val)
+    {
+        XPDropMultiplier = val;
+    }
+    public void SetScoreMultiplier(float val)
+    {
+        scoreMultiplier = val;
     }
 
     // Update is called once per frame
@@ -109,6 +119,11 @@ public class EnemySpawning : MonoBehaviour
             enemy.layer = enemyLayer;
 
             // scale enemy stats here
+            EnemyScript enemyStats = enemy.GetComponent<EnemyScript>();
+            if (enemyStats != null)
+            {
+                enemyStats.ScaleStats(HPMultiplier, ATKMultiplier, XPDropMultiplier, scoreMultiplier);
+            }
         }
         
     }
