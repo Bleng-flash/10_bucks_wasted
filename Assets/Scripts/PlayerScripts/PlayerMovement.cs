@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     {
         moveInput = context.ReadValue<Vector2>();
     }
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,4 +44,10 @@ public class PlayerMovement : MonoBehaviour
         if (moveInput.x < 0) GetComponent<SpriteRenderer>().flipX = true;
         else if (moveInput.x > 0) GetComponent<SpriteRenderer>().flipX = false;
     }
+    
+    public void IncreaseSpeed(float amount)
+    {
+        movementSpeed += amount;
+    }
+
 }
