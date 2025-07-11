@@ -4,6 +4,8 @@ public class RepulsiveField : AutoAttack
 {
     [SerializeField] private float attackRadius = 2.0f;
     [SerializeField] private float force = 5.0f;
+    [SerializeField] private Animator fieldAnimator;
+    [SerializeField] private RepulsiveFieldOverlay fieldOverlay;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,6 +16,17 @@ public class RepulsiveField : AutoAttack
     protected override void PerformAttack()
     {
         Vector2 attackOrigin = transform.position;
+        // Play repulsive field animation
+        if (fieldOverlay != null)
+        {
+            fieldOverlay.PrepareAnimation();
+            fieldAnimator.Play("repulsive field attack", 0, 0f);
+            Debug.Log("Field pushing animation playing!");
+        }
+        else
+        {
+            Debug.Log("No fieldOverlay!");
+        }
 
         // Detects all objects will colliders that are in enemy layer and add them to hitColliders
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackOrigin, attackRadius, targetLayer);

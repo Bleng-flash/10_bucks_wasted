@@ -23,10 +23,10 @@ public class EnemyBashAttack : NonAutoAttack
     // This method is called when its parent collider's CollisionEnter2D method is invoked
     public void OnParentCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Check for collision!");
+        // Debug.Log("Check for collision!");
         if (((1 << collision.gameObject.layer) & targetLayer) != 0)
         {
-            Debug.Log("Collision!");
+            // Debug.Log("Collision!");
             playerInRange = true;
             player = collision.gameObject.GetComponent<PlayerScript>();
         }
@@ -35,7 +35,7 @@ public class EnemyBashAttack : NonAutoAttack
     // This method is called when its parent collider's CollisionExit2D method is invoked
     public void OnParentCollisionExit2D(Collision2D collision)
     {
-        Debug.Log("Check for leaving collision!");
+        // Debug.Log("Check for leaving collision!");
         if (((1 << collision.gameObject.layer) & targetLayer) != 0)
         {
             playerInRange = false;

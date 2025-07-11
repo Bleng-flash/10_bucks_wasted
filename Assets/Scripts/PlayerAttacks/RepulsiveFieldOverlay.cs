@@ -1,27 +1,27 @@
 using UnityEngine;
 
-public class PunchOverlay : MonoBehaviour
+public class RepulsiveFieldOverlay : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer sprite;
 
     void Awake()
     {
-        // sprite = GetComponent<SpriteRenderer>(); 
+        sprite.enabled = false; 
     }
 
     // Hides SpriteRenderer once animation finishes playing
-    public void StopSlashAnimation()
+    public void StopAnimation()
     {
         sprite.enabled = false;
     }
 
     // Turns on SpriteRenderer in preparation for animation
-    public void PrepareSlashAnimation()
+    public void PrepareAnimation()
     {
         if (sprite != null)
         {
             sprite.enabled = true;
-            Debug.Log("PrepareSlashAnimation: sprite.enabled = " + sprite.enabled);
+            Debug.Log("PrepareFieldAnimation: sprite.enabled = " + sprite.enabled);
         }
         else
         {
