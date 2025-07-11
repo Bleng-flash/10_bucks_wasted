@@ -9,7 +9,11 @@ public class LevelManager : MonoBehaviour
     private int currentLevel = 1;
     void Awake()
     {
-        if (Instance == null) Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else Destroy(gameObject);
     }
     void Start()

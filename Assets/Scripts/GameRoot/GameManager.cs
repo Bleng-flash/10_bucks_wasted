@@ -101,4 +101,9 @@ public class GameManager : MonoBehaviour
     {
         messageDisplayer.ShowMessage(message, duration, fontSize);
     }
+
+    public void ResetRun()
+    {
+        
+    }
 }
