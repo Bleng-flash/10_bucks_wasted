@@ -5,7 +5,7 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
     [SerializeField] private TextMeshProUGUI scoreText;
-    private int currentScore = 0;
+    private float currentScore = 0;
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -17,7 +17,7 @@ public class ScoreManager : MonoBehaviour
         UpdateScore();
     }
 
-    public void AddScore(int score)
+    public void AddScore(float score)
     {
         currentScore += score;
         UpdateScore();

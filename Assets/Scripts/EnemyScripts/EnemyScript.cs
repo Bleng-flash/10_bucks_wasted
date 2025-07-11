@@ -1,16 +1,17 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
 // Enemy inherits from entity, contains hp and atk
 public class EnemyScript : Entity
 {
-    [SerializeField] private int xpAmount; // xp amount dropped by this enemy upon death
-    [SerializeField] private int score; // score that the player gets when killing this enemy
+    [SerializeField] private float xpAmount; // xp amount dropped by this enemy upon death
+    [SerializeField] private float score; // score that the player gets when killing this enemy
     private Animator animator;
 
     void Awake()
     {
-        Initialise(20.0f, 20.0f, 5.0f);
+        Initialise(maxHP, HP, ATK);
         team = Team.Enemy;
         animator = GetComponent<Animator>();
     }
@@ -33,6 +34,17 @@ public class EnemyScript : Entity
     public void OnDeathAnimationEnd()
     {
         Destroy(gameObject);
+    }
+
+    // Called upon spawning
+    public void ScaleStats(float HPMultiplier, float ATKMultiplier,
+            float XPDropMultiplier, float scoreMultiplier)
+    {
+        maxHP *= HPMultiplier;
+        HP = maxHP;
+        ATK *= ATKMultiplier;
+        xpAmount *= XPDropMultiplier;
+        score *= scoreMultiplier;
     }
 
 }

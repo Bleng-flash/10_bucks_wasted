@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 120402681}
   - component: {fileID: 120402682}
   - component: {fileID: 120402683}
+  - component: {fileID: 120402684}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -532,6 +533,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &120402684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120402675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1df46fe8841d1e45a7d5d25a6ac9c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 120402682}
 --- !u!1 &141777432
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,6 +1292,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 18790e473d9162740a9f580d6b48aa27, type: 2}
   - {fileID: 11400000, guid: cef3843dafdd78c4a851bb5d5a074139, type: 2}
   - {fileID: 11400000, guid: a65121a21f12eae4c9022d3e45f4f607, type: 2}
+  - {fileID: 11400000, guid: 4230748aa5087be458bae01ff12044d7, type: 2}
   cardPrefab: {fileID: 6877663276512389695, guid: 2e0b677c5fa0bcf4fa48c32240e415e5, type: 3}
   cardContainer: {fileID: 1872827613}
   confirmButton: {fileID: 1041646824}

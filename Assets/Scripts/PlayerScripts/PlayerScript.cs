@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 /* 
     Player inherits from Entity
@@ -10,8 +11,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerScript : Entity
 {
-    private int xpAmount;
-    private int xpToNextLevel;
+    private float xpAmount;
+    private float xpToNextLevel;
     private int level;
     private bool isLevelingUp = false;
     // player must only use autoattacks
@@ -130,7 +131,7 @@ public class PlayerScript : Entity
     public void UpdateXpToNextLevel() // scales positively with current player level
     {
         // Temporary formula 
-        xpToNextLevel = (int)(xpToNextLevel * 1.5);
+        xpToNextLevel *= 1.5f;
     }
 
     // UnlockOrUpgradeAttack will check if the attack is already unlocked:

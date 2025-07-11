@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc502a308560b754da117e39de278283, type: 3}
-  m_Name: Stage 1-2
+  m_Script: {fileID: 11500000, guid: 2b5746e51000493449774a27fb4c574f, type: 3}
+  m_Name: IncreaseMovementSpeed
   m_EditorClassIdentifier: 
-  stageName: Chapter 1-2
-  spawnCounts: 0000000004000000
-  spawnIntervals:
-  - 3
-  - 3
-  enemyHealthMultiplier: 1.5
-  enemyAttackMultiplier: 1.5
+  upgradeName: Increase Movement Speed
+  description: Movement Speed +1
+  icon: {fileID: 21300000, guid: b6588b20aa564ec41b77e43758ad3fc7, type: 3}
+  weight: 1
+  speedIncrease: 1
