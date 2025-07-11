@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Small ATK Upgrade
   description: ATK +5
-  icon: {fileID: 21300000, guid: 5e0517e6db52ec04482cd2c7d101fda3, type: 3}
+  icon: {fileID: 21300000, guid: c2c7aefc7e6ee394eb1cbebd90ea39c1, type: 3}
   weight: 1
   extraATK: 5

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Small Restore Lost Health
   description: +25% Lost HP
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 0794091e4be13b046814fd4a4db266be, type: 3}
   weight: 1
   percentageRestored: 0.25
