@@ -2,15 +2,30 @@ using UnityEngine;
 
 public class TailWhipOverlay : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private SpriteRenderer sprite;
+
+    void Awake()
     {
-        
+        sprite.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    // Hides SpriteRenderer once animation finishes playing
+    public void StopAnimation()
     {
-        
+        sprite.enabled = false;
+    }
+
+    // Turns on SpriteRenderer in preparation for animation
+    public void PrepareAnimation()
+    {
+        if (sprite != null)
+        {
+            sprite.enabled = true;
+            Debug.Log("PrepareFieldAnimation: sprite.enabled = " + sprite.enabled);
+        }
+        else
+        {
+            Debug.Log("No sprite detected!");
+        }
     }
 }
