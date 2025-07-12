@@ -4,6 +4,8 @@ using UnityEngine;
 public class TailWhip : NonAutoAttack
 {
     [SerializeField] private float attackRadius = 2.0f;
+    [SerializeField] private Animator tailAnimator;
+    [SerializeField] private TailWhipOverlay tailOverlay;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,6 +38,18 @@ public class TailWhip : NonAutoAttack
         }
 
         Debug.Log("Attacking player!");
+
+        // Play tail whip animation
+        if (tailOverlay != null)
+        {
+            tailOverlay.PrepareAnimation();
+            tailAnimator.Play("tail whip attack", 0, 0f);
+            Debug.Log("tail whip animation playing!");
+        }
+        else
+        {
+            Debug.Log("No tailOverlay!");
+        }
 
         // Detects player
         Collider2D playerObject = Physics2D.OverlapCircle(owner.transform.position, attackRadius, targetLayer);

@@ -411,6 +411,8 @@ MonoBehaviour:
     m_Bits: 0
   delayToAttack: 1
   attackRadius: 2
+  tailAnimator: {fileID: 4796080127352183053}
+  tailOverlay: {fileID: 8447100403598290213}
 --- !u!1 &9158145923392191568
 GameObject:
   m_ObjectHideFlags: 0
