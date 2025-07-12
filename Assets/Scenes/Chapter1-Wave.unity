@@ -4012,6 +4012,7 @@ MonoBehaviour:
   - {fileID: 1190689458}
   - {fileID: 756562431}
   teleporterPrefab: {fileID: 7314843430983317544, guid: be6e7f3be963dca41bc7816cb83d043d, type: 3}
+  player: {fileID: 120402675}
 --- !u!1 &2055980491
 GameObject:
   m_ObjectHideFlags: 0

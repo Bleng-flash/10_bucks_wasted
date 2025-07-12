@@ -10,6 +10,7 @@ public class StageManager : MonoBehaviour
     private int currentStageIndex;
     [SerializeField] private GameObject teleporterPrefab;
     private GameObject currentTeleporter;
+    [SerializeField] private GameObject player;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class StageManager : MonoBehaviour
             return;
         }
         ClearAllEnemies();
+        TeleportPlayer(60f, 40f);
         StageData stageData = stages[index];
         ConfigureEnemySpawning(stageData.spawnCounts, stageData.spawnIntervals,
             stageData.enemyHealthMultiplier, stageData.enemyAttackMultiplier, 
@@ -80,6 +82,17 @@ public class StageManager : MonoBehaviour
         float yPos = Random.Range(-height / 2, height / 2);
         Vector2 spawnPos = new Vector2(xPos, yPos);
         currentTeleporter = Instantiate(teleporterPrefab, spawnPos, Quaternion.identity);
+    }
+
+    // Spawns player somewhere within the boundary
+    private void TeleportPlayer(float width, float height)
+    {
+        width -= 0.5f; // don't spawn on border
+        height -= 0.5f;
+        float xPos = Random.Range(-width / 2, width / 2);
+        float yPos = Random.Range(-height / 2, height / 2);
+        Vector2 spawnPos = new Vector2(xPos, yPos);
+        player.transform.position = spawnPos;
     }
 
     public void ProceedToNextStage(SwitchScene sceneSwitcher)
