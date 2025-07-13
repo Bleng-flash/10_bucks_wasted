@@ -21,7 +21,6 @@ public class UpgradeManager : MonoBehaviour
     private Action onUpgradeComplete; // Action is a type that represents a method that returns void
     private Upgrade selectedUpgrade;
     private List<GameObject> activeCards = new(); // the 3 upgrade cards that player can pick from
-
     private void Awake()
     {
         if (upgradeUI != null)

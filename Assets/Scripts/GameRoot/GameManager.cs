@@ -104,6 +104,47 @@ public class GameManager : MonoBehaviour
 
     public void ResetRun()
     {
-        
+        // Reset persistent flags and time
+        isPlayerAlive = true;
+        Time.timeScale = 1f;
+
+        // Reset Score
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.ResetScore();
+        }
+
+        // Reset Player Level
+        if (LevelManager.Instance != null)
+        {
+            LevelManager.Instance.ResetLevel();
+        }
+
+        // Reset player state
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null)
+        {
+            PlayerScript playerScript = player.GetComponent<PlayerScript>();
+            if (playerScript != null)
+            {
+                Destroy(player); // Destroy the current player; it will be recreated on scene load
+            }
+        }
+
+        // Reset upgrade state
+        if (upgradeManager != null)
+        {
+            Destroy(upgradeManager); // so that Awake() runs again to reset all upgrades from the scene 
+        }
+
+        // Optionally destroy all enemies if still in current scene
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
+
+        // Load back to StartScene
+        sceneSwitcher.LoadStartScene();
     }
 }

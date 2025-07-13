@@ -32,4 +32,9 @@ public class LevelManager : MonoBehaviour
     {
         levelText.text = "Level: " + currentLevel;
     }
+    public void ResetLevel()
+    {
+        currentLevel = 1;
+        UpdateLevel();
+    }
 }

@@ -3,26 +3,34 @@ using UnityEngine.SceneManagement;
 
 public class SwitchScene : MonoBehaviour
 {
-    public void LoadChapter1Wave()
-    {
-        SceneManager.LoadScene("Chapter1-Wave"); // Match the scene name exactly
-    }
-
-    /*
-    public void LoadChapter1Boss()
-    {
-        SceneManager.LoadScene("Chapter1-Boss");
-    }
-    */
-
     public void LoadStartScene()
     {
         SceneManager.LoadScene("StartScene"); // match scene name exactly
     }
-
     public void LoadGameOverScene()
     {
         SceneManager.LoadScene("GameOverScene");
+    }
+    public void LoadChapter1Wave()
+    {
+        SceneManager.LoadScene("Chapter1-Wave");
+    }
+
+    public void LoadChapter1Boss()
+    {
+        SceneManager.LoadScene("Chapter1-Boss");
+    }
+    public void LoadChapter2Wave()
+    {
+        SceneManager.LoadScene("Chapter2-Wave");
+    }
+    public void LoadChapter2Boss()
+    {
+        SceneManager.LoadScene("Chapter2-Boss");
+    }
+    public void LoadWinScene()
+    {
+        SceneManager.LoadScene("WinScene");
     }
 
     public void LoadNextScene()
