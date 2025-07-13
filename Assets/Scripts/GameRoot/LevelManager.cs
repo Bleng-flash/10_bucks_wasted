@@ -30,7 +30,10 @@ public class LevelManager : MonoBehaviour
 
     private void UpdateLevel()
     {
-        levelText.text = "Level: " + currentLevel;
+        if (levelText != null)
+            levelText.text = "Level " + currentLevel;
+        else
+        Debug.LogWarning("Level text UI not assigned.");
     }
     public void ResetLevel()
     {

@@ -31,8 +31,8 @@ public class StageManager : MonoBehaviour
     private void LoadStage(int index)
     {
         ClearAllEnemies();
-        
-        if (sceneType != Scene.Chapter1Wave && sceneType != Scene.Chapter2Wave && currentTeleporter != null)
+
+        if (currentTeleporter != null)
         {
             Destroy(currentTeleporter);
         }
@@ -50,6 +50,11 @@ public class StageManager : MonoBehaviour
                 stageData.XPDropMultiplier, stageData.scoreMultiplier);
             DisplayStageName(stageData.stageName);
             ConfigureTeleporter(60f, 40f);
+        }
+        CameraFollow cameraFollow = FindAnyObjectByType<CameraFollow>();
+        if (cameraFollow != null)
+        {
+            cameraFollow.target = GameManager.Instance.player.transform;
         }
 
     }

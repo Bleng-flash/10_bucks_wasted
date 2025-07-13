@@ -1648,7 +1648,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefa77613c1d51d44ae3a41e525c2a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
 --- !u!1 &1371551068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1932,6 +1931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13b76e644c0fad748a51870cd3433d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 120402682}
   isPlayerAlive: 1
   sceneSwitcher: {fileID: 862871787}
   playerUI: {fileID: 0}

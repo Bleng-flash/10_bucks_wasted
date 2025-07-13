@@ -21,13 +21,20 @@ public class UpgradeManager : MonoBehaviour
     private Action onUpgradeComplete; // Action is a type that represents a method that returns void
     private Upgrade selectedUpgrade;
     private List<GameObject> activeCards = new(); // the 3 upgrade cards that player can pick from
-    private void Awake()
+
+    public static UpgradeManager Instance;
+
+    void Awake()
     {
-        if (upgradeUI != null)
+        if (Instance == null)
         {
-            upgradeUI.SetActive(false);  // upgradeUI is hidden initially
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-        confirmButton.interactable = false; // we make it interactable after the player has chosen a card
+        else 
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Called by GameManager to open the upgrade screen

@@ -4,6 +4,7 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
+    public PlayerScript player;
     public static GameManager Instance;
     public bool isPlayerAlive = true;
     [SerializeField] private SwitchScene sceneSwitcher;
@@ -43,7 +44,10 @@ public class GameManager : MonoBehaviour
 
     public void UpdateXp(float current, float max)
     {
-        playerUI.UpdateXp(current, max);
+        if (playerUI != null)
+            playerUI.UpdateXp(current, max);
+        else
+            Debug.LogWarning("playerUI not assigned in GameManager.");
     }
 
     // PauseGame() forcibly pauses movement for player and all enemies
@@ -126,19 +130,12 @@ public class GameManager : MonoBehaviour
 
         // Reset player state
         GameObject player = GameObject.FindWithTag("Player");
-        if (player != null)
-        {
-            PlayerScript playerScript = player.GetComponent<PlayerScript>();
-            if (playerScript != null)
-            {
-                Destroy(player); // Destroy the current player; it will be recreated on scene load
-            }
-        }
+        if (player != null) Destroy(player); 
 
         // Reset upgrade state
         if (upgradeManager != null)
         {
-            Destroy(upgradeManager); // so that Awake() runs again to reset all upgrades from the scene 
+            Destroy(upgradeManager.gameObject); // to reset the upgrade manager 
         }
 
         // Optionally destroy all enemies if still in current scene
