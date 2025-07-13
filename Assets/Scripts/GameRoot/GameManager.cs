@@ -7,17 +7,21 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public bool isPlayerAlive = true;
     [SerializeField] private SwitchScene sceneSwitcher;
-    [SerializeField] private PlayerUIManager playerUI;
+    public PlayerUIManager playerUI;
 
     [Header("References")]
     public XpSpawner xpSpawner;
-    [SerializeField] private UpgradeManager upgradeManager;
-    [SerializeField] private StageManager stageManager;
-    [SerializeField] private MessageDisplay messageDisplayer;
+    public UpgradeManager upgradeManager;
+    public StageManager stageManager;
+    public MessageDisplay messageDisplayer;
 
     void Awake()
     {
-        if (Instance == null) Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else Destroy(gameObject);
     }
 

@@ -5,12 +5,12 @@ using System;
 
 /* 
     Player inherits from Entity
-    In addition to stats and attacks provided by Entity, player has player health bar, 
-    player XP bar and plaeyr XP (KIV) as well
+    PlayerScript is a singleton class
 */
 
 public class PlayerScript : Entity
 {
+    public static PlayerScript Instance { get; private set; }
     private float xpAmount;
     private float xpToNextLevel;
     private int level;
@@ -26,6 +26,16 @@ public class PlayerScript : Entity
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Persist this object across scenes
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject); // Destroy duplicate if another instance exists
+            return;
+        }
         // Initialising player stats and xp 
         team = Team.Player;
         xpAmount = 0;

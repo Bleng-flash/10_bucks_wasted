@@ -12,12 +12,12 @@ using System.Data;
 
 public class UpgradeManager : MonoBehaviour
 {
-    // This callback will be called when upgrade is finished
-    [SerializeField] private GameObject upgradeUI; // Reference to the upgrade UI panel
+    // callback will be called when upgrade is finished
+    public GameObject upgradeUI; // Reference to the upgrade UI panel
     [SerializeField] private List<Upgrade> allUpgrades; // list of upgrades available
     [SerializeField] private GameObject cardPrefab;
-    [SerializeField] private Transform cardContainer;
-    [SerializeField] private Button confirmButton;
+    public Transform cardContainer;
+    public Button confirmButton;
     private Action onUpgradeComplete; // Action is a type that represents a method that returns void
     private Upgrade selectedUpgrade;
     private List<GameObject> activeCards = new(); // the 3 upgrade cards that player can pick from

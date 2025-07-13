@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
-    [SerializeField] private TextMeshProUGUI levelText;
+    public TextMeshProUGUI levelText;
     private int currentLevel = 1;
     void Awake()
     {
