@@ -48,6 +48,7 @@ public class UpgradeManager : MonoBehaviour
         GameManager.Instance.PauseGame();
         upgradeUI.SetActive(true);
         selectedUpgrade = null;
+        confirmButton.interactable = false;
         DisplayUpgradeOptions();
     }
 

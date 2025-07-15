@@ -84,25 +84,25 @@ public class SwitchScene : MonoBehaviour
         if (playerUIManager != null)
         {
             GameManager.Instance.playerUI = playerUIManager;
-            // Debug.Log("Assigned PlayerUIManager");
+            Debug.Log("Assigned PlayerUIManager");
         }
 
         if (xpSpawner != null)
         {
             GameManager.Instance.xpSpawner = xpSpawner;
-            // Debug.Log("Assigned XpSpawner");
+            Debug.Log("Assigned XpSpawner");
         }
 
         if (stageManager != null)
         {
             GameManager.Instance.stageManager = stageManager;
-            // Debug.Log("Assigned StageManager");
+            Debug.Log("Assigned StageManager");
         }
 
         if (messageDisplay != null)
         {
             GameManager.Instance.messageDisplayer = messageDisplay;
-            // Debug.Log("Assigned MessageDisplay");
+            Debug.Log("Assigned MessageDisplay");
         }
 
         // --- References for LevelManager ---
@@ -116,37 +116,6 @@ public class SwitchScene : MonoBehaviour
                 Debug.Log("Assigned Level Text");
             }
         }
-
-        // --- References for UpgradeManager ---
-        GameObject upgradeUI = GameObject.Find("UpgradePanel");
-        GameObject cardContainerGO = GameObject.Find("CardContainer");
-        GameObject confirmButtonGO = GameObject.Find("ConfirmSelection button");
-
-        if (cardContainerGO != null)
-        {
-            GameManager.Instance.upgradeManager.cardContainer = cardContainerGO.transform;
-            Debug.Log("Assigned Card Container");
-        }
-
-        if (confirmButtonGO != null)
-        {
-            Button confirmButton = confirmButtonGO.GetComponent<Button>();
-            if (confirmButton != null)
-            {
-                GameManager.Instance.upgradeManager.confirmButton = confirmButton;
-                Debug.Log("Assigned Confirm Button");
-            }
-        }
-
-        if (upgradeUI != null)
-        {
-            GameManager.Instance.upgradeManager.upgradeUI = upgradeUI;
-            Debug.Log("Assigned Upgrade UI");
-            GameManager.Instance.upgradeManager.upgradeUI.SetActive(false);  // upgradeUI is hidden initially
-            GameManager.Instance.upgradeManager.confirmButton.interactable = false;
-        }
-
-
 
         // --- Player reference ---
         PlayerScript player = FindFirstObjectByType<PlayerScript>();
@@ -174,14 +143,38 @@ public class SwitchScene : MonoBehaviour
         }
 
         // --- Enemy Spawners ---
-        EnemySpawning[] spawners = FindObjectsOfType<EnemySpawning>();
+        EnemySpawning[] spawners = FindObjectsByType<EnemySpawning>(FindObjectsSortMode.None);
         foreach (EnemySpawning spawner in spawners)
         {
             spawner.player = player.transform;
             Debug.Log($"Assigned player to spawner: {spawner.name}");
         }
 
-        // set camera follow player
+        GameObject canvasGO = GameObject.Find("UpgradeUICanvas"); // It’s preserved
+        if (canvasGO != null)
+        {
+            UpgradeManager upgradeManager = GameManager.Instance.upgradeManager;
+
+            GameObject panel = canvasGO.transform.Find("UpgradePanel").gameObject;
+            if (panel != null)
+            {
+                upgradeManager.upgradeUI = panel;
+                upgradeManager.upgradeUI.SetActive(false); // always hide on scene start
+            }
+
+            Transform cardContainer = panel.transform.Find("CardContainer");
+            if (cardContainer != null)
+            {
+                upgradeManager.cardContainer = cardContainer;
+            }
+
+            Button confirmButton = panel.transform.Find("ConfirmSelection button").GetComponent<Button>();
+            if (confirmButton != null)
+            {
+                upgradeManager.confirmButton = confirmButton;
+                upgradeManager.confirmButton.interactable = false;
+            }
+        }
         
     }
 
