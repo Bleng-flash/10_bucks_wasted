@@ -5,11 +5,15 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
-    [SerializeField] private TextMeshProUGUI levelText;
+    public TextMeshProUGUI levelText;
     private int currentLevel = 1;
     void Awake()
     {
-        if (Instance == null) Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else Destroy(gameObject);
     }
     void Start()
@@ -26,6 +30,14 @@ public class LevelManager : MonoBehaviour
 
     private void UpdateLevel()
     {
-        levelText.text = "Level: " + currentLevel;
+        if (levelText != null)
+            levelText.text = "Level " + currentLevel;
+        else
+        Debug.LogWarning("Level text UI not assigned.");
+    }
+    public void ResetLevel()
+    {
+        currentLevel = 1;
+        UpdateLevel();
     }
 }

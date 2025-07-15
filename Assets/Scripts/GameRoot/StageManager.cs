@@ -4,9 +4,20 @@ using System.Xml.XPath;
 
 public class StageManager : MonoBehaviour
 {
+    public enum Scene
+    {
+        Start,
+        Chapter1Wave,
+        Chapter1Boss,
+        Chapter2Wave,
+        Chapter2Boss,
+        Win,
+        GameOver
+    }
 
-    [SerializeField] private List<StageData> stages;
-    [SerializeField] private List<EnemySpawning> spawners;
+    [SerializeField] private Scene sceneType;
+    [SerializeField] private List<StageData> stages; // for wave scenes only
+    [SerializeField] private List<EnemySpawning> spawners; // for wave scenes only
     private int currentStageIndex;
     [SerializeField] private GameObject teleporterPrefab;
     private GameObject currentTeleporter;
@@ -20,19 +31,34 @@ public class StageManager : MonoBehaviour
 
     private void LoadStage(int index)
     {
-        if (index >= stages.Count)
-        {
-            Debug.Log("Invalid index to load stage");
-            return;
-        }
         ClearAllEnemies();
-        TeleportPlayer(60f, 40f);
-        StageData stageData = stages[index];
-        ConfigureEnemySpawning(stageData.spawnCounts, stageData.spawnIntervals,
-            stageData.enemyHealthMultiplier, stageData.enemyAttackMultiplier, 
-            stageData.XPDropMultiplier, stageData.scoreMultiplier);
-        DisplayStageName(stageData.stageName);
-        ConfigureTeleporter(60f, 40f);
+
+        if (currentTeleporter != null)
+        {
+            Destroy(currentTeleporter);
+        }
+
+        if (sceneType == Scene.Chapter1Wave || sceneType == Scene.Chapter2Wave)
+        {
+            if (index >= stages.Count)
+            {
+                Debug.Log("Invalid index to load stage");
+                return;
+            }
+            StageData stageData = stages[index];
+            ConfigureEnemySpawning(stageData.spawnCounts, stageData.spawnIntervals,
+                stageData.enemyHealthMultiplier, stageData.enemyAttackMultiplier,
+                stageData.XPDropMultiplier, stageData.scoreMultiplier);
+            DisplayStageName(stageData.stageName);
+            ConfigureTeleporter(60f, 40f);
+            TeleportPlayer(60f, 40f);
+        }
+        CameraFollow cameraFollow = FindAnyObjectByType<CameraFollow>();
+        if (cameraFollow != null)
+        {
+            cameraFollow.target = GameManager.Instance.player.transform;
+        }
+
     }
     private void ClearAllEnemies()
     {
@@ -100,11 +126,30 @@ public class StageManager : MonoBehaviour
         currentStageIndex++;
         if (currentStageIndex >= stages.Count)
         {
-            sceneSwitcher.LoadNextScene(); // change scene
+            switch (sceneType)
+            {
+                case Scene.Chapter1Wave:
+                    sceneSwitcher.LoadChapter1Boss();
+                    break;
+                case Scene.Chapter1Boss:
+                    sceneSwitcher.LoadWinScene();
+                    break;
+                /*
+                case Scene.Chapter2Wave:
+                    sceneSwitcher.LoadChapter2Boss();
+                    break;
+                case Scene.Chapter2Boss:
+                    sceneSwitcher.LoadWinScene();
+                    break;
+                */
+                default:
+                    sceneSwitcher.LoadGameOverScene();
+                    break;
+            }
         }
         else
         {
-            LoadStage(currentStageIndex); // same scene
+            LoadStage(currentStageIndex);
         }
     }
 }

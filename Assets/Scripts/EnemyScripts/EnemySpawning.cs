@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemySpawning : MonoBehaviour
 {
-    [SerializeField] private Transform player;
+    public Transform player;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private float spawnInterval = 3.0f;   // in seconds
     [SerializeField] private int spawnCount = 1; // number of enemies spawned per cycle
@@ -56,6 +56,11 @@ public class EnemySpawning : MonoBehaviour
         if (!GameManager.Instance.isPlayerAlive)
         {
             return;
+        }
+        if (player == null)
+        {
+            PlayerScript player = FindFirstObjectByType<PlayerScript>();
+            this.player = player.transform;
         }
         
         timer += Time.deltaTime;

@@ -19,3 +19,5 @@ MonoBehaviour:
   - 2.5
   enemyHealthMultiplier: 2
   enemyAttackMultiplier: 2
+  XPDropMultiplier: 3
+  scoreMultiplier: 3

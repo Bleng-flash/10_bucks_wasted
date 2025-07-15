@@ -4,20 +4,25 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
+    public PlayerScript player;
     public static GameManager Instance;
     public bool isPlayerAlive = true;
     [SerializeField] private SwitchScene sceneSwitcher;
-    [SerializeField] private PlayerUIManager playerUI;
+    public PlayerUIManager playerUI;
 
     [Header("References")]
     public XpSpawner xpSpawner;
-    [SerializeField] private UpgradeManager upgradeManager;
-    [SerializeField] private StageManager stageManager;
-    [SerializeField] private MessageDisplay messageDisplayer;
+    public UpgradeManager upgradeManager;
+    public StageManager stageManager;
+    public MessageDisplay messageDisplayer;
 
     void Awake()
     {
-        if (Instance == null) Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else Destroy(gameObject);
     }
 
@@ -39,7 +44,10 @@ public class GameManager : MonoBehaviour
 
     public void UpdateXp(float current, float max)
     {
-        playerUI.UpdateXp(current, max);
+        if (playerUI != null)
+            playerUI.UpdateXp(current, max);
+        else
+            Debug.LogWarning("playerUI not assigned in GameManager.");
     }
 
     // PauseGame() forcibly pauses movement for player and all enemies
@@ -100,5 +108,44 @@ public class GameManager : MonoBehaviour
     public void DisplayMessage(String message, float duration, int fontSize)
     {
         messageDisplayer.ShowMessage(message, duration, fontSize);
+    }
+
+    public void ResetRun()
+    {
+        // Reset persistent flags and time
+        isPlayerAlive = true;
+        Time.timeScale = 1f;
+
+        // Reset Score
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.ResetScore();
+        }
+
+        // Reset Player Level
+        if (LevelManager.Instance != null)
+        {
+            LevelManager.Instance.ResetLevel();
+        }
+
+        // Reset player state
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null) Destroy(player); 
+
+        // Reset upgrade state
+        if (upgradeManager != null)
+        {
+            Destroy(upgradeManager.gameObject); // to reset the upgrade manager 
+        }
+
+        // Optionally destroy all enemies if still in current scene
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
+
+        // Load back to StartScene
+        sceneSwitcher.LoadStartScene();
     }
 }

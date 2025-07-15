@@ -4,27 +4,32 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
-    [SerializeField] private TextMeshProUGUI scoreText;
-    private float currentScore = 0;
+    // public TextMeshProUGUI scoreText;
+    private float currentScore = 0f;
     void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
-    }
-    void Start()
-    {
-        // Initialise score as 0
-        UpdateScore();
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // persists across scenes   
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void AddScore(float score)
     {
         currentScore += score;
-        UpdateScore();
+    }
+    public void ResetScore()
+    {
+        currentScore = 0;
+    }
+    public int GetScoreToInteger()
+    {
+        return (int) currentScore;
     }
 
-    private void UpdateScore()
-    {
-        scoreText.text = "Score: " + currentScore;
-    }
 }

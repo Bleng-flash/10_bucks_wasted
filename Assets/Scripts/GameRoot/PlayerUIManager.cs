@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class PlayerUIManager : MonoBehaviour
 {
-    [SerializeField] private PlayerScript player;
-    [SerializeField] private Image healthBar;
+    public PlayerScript player;
+    public Image healthBar;
     [SerializeField] private Image xpBar;
 
 
