@@ -149,32 +149,6 @@ public class SwitchScene : MonoBehaviour
             spawner.player = player.transform;
             Debug.Log($"Assigned player to spawner: {spawner.name}");
         }
-
-        GameObject canvasGO = GameObject.Find("UpgradeUICanvas"); // It’s preserved
-        if (canvasGO != null)
-        {
-            UpgradeManager upgradeManager = GameManager.Instance.upgradeManager;
-
-            GameObject panel = canvasGO.transform.Find("UpgradePanel").gameObject;
-            if (panel != null)
-            {
-                upgradeManager.upgradeUI = panel;
-                upgradeManager.upgradeUI.SetActive(false); // always hide on scene start
-            }
-
-            Transform cardContainer = panel.transform.Find("CardContainer");
-            if (cardContainer != null)
-            {
-                upgradeManager.cardContainer = cardContainer;
-            }
-
-            Button confirmButton = panel.transform.Find("ConfirmSelection button").GetComponent<Button>();
-            if (confirmButton != null)
-            {
-                upgradeManager.confirmButton = confirmButton;
-                upgradeManager.confirmButton.interactable = false;
-            }
-        }
         
     }
 
