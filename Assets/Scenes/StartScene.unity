@@ -1078,7 +1078,6 @@ GameObject:
   - component: {fileID: 300840419}
   - component: {fileID: 300840418}
   - component: {fileID: 300840422}
-  - component: {fileID: 300840423}
   - component: {fileID: 300840424}
   m_Layer: 5
   m_Name: UpgradeUICanvas
@@ -1182,18 +1181,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &300840423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300840417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f10d690471530a45b85e52ba2a556fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &300840424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1837,6 +1824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c91685b5c941a4488d1fc4c8e43c9d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
 --- !u!1 &862871786
 GameObject:
   m_ObjectHideFlags: 0
@@ -3238,6 +3226,8 @@ MonoBehaviour:
   upgradeData: {fileID: 11400000, guid: a65121a21f12eae4c9022d3e45f4f607, type: 2}
   attackRadius: 4
   force: 3
+  fieldAnimator: {fileID: 0}
+  fieldOverlay: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

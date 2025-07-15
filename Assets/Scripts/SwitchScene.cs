@@ -149,6 +149,9 @@ public class SwitchScene : MonoBehaviour
             spawner.player = player.transform;
             Debug.Log($"Assigned player to spawner: {spawner.name}");
         }
+
+        CameraFollow cameraFollow = FindAnyObjectByType<CameraFollow>();
+        if (cameraFollow != null) cameraFollow.target = player.transform;
         
     }
 
