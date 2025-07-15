@@ -27,5 +27,9 @@ public class ScoreManager : MonoBehaviour
     {
         currentScore = 0;
     }
+    public int GetScoreToInteger()
+    {
+        return (int) currentScore;
+    }
 
 }

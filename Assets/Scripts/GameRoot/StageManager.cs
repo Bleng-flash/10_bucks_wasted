@@ -108,6 +108,7 @@ public class StageManager : MonoBehaviour
         currentTeleporter = Instantiate(teleporterPrefab, spawnPos, Quaternion.identity);
     }
 
+    // Update the below method everytime we add new scenes
     public void ProceedToNextStage(SwitchScene sceneSwitcher)
     {
         currentStageIndex++;
@@ -119,14 +120,16 @@ public class StageManager : MonoBehaviour
                     sceneSwitcher.LoadChapter1Boss();
                     break;
                 case Scene.Chapter1Boss:
-                    sceneSwitcher.LoadChapter2Wave();
+                    sceneSwitcher.LoadWinScene();
                     break;
+                /*
                 case Scene.Chapter2Wave:
                     sceneSwitcher.LoadChapter2Boss();
                     break;
                 case Scene.Chapter2Boss:
                     sceneSwitcher.LoadWinScene();
                     break;
+                */
                 default:
                     sceneSwitcher.LoadGameOverScene();
                     break;

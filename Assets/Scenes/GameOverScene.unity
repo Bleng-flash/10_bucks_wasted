@@ -693,7 +693,7 @@ GameObject:
   - component: {fileID: 1177936430}
   - component: {fileID: 1177936429}
   m_Layer: 0
-  m_Name: PlayAgain logic
+  m_Name: GameOverUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -711,6 +711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2a3eb34cc52fff41aaca16a0d92ee1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 924083892}
 --- !u!4 &1177936430
 Transform:
   m_ObjectHideFlags: 0
