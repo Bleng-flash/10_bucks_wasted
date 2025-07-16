@@ -16,4 +16,6 @@ MonoBehaviour:
   description: +50% Lost HP
   icon: {fileID: 21300000, guid: 0794091e4be13b046814fd4a4db266be, type: 3}
   weight: 0.5
+  applyCount: 0
+  maxApplyCount: -1
   percentageRestored: 0.5

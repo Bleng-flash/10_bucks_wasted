@@ -125,6 +125,12 @@ public class SwitchScene : MonoBehaviour
             return;
         }
 
+        // --- StageManager assignment ---
+        if (GameManager.Instance.stageManager != null)
+        {
+            GameManager.Instance.stageManager.player = player.gameObject;
+        }
+        
         // --- PlayerUIManager assignments ---
         if (GameManager.Instance.playerUI != null)
         {

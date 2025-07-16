@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using System.Data;
+using UnityEditor.Rendering.Universal;
 
 // Upon every level up of the player, the game freezes and 3 upgrade cards appear on the screen (UI)
 // the player will pick 1 of the 3 upgrades
@@ -21,8 +22,7 @@ public class UpgradeManager : MonoBehaviour
     private Action onUpgradeComplete; // Action is a type that represents a method that returns void
     private Upgrade selectedUpgrade;
     private List<GameObject> activeCards = new(); // the 3 upgrade cards that player can pick from
-
-    public static UpgradeManager Instance;
+    public static UpgradeManager Instance; // singleton
 
     void Awake()
     {
@@ -31,7 +31,7 @@ public class UpgradeManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else 
+        else
         {
             Destroy(gameObject);
         }
@@ -59,7 +59,7 @@ public class UpgradeManager : MonoBehaviour
         foreach (Upgrade upgrade in options)
         {
             GameObject card = Instantiate(cardPrefab, cardContainer); // instantiates a card gameobject 
-                // based on the prefab as a child of cardContainer
+                                                                      // based on the prefab as a child of cardContainer
             SetupCardUI(card, upgrade);
             activeCards.Add(card);
         }
@@ -69,13 +69,17 @@ public class UpgradeManager : MonoBehaviour
     // Weighted selection of upgrade options
     private List<Upgrade> GetRandomUpgrades(int count)
     {
-        List<Upgrade> pool = new(allUpgrades);
+        List<Upgrade> pool = new();
         List<Upgrade> selected = new();
-
         float totalWeight = 0f;
-        foreach (Upgrade upgrade in pool)
+
+        foreach (Upgrade upgrade in allUpgrades)
         {
-            totalWeight += upgrade.weight; // weight >= 0 for all upgrades
+            if (upgrade.Selectable && upgrade.weight > 0f)
+            {
+                pool.Add(upgrade);
+                totalWeight += upgrade.weight; // weight >= 0 for all upgrades
+            }
         }
 
         if (totalWeight <= 0f)
@@ -88,6 +92,7 @@ public class UpgradeManager : MonoBehaviour
             // each iteration of while loop adds 1 card to selected
             float randomThreshold = UnityEngine.Random.Range(0, totalWeight);
             float cumulative = 0f;
+            bool found = false;
             for (int i = 0; i < pool.Count; i++)
             {
                 cumulative += pool[i].weight;
@@ -96,8 +101,17 @@ public class UpgradeManager : MonoBehaviour
                     selected.Add(pool[i]);
                     totalWeight -= pool[i].weight;
                     pool.RemoveAt(i);
+                    found = true;
                     break;
                 }
+            }
+            // Fallback: if not found due to precision (rounding), select last upgrade
+            if (!found && pool.Count > 0)
+            {
+                int lastIndex = pool.Count - 1;
+                selected.Add(pool[lastIndex]);
+                totalWeight -= pool[lastIndex].weight;
+                pool.RemoveAt(lastIndex);
             }
         }
         return selected;
@@ -157,6 +171,15 @@ public class UpgradeManager : MonoBehaviour
         if (player != null)
         {
             ConfirmSelection(player);
+        }
+    }
+
+    // Called when we reset after each game run
+    public void ResetAllUpgrades()
+    {
+        foreach (Upgrade upgrade in allUpgrades)
+        {
+            upgrade.ResetUpgrade();
         }
     }
 
