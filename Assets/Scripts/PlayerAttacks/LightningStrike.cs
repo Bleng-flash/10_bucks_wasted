@@ -4,17 +4,9 @@ using UnityEngine;
 // by Lightning Attack (which is the actual attack consisting of many lightning strike prefabs)
 public class LightningStrike : MonoBehaviour
 {
-    [SerializeField] private LightningAttack lightningAttack;
     private float damage;
     private LayerMask targetLayer;
     [SerializeField] private float radius = 2f;
-
-
-    void Start()
-    {
-        damage = lightningAttack.GetLightningDamage();
-        targetLayer = lightningAttack.GetTargetLayer();
-    }
 
     // Used as an animation event to deal damage in a specific frame
     public void DoDamage()
@@ -40,5 +32,15 @@ public class LightningStrike : MonoBehaviour
     public void DestroySelf()
     {
         Destroy(gameObject);
+    }
+
+    public void SetDamage(float damage)
+    {
+        this.damage = damage;
+    }
+
+    public void SetTargetLayer(LayerMask targetLayer)
+    {
+        this.targetLayer = targetLayer;
     }
 }

@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8814940937296321529}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.28778, y: 2.36925, z: 0}
+  m_LocalPosition: {x: 4.06567, y: 2.44835, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -123,10 +123,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6438e22872735a448894000ee325670a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0
-  damage: 100
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  upgradeData: {fileID: 0}
+  lightningAttack: {fileID: 0}
   radius: 2

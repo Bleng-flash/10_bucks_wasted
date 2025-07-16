@@ -31,7 +31,10 @@ public class LightningAttack : AutoAttack
         // If we want to implement warning area, add it above here
         yield return new WaitForSeconds(warningTime);
 
-        Instantiate(lightningStrikePrefab, position, Quaternion.identity);
+        GameObject lightningStrike = Instantiate(lightningStrikePrefab, position, Quaternion.identity);
+        LightningStrike strike = lightningStrike.GetComponent<LightningStrike>();
+        strike.SetDamage(damage);
+        strike.SetTargetLayer(targetLayer);
     }
 
     private Vector2 GetRandomPositionOnMap(float width, float height)
