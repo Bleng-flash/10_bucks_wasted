@@ -42,7 +42,7 @@ public class AOEPunch : AutoAttack
             Debug.Log("No punchAnimator found!");
         }
 
-        // Detects all objects will colliders that are in enemy layer and add them to hitColliders
+        // Detects all objects with colliders that are in enemy layer and add them to hitColliders
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackOrigin, attackRadius, targetLayer);
 
         foreach (Collider2D collider in hitColliders)

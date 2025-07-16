@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6438e22872735a448894000ee325670a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 3
+  cooldown: 0
   damage: 100
   targetLayer:
     serializedVersion: 2

@@ -2,14 +2,24 @@ using UnityEngine;
 
 // Lightning Strike is a prefab of a single, self-contained lightning strike, which will be used
 // by Lightning Attack (which is the actual attack consisting of many lightning strike prefabs)
-public class LightningStrike : AutoAttack
+public class LightningStrike : MonoBehaviour
 {
+    [SerializeField] private LightningAttack lightningAttack;
+    private float damage;
+    private LayerMask targetLayer;
     [SerializeField] private float radius = 2f;
+
+
+    void Start()
+    {
+        damage = lightningAttack.GetLightningDamage();
+        targetLayer = lightningAttack.GetTargetLayer();
+    }
 
     // Used as an animation event to deal damage in a specific frame
     public void DoDamage()
     {
-        // Detects all objects will colliders that are in enemy layer and add them to hitColliders
+        // Detects all objects with colliders that are in enemy layer and add them to hitColliders
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, radius, targetLayer);
         foreach (Collider2D collider in hitColliders)
         {
@@ -30,14 +40,5 @@ public class LightningStrike : AutoAttack
     public void DestroySelf()
     {
         Destroy(gameObject);
-    }
-
-    protected override void PerformAttack()
-    {
-        return;
-    }
-    public override void Recalculate()
-    {
-        return;
     }
 }
