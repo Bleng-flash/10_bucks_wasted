@@ -21,7 +21,7 @@ public class StageManager : MonoBehaviour
     private int currentStageIndex;
     [SerializeField] private GameObject teleporterPrefab;
     private GameObject currentTeleporter;
-    [SerializeField] private GameObject player;
+    public GameObject player;
 
     void Start()
     {

@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac364043ed8a2b643871a3803b2e86be, type: 3}
-  m_Name: Medium ATK Upgrade
+  m_Script: {fileID: 11500000, guid: 1d31aaa6f9abb0a4c85486d80e8b9a6e, type: 3}
+  m_Name: PickupXPRadiusUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: Medium ATK Upgrade
-  description: ATK +10
-  icon: {fileID: 21300000, guid: c2c7aefc7e6ee394eb1cbebd90ea39c1, type: 3}
-  weight: 0.5
+  upgradeName: Increase XP Pickup Radius
+  description: XP pickup radius +1
+  icon: {fileID: 0}
+  weight: 1
   applyCount: 0
-  maxApplyCount: -1
-  extraATK: 10
+  maxApplyCount: 5

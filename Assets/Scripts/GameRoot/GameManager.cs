@@ -135,6 +135,7 @@ public class GameManager : MonoBehaviour
         // Reset upgrade state
         if (upgradeManager != null)
         {
+            upgradeManager.ResetAllUpgrades(); // reset all weights and applyCounts of upgrades
             Destroy(upgradeManager.gameObject); // to reset the upgrade manager 
         }
 

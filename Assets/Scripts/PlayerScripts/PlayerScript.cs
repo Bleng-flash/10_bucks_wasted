@@ -19,9 +19,8 @@ public class PlayerScript : Entity
     private Dictionary<string, AutoAttack> allAttacks = new(); // keyed on attack scripts name
     private List<AutoAttack> activeAttacks = new();
     private bool hasTeleporter = false;
-
     [SerializeField] private XpScript xpScript;
-    [SerializeField] private float xpPickUpRadius = 2.0f;
+    public float xpPickUpRadius = 2.0f;
     [SerializeField] private LayerMask xpLayer;
 
     private void Awake()
@@ -53,11 +52,10 @@ public class PlayerScript : Entity
         foreach (AutoAttack attack in attacks)
         {
             attack.gameObject.SetActive(false);  // disable everything first
-            attack.tier = 0;
             allAttacks[attack.GetType().Name] = attack;  // use class name as key
         }
 
-        // Enable starting attack
+        // Enable starting attack, set starting attack to applyCount 1 in inspector
         UnlockOrUpgradeAttack("AOEPunch");
     }
 
@@ -151,7 +149,7 @@ public class PlayerScript : Entity
     {
         if (allAttacks.TryGetValue(attackName, out AutoAttack attack))
         {
-            if (!attack.gameObject.activeSelf)
+            if (!attack.gameObject.activeSelf) // if gameobject is disabled, enable it
             {
                 attack.gameObject.SetActive(true);
                 activeAttacks.Add(attack);

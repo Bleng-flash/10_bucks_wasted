@@ -16,4 +16,6 @@ MonoBehaviour:
   description: Movement Speed +1
   icon: {fileID: 21300000, guid: b6588b20aa564ec41b77e43758ad3fc7, type: 3}
   weight: 1
+  applyCount: 0
+  maxApplyCount: 5
   speedIncrease: 1
