@@ -22,6 +22,8 @@ public class StageManager : MonoBehaviour
     [SerializeField] private GameObject teleporterPrefab;
     private GameObject currentTeleporter;
     public GameObject player;
+    private float stageWidth = 60f;
+    private float stageHeight = 40f;
 
     void Start()
     {
@@ -50,8 +52,8 @@ public class StageManager : MonoBehaviour
                 stageData.enemyHealthMultiplier, stageData.enemyAttackMultiplier,
                 stageData.XPDropMultiplier, stageData.scoreMultiplier);
             DisplayStageName(stageData.stageName);
-            ConfigureTeleporter(60f, 40f);
-            TeleportPlayer(60f, 40f);
+            ConfigureTeleporter(stageWidth, stageHeight);
+            TeleportPlayer(stageWidth, stageHeight);
         }
         CameraFollow cameraFollow = FindAnyObjectByType<CameraFollow>();
         if (cameraFollow != null)
