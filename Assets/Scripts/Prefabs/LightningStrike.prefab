@@ -44,7 +44,7 @@ Animator:
   m_GameObject: {fileID: 8814940937296321529}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2716eb435d560ed46b5617ea9ee8e008, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -100,15 +100,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -2981954064702659590, guid: b2f010b1a631dd64fb1c4a497e614c04, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 5.09375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &8060699128025846813
@@ -123,3 +123,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6438e22872735a448894000ee325670a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldown: 3
+  damage: 100
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  upgradeData: {fileID: 0}
+  radius: 2
