@@ -44,16 +44,6 @@ public class LightningAttack : AutoAttack
         return new Vector2(xPos, yPos);
     }
 
-    public float GetLightningDamage()
-    {
-        return damage;
-    }
-
-    public LayerMask GetTargetLayer()
-    {
-        return targetLayer;
-    }
-
     public override void Recalculate()
     {
         return;
