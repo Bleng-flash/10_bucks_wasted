@@ -566,7 +566,7 @@ MonoBehaviour:
   ATK: 20
   team: 0
   xpScript: {fileID: 0}
-  xpPickUpRadius: 1.5
+  xpPickUpRadius: 1
   xpLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -1371,10 +1371,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dc14297307d0838488ca17fa1a5f5ca8, type: 2}
   - {fileID: 11400000, guid: 56fa73b2156bbbd4a90d5518401a64de, type: 2}
   - {fileID: 11400000, guid: 18790e473d9162740a9f580d6b48aa27, type: 2}
-  - {fileID: 11400000, guid: cef3843dafdd78c4a851bb5d5a074139, type: 2}
-  - {fileID: 11400000, guid: a65121a21f12eae4c9022d3e45f4f607, type: 2}
   - {fileID: 11400000, guid: 4230748aa5087be458bae01ff12044d7, type: 2}
   - {fileID: 11400000, guid: e3012c75ffcd62f4a83c52bd5f4e352c, type: 2}
+  - {fileID: 11400000, guid: cef3843dafdd78c4a851bb5d5a074139, type: 2}
+  - {fileID: 11400000, guid: a65121a21f12eae4c9022d3e45f4f607, type: 2}
+  - {fileID: 11400000, guid: 056f4299e329d5e48826f903a2d367d2, type: 2}
   cardPrefab: {fileID: 6877663276512389695, guid: 2e0b677c5fa0bcf4fa48c32240e415e5, type: 3}
   cardContainer: {fileID: 1872827613}
   confirmButton: {fileID: 1041646824}
@@ -3460,67 +3461,6 @@ MonoBehaviour:
   force: 3
   fieldAnimator: {fileID: 1422894832}
   fieldOverlay: {fileID: 1422894830}
---- !u!1001 &2016291228513216722
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7859718761304930928, guid: deafd7f9ccab92f4095d1e4a7dd2e22a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.06567
-      objectReference: {fileID: 0}
-    - target: {fileID: 7859718761304930928, guid: deafd7f9ccab92f4095d1e4a7dd2e22a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.44835
-      objectReference: {fileID: 0}
-    - target: {fileID: 7859718761304930928, guid: deafd7f9ccab92f4095d1e4a7dd2e22a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7859718761304930928, guid: deafd7f9ccab92f4095d1e4a7dd2e22a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7859718761304930928, guid: deafd7f9ccab92f4095d1e4a7dd2e22a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7859718761304930928, guid: deafd7f9ccab92f4095d1e4a7dd2e22a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7859718761304930928, guid: deafd7f9ccab92f4095d1e4a7dd2e22a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7859718761304930928, guid: deafd7f9ccab92f4095d1e4a7dd2e22a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7859718761304930928, guid: deafd7f9ccab92f4095d1e4a7dd2e22a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7859718761304930928, guid: deafd7f9ccab92f4095d1e4a7dd2e22a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8060699128025846813, guid: deafd7f9ccab92f4095d1e4a7dd2e22a, type: 3}
-      propertyPath: lightningAttack
-      value: 
-      objectReference: {fileID: 1733669319}
-    - target: {fileID: 8814940937296321529, guid: deafd7f9ccab92f4095d1e4a7dd2e22a, type: 3}
-      propertyPath: m_Name
-      value: LightningStrike
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: deafd7f9ccab92f4095d1e4a7dd2e22a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3536,4 +3476,3 @@ SceneRoots:
   - {fileID: 120402679}
   - {fileID: 300840421}
   - {fileID: 1571904776}
-  - {fileID: 2016291228513216722}

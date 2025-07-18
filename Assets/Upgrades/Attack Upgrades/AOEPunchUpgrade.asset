@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: AOE Punch Upgrade
   description: 'Upgrade attack: AOE Punch'
-  icon: {fileID: -9182177788924653191, guid: a4970f398ccc36844b4507f749997be2, type: 3}
+  icon: {fileID: 108982088982245525, guid: 1620160cb3ca6e94a8c87f052d338f6c, type: 3}
   weight: 1
   applyCount: 0
   maxApplyCount: 5
