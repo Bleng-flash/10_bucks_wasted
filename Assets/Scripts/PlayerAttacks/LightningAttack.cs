@@ -33,8 +33,8 @@ public class LightningAttack : AutoAttack
 
         GameObject lightningStrike = Instantiate(lightningStrikePrefab, position, Quaternion.identity);
         LightningStrike strike = lightningStrike.GetComponent<LightningStrike>();
-        strike.SetDamage(damage);
-        strike.SetTargetLayer(targetLayer);
+        strike.Damage = damage;
+        strike.TargetLayer = targetLayer;
     }
 
     private Vector2 GetRandomPositionOnMap(float width, float height)
