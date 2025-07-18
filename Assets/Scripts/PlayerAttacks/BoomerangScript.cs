@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 // Boomerang Script is the logic for a prefab of a boomerang, 
@@ -67,5 +68,26 @@ public class BoomerangScript : MonoBehaviour
                 Destroy(gameObject); // End of attack, boomerang returns to player
             }
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (IsInLayerMask(other.gameObject, enemyLayer))
+        {
+            EnemyScript enemy = other.GetComponent<EnemyScript>();
+            if (enemy != null)
+            {
+                if (!lastHitTime.ContainsKey(enemy) || Time.time - lastHitTime[enemy] >= HitCooldown)
+                {
+                    enemy.TakeDamage(Damage);
+                    lastHitTime[enemy] = Time.time;
+                }
+            }
+        }
+    }
+
+    bool IsInLayerMask(GameObject obj, LayerMask mask)
+    {
+        return ((1 << obj.layer) & mask) != 0;
     }
 }
