@@ -16,8 +16,6 @@ public class BoomerangScript : MonoBehaviour
     private Vector2 startPosition1;
     private Vector2 startPosition2;
     private Vector2 direction;
-    private bool returning1 = false;
-    private bool returning2 = false;
     private Transform player;
 
     // Track last time enemy was hit, enemies can only be damaged by boomerang once every HitCooldown
