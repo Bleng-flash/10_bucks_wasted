@@ -11,7 +11,7 @@ public class BoomerangScript : MonoBehaviour
     public float MaxDistance { get; set; }
     public float Damage { get; set; }
     public float HitCooldown { get; set; }
-    public LayerMask enemyLayer { get; set; }
+    public LayerMask EnemyLayer { get; set; }
 
     private Vector2 startPosition1;
     private Vector2 startPosition2;
@@ -22,6 +22,16 @@ public class BoomerangScript : MonoBehaviour
 
     // Track last time enemy was hit, enemies can only be damaged by boomerang once every HitCooldown
     private Dictionary<EnemyScript, float> lastHitTime = new Dictionary<EnemyScript, float>();
+
+    private enum BoomerangPhase
+    {
+        Outward,
+        ReturnToPlayer1,
+        Behind,
+        ReturnToPlayer2
+    }
+
+    private BoomerangPhase phase = BoomerangPhase.Outward;
 
     public void ThrowBoomerang(Vector2 direction, Transform player)
     {
@@ -38,41 +48,54 @@ public class BoomerangScript : MonoBehaviour
             return;
         }
 
-        if (!returning1)
+        switch (phase)
         {
-            transform.position += (Vector3)(direction * Speed * Time.deltaTime);
+            case BoomerangPhase.Outward:
+                transform.position += (Vector3)(direction * Speed * Time.deltaTime);
 
-            if (Vector2.Distance(startPosition1, transform.position) >= MaxDistance)
-            {
-                returning1 = true;
-            }
-        }
-        else if (returning1 && !returning2)
-        {
-            startPosition2 = transform.position;
-            Vector2 returnDir = (player.position - transform.position).normalized;
-            transform.position += (Vector3)(returnDir * Speed * Time.deltaTime);
+                if (Vector2.Distance(startPosition1, transform.position) >= MaxDistance)
+                {
+                    phase = BoomerangPhase.ReturnToPlayer1;
+                }
+                break;
 
-            if (Vector2.Distance(startPosition2, transform.position) >= MaxDistance)
-            {
-                returning2 = true;
-            }
-        }
-        else
-        {
-            Vector2 returnDir = (player.position - transform.position).normalized;
-            transform.position += (Vector3)(returnDir * Speed * Time.deltaTime);
+            case BoomerangPhase.ReturnToPlayer1:
+                Vector2 returnDir1 = ((Vector2)player.position - (Vector2)transform.position).normalized;
+                transform.position += (Vector3)(returnDir1 * Speed * Time.deltaTime);
 
-            if (Vector2.Distance(player.position, transform.position) < 0.1f)
-            {
-                Destroy(gameObject); // End of attack, boomerang returns to player
-            }
+                if (Vector2.Distance(player.position, transform.position) < 0.1f)
+                {
+                    // Cache current position to start behind throw
+                    startPosition2 = transform.position;
+                    direction = -direction; // Reverse direction to throw behind
+                    phase = BoomerangPhase.Behind;
+                }
+                break;
+
+            case BoomerangPhase.Behind:
+                transform.position += (Vector3)(direction * Speed * Time.deltaTime);
+
+                if (Vector2.Distance(startPosition2, transform.position) >= MaxDistance)
+                {
+                    phase = BoomerangPhase.ReturnToPlayer2;
+                }
+                break;
+
+            case BoomerangPhase.ReturnToPlayer2:
+                Vector2 returnDir2 = ((Vector2)player.position - (Vector2)transform.position).normalized;
+                transform.position += (Vector3)(returnDir2 * Speed * Time.deltaTime);
+
+                if (Vector2.Distance(player.position, transform.position) < 0.1f)
+                {
+                    Destroy(gameObject);
+                }
+                break;
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (IsInLayerMask(other.gameObject, enemyLayer))
+        if (IsInLayerMask(other.gameObject, EnemyLayer))
         {
             EnemyScript enemy = other.GetComponent<EnemyScript>();
             if (enemy != null)
