@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f60084c21bc7246a876567973c28e6, type: 3}
-  m_Name: RepulsiveField Upgrade
+  m_Script: {fileID: 11500000, guid: 74fe7cfcc871fb446812f73f2ef5c953, type: 3}
+  m_Name: LightningAttackUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: Repulsive Field Upgrade
-  description: 'Upgrade attack: Repulsive Field'
-  icon: {fileID: -5175126974701458925, guid: ff5cfe39fb3a51f438e42299ed90a293, type: 3}
+  upgradeName: Lightning Attack Upgrade
+  description: 'Upgrade attack: Lightning Attack'
+  icon: {fileID: 4865509743479087971, guid: b2f010b1a631dd64fb1c4a497e614c04, type: 3}
   weight: 1
   applyCount: 0
   maxApplyCount: 5
