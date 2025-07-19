@@ -123,7 +123,8 @@ public class EnemySpawning : MonoBehaviour
             }
             enemy.layer = enemyLayer;
 
-            // scale enemy stats here
+            // scales enemy stats based on their base stats 
+            // (base stats is the stats we saved in the prefab for that enemy type in Unity inspector)
             EnemyScript enemyStats = enemy.GetComponent<EnemyScript>();
             if (enemyStats != null)
             {

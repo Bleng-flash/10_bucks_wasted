@@ -81,6 +81,7 @@ public class TailWhip : NonAutoAttack
     }
     public override void Recalculate()
     {
-        return;
+        base.Recalculate();
+        damage = Mathf.Max(0, owner.getATK());
     }
 }

@@ -322,7 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 10
   HP: 10
-  ATK: 5
+  ATK: 3
   team: 0
   xpAmount: 50
   score: 1
