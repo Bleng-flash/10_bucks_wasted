@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 // Singleton class used to keep track and coordinate game events
 
 public class GameManager : MonoBehaviour
@@ -7,7 +8,7 @@ public class GameManager : MonoBehaviour
     public PlayerScript player;
     public static GameManager Instance;
     public bool isPlayerAlive = true;
-    [SerializeField] private SwitchScene sceneSwitcher;
+    public SwitchScene sceneSwitcher;
     public PlayerUIManager playerUI;
 
     [Header("References")]
@@ -130,7 +131,7 @@ public class GameManager : MonoBehaviour
 
         // Reset player state
         GameObject player = GameObject.FindWithTag("Player");
-        if (player != null) Destroy(player); 
+        if (player != null) Destroy(player);
 
         // Reset upgrade state
         if (upgradeManager != null)
