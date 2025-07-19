@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74fe7cfcc871fb446812f73f2ef5c953, type: 3}
-  m_Name: LightningAttackUpgrade
+  m_Script: {fileID: 11500000, guid: 720d99040dae26343be79a85b6b9f49a, type: 3}
+  m_Name: SniperAttackUpgrade
   m_EditorClassIdentifier: 
-  upgradeName: Lightning Strike Upgrade
-  description: 'Upgrade attack: Lightning Attack'
-  icon: {fileID: 4865509743479087971, guid: b2f010b1a631dd64fb1c4a497e614c04, type: 3}
+  upgradeName: Sniper Shot Upgrade
+  description: 'Upgrade attack: Sniper Shot'
+  icon: {fileID: -2346302928887187388, guid: 7750d0bb1903d9c498e3be6fa34cabe4, type: 3}
   weight: 1
   applyCount: 0
   maxApplyCount: 5
