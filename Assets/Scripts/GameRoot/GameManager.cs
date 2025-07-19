@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 // Singleton class used to keep track and coordinate game events
 
 public class GameManager : MonoBehaviour
@@ -129,25 +130,40 @@ public class GameManager : MonoBehaviour
             LevelManager.Instance.ResetLevel();
         }
 
-        // Reset player state
-        GameObject player = GameObject.FindWithTag("Player");
-        if (player != null) Destroy(player);
 
-        // Reset upgrade state
+        // Destroy player gameobject
+        if (player != null) Destroy(player.gameObject);
+
+        // Reset upgradeManager gameobject
         if (upgradeManager != null)
         {
             upgradeManager.ResetAllUpgrades(); // reset all weights and applyCounts of upgrades
-            Destroy(upgradeManager.gameObject); // to reset the upgrade manager 
         }
 
-        // Optionally destroy all enemies if still in current scene
+        // Destroy all enemies if still in current scene
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
         {
             Destroy(enemy);
         }
 
-        // Load back to StartScene
         sceneSwitcher.LoadStartScene();
+        
+        // Subscribe to sceneLoaded to assign player after scene loads
+        SceneManager.sceneLoaded += OnStartSceneLoaded;
+        // we need to do this because scene loading is asynchronous 
+    }
+
+    // only called on resetting runs
+    private void OnStartSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "StartScene")
+        {
+            PlayerScript player1 = FindAnyObjectByType<PlayerScript>();
+            player = player1;
+
+            // Unsubscribe to avoid multiple calls
+            SceneManager.sceneLoaded -= OnStartSceneLoaded;
+        }
     }
 }

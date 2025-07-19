@@ -66,12 +66,12 @@ public abstract class Entity : MonoBehaviour
     public void IncreaseATKBy(float inc)
     {
         ATK += inc;
-        // ConfigureActiveAttacks();
+        ConfigureActiveAttacks();
     }
     public void DecreaseATKBy(float dec)
     {
         ATK = Mathf.Max(0, ATK - dec);      // Ensure minimum is 0
-        // ConfigureActiveAttacks();
+        ConfigureActiveAttacks();
     }
     public float getATK()
     {
