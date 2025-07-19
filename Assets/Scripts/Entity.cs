@@ -66,10 +66,16 @@ public abstract class Entity : MonoBehaviour
     public void IncreaseATKBy(float inc)
     {
         ATK += inc;
+        ConfigureActiveAttacks();
     }
     public void DecreaseATKBy(float dec)
     {
         ATK = Mathf.Max(0, ATK - dec);      // Ensure minimum is 0
+        ConfigureActiveAttacks();
+    }
+    public float getATK()
+    {
+        return ATK;
     }
 
     // called when the entity takes damage (decrease health)
@@ -103,4 +109,12 @@ public abstract class Entity : MonoBehaviour
     {
         return this.team != other.team;
     }
+    public void ConfigureActiveAttacks()
+    {
+        Attack[] attacks = GetComponentsInChildren<Attack>();
+        foreach (Attack attack in attacks)
+        {
+            attack.Recalculate();
+        }
+    } 
 }

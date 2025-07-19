@@ -51,6 +51,7 @@ public class EnemyBashAttack : NonAutoAttack
 
     public override void Recalculate()
     {
-        return;
+        base.Recalculate();
+        damage = Mathf.Max(0, owner.getATK());
     }
 }

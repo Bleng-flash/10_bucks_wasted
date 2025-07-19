@@ -34,6 +34,7 @@ public abstract class Attack : MonoBehaviour
             return;
         }
         SetTargetLayer();
+        Recalculate(); 
     }
 
     protected void SetTargetLayer()
@@ -88,7 +89,15 @@ public abstract class Attack : MonoBehaviour
         return timeSinceLastAttack >= cooldown;
     }
 
-    // Recalculate damage/cooldown/range, etc.
-    public abstract void Recalculate();
+    // Implement the calculation and scaling of damage/cooldown/range, etc.,  
+    // call this method on Initialise() and whenever entity ATK changes dynamically 
+    // or when player upgrades the attack (if necessary)
+    public virtual void Recalculate()
+    {
+        if (owner == null)
+        {
+            Debug.LogWarning("Owner reference not assigned when calling Recalculate()");
+        }
+    }
 
 }

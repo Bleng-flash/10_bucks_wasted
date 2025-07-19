@@ -40,6 +40,7 @@ public class StageManager : MonoBehaviour
             Destroy(currentTeleporter);
         }
 
+        // Don't assing camera track player here, already done when we load a new scene
         if (sceneType == Scene.Chapter1Wave || sceneType == Scene.Chapter2Wave)
         {
             if (index >= stages.Count)
@@ -54,11 +55,6 @@ public class StageManager : MonoBehaviour
             DisplayStageName(stageData.stageName);
             ConfigureTeleporter(stageWidth, stageHeight);
             TeleportPlayer(stageWidth, stageHeight);
-        }
-        CameraFollow cameraFollow = FindAnyObjectByType<CameraFollow>();
-        if (cameraFollow != null)
-        {
-            cameraFollow.target = GameManager.Instance.player.transform;
         }
 
     }
