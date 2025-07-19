@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     private int pierceCount = 0;
     public LayerMask EnemyLayer { get; set; }
     public Vector2 Direction { get; set; }
-    // public BulletPool Pool { get; set; }
+    public BulletPool Pool { get; set; }
 
     void Update()
     {
