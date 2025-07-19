@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     public LayerMask EnemyLayer { get; set; }
     public Vector2 Direction { get; set; }
     public BulletPool Pool { get; set; }
+    public LayerMask BorderLayer { get; set; }
 
     void Update()
     {
@@ -28,11 +29,16 @@ public class Bullet : MonoBehaviour
                 pierceCount++;
                 if (pierceCount >= MaxPierceCount)
                 {
-                    //Pool.ReturnBullet(gameObject);    // Returns object to pool
+                    Pool.ReturnBullet(gameObject);    // Returns bullet to pool
                 }
             }
         }
+        else if (IsInLayerMask(other.gameObject, BorderLayer))
+        {
+            Pool.ReturnBullet(gameObject);          // Return bullet to pool if it hits border
+        }
     }
+
     bool IsInLayerMask(GameObject obj, LayerMask mask)
     {
         return ((1 << obj.layer) & mask) != 0;
@@ -41,6 +47,7 @@ public class Bullet : MonoBehaviour
     // Needed for object pooling, since it applies each time the object is enabled (taken from pool)
     private void OnEnable()
     {
+        pierceCount = 0;
         CancelInvoke();
         Invoke(nameof(AutoReturn), 5f); // return if no hit after 5s
     }

@@ -8,9 +8,11 @@ public class SniperAttack : AutoAttack
     private PlayerMovement playerMovement;
     [SerializeField] private BulletPool bulletPool;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private LayerMask borderLayer;
 
     void Start()
     {
+        Initialise(this.cooldown, this.damage);
         playerMovement = GetComponentInParent<PlayerMovement>();
     }
 
@@ -26,5 +28,6 @@ public class SniperAttack : AutoAttack
         bullet.EnemyLayer = targetLayer;
         bullet.Direction = playerMovement.FacingDirection.normalized;
         bullet.Pool = bulletPool;
+        bullet.BorderLayer = borderLayer;
     }
 }

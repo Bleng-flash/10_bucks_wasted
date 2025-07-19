@@ -1615,11 +1615,14 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
-  upgradeData: {fileID: 0}
+  upgradeData: {fileID: 11400000, guid: 0dc00328ed7830747aa8190e61bed694, type: 2}
   speed: 10
   maxPierceCount: 1
   bulletPool: {fileID: 533491696}
   firePoint: {fileID: 704674218}
+  borderLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &754716278
 GameObject:
   m_ObjectHideFlags: 0
