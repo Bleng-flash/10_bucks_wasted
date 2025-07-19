@@ -131,7 +131,7 @@ public class StageManager : MonoBehaviour
             switch (sceneType)
             {
                 case Scene.Chapter1Wave:
-                    sceneSwitcher.LoadChapter1Boss();
+                    sceneSwitcher.LoadWinScene();
                     break;
                 case Scene.Chapter1Boss:
                     sceneSwitcher.LoadWinScene();
