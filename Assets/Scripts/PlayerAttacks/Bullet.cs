@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
     // Using public properties to set the private fields (instead of multiple setter methods)
     public float Speed { get; set; }
     public float Damage { get; set; }
-    public float MaxPierceCount { get; set; }
+    public int MaxPierceCount { get; set; }
     private int pierceCount = 0;
     public LayerMask EnemyLayer { get; set; }
     public Vector2 Direction { get; set; }
