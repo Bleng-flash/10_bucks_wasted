@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
         if (IsInLayerMask(other.gameObject, EnemyLayer))
         {
             EnemyScript enemy = other.GetComponent<EnemyScript>();
-            if (enemy != null)
+            if (enemy != null && !enemy.IsDead())
             {
                 enemy.TakeDamage(Damage);
                 pierceCount++;
