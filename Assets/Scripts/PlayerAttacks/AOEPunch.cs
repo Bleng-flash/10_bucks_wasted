@@ -68,51 +68,6 @@ public class AOEPunch : AutoAttack
         }
     }
 
-    // Visualise attack range in scene view (not runtime)
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Vector3 origin = transform.position;
-        Vector2 direction = playerMovement.FacingDirection;
-        if (direction == Vector2.zero) direction = Vector2.right;
-
-        // Draw semicircle arc
-        int segments = 20;
-        float step = (attackAngle * 2f) / segments;
-        for (int i = 0; i <= segments; i++)
-        {
-            float angle = -attackAngle + step * i;
-            Vector3 dir = Quaternion.Euler(0, 0, angle) * direction;
-            Gizmos.DrawLine(origin, origin + dir * attackRadius);
-        }
-    }
-
-    protected override void OnUpdate()
-    {
-        DrawAOEArea();
-    }
-
-    // Draws range of AOE punch in game view (runtime)
-    private void DrawAOEArea()
-    {
-        Vector2 origin = transform.position;
-        Vector2 attackDir = playerMovement.FacingDirection;
-        float angle = attackAngle;
-        float radius = attackRadius;
-        
-        // Draw center direction
-        Debug.DrawRay(origin, attackDir * radius, Color.red);
-
-        // Draw arc with multiple lines
-        int segments = 20;
-        for (int i = 0; i <= segments; i++)
-        {
-            float currentAngle = -angle + (2 * angle * i / segments);
-            Vector2 dir = Quaternion.Euler(0, 0, currentAngle) * attackDir;
-            Debug.DrawRay(origin, dir * radius, Color.yellow);
-        }
-    }
-
     public override void Recalculate()
     {
         damage = Mathf.Max(0, damageMultiplier * owner.getATK());
@@ -150,4 +105,51 @@ public class AOEPunch : AutoAttack
         Recalculate();
     }
 
+    /*
+    // Visualise attack range in scene view (not runtime)
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Vector3 origin = transform.position;
+        Vector2 direction = playerMovement.FacingDirection;
+        if (direction == Vector2.zero) direction = Vector2.right;
+
+        // Draw semicircle arc
+        int segments = 20;
+        float step = (attackAngle * 2f) / segments;
+        for (int i = 0; i <= segments; i++)
+        {
+            float angle = -attackAngle + step * i;
+            Vector3 dir = Quaternion.Euler(0, 0, angle) * direction;
+            Gizmos.DrawLine(origin, origin + dir * attackRadius);
+        }
+    }
+
+    
+    protected override void OnUpdate()
+    {
+        DrawAOEArea();
+    }
+
+    // Draws range of AOE punch in game view (runtime)
+    private void DrawAOEArea()
+    {
+        Vector2 origin = transform.position;
+        Vector2 attackDir = playerMovement.FacingDirection;
+        float angle = attackAngle;
+        float radius = attackRadius;
+        
+        // Draw center direction
+        Debug.DrawRay(origin, attackDir * radius, Color.red);
+
+        // Draw arc with multiple lines
+        int segments = 20;
+        for (int i = 0; i <= segments; i++)
+        {
+            float currentAngle = -angle + (2 * angle * i / segments);
+            Vector2 dir = Quaternion.Euler(0, 0, currentAngle) * attackDir;
+            Debug.DrawRay(origin, dir * radius, Color.yellow);
+        }
+    }
+    */
 }
