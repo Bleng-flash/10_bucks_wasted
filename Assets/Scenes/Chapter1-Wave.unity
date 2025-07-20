@@ -198,6 +198,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &109238677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 109238679}
+  - component: {fileID: 109238678}
+  m_Layer: 0
+  m_Name: Plant Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &109238678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109238677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e6154df80caf24080a29e4b9944716, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  enemyPrefab: {fileID: 9208329534358208319, guid: 7313f814d76ecba47b7e018d9c8410d8, type: 3}
+  spawnInterval: 1
+  spawnCount: 1
+  HPMultiplier: 1
+  ATKMultiplier: 1
+  XPDropMultiplier: 1
+  scoreMultiplier: 1
+--- !u!4 &109238679
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109238677}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.13454, y: 0.20536, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &141777432
 GameObject:
   m_ObjectHideFlags: 0
@@ -2510,8 +2562,9 @@ SceneRoots:
   - {fileID: 1697482399}
   - {fileID: 1101768364}
   - {fileID: 777022163}
-  - {fileID: 756562432}
   - {fileID: 1190689459}
+  - {fileID: 756562432}
+  - {fileID: 109238679}
   - {fileID: 1364309834}
   - {fileID: 92880267}
   - {fileID: 1127721558}
