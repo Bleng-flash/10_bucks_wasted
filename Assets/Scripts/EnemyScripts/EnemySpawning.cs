@@ -10,6 +10,7 @@ public class EnemySpawning : MonoBehaviour
     [SerializeField] private float ATKMultiplier;
     [SerializeField] private float XPDropMultiplier;
     [SerializeField] private float scoreMultiplier;
+    [SerializeField] private BulletPool peaBulletPool;
 
     private float timer = 0.0f; // time in seconds since last spawn
 
@@ -129,6 +130,13 @@ public class EnemySpawning : MonoBehaviour
             if (enemyStats != null)
             {
                 enemyStats.ScaleStats(HPMultiplier, ATKMultiplier, XPDropMultiplier, scoreMultiplier);
+            }
+
+            // For plant enemy only
+            PeashooterAttack peashooter = enemy.GetComponentInChildren<PeashooterAttack>();
+            if (peashooter != null)
+            {
+                peashooter.PeaBulletPool = peaBulletPool;
             }
         }
         

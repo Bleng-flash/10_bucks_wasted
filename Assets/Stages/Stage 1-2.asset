@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stage 1-2
   m_EditorClassIdentifier: 
   stageName: Chapter 1-2
-  spawnCounts: 0000000004000000
+  spawnCounts: 040000000400000000000000
   spawnIntervals:
   - 3
   - 3

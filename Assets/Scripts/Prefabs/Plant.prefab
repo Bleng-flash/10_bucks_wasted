@@ -94,19 +94,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b4941333a51774faa79fcff78fcb91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0
-  damage: 0
+  cooldown: 5
+  damage: 20
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
   delayToAttack: 0.5
   attackRadius: 10
   speed: 10
-  bulletPool: {fileID: 0}
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 5590853713123345382}
   borderLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!1 &9208329534358208319
 GameObject:
   m_ObjectHideFlags: 0

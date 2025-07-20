@@ -235,6 +235,7 @@ MonoBehaviour:
   ATKMultiplier: 1
   XPDropMultiplier: 1
   scoreMultiplier: 1
+  peaBulletPool: {fileID: 1900248206}
 --- !u!4 &109238679
 Transform:
   m_ObjectHideFlags: 0
@@ -1064,6 +1065,7 @@ MonoBehaviour:
   ATKMultiplier: 1
   XPDropMultiplier: 1
   scoreMultiplier: 1
+  peaBulletPool: {fileID: 0}
 --- !u!4 &756562432
 Transform:
   m_ObjectHideFlags: 0
@@ -1396,6 +1398,7 @@ MonoBehaviour:
   ATKMultiplier: 1
   XPDropMultiplier: 1
   scoreMultiplier: 1
+  peaBulletPool: {fileID: 0}
 --- !u!4 &1190689459
 Transform:
   m_ObjectHideFlags: 0
@@ -2565,9 +2568,9 @@ SceneRoots:
   - {fileID: 1190689459}
   - {fileID: 756562432}
   - {fileID: 109238679}
+  - {fileID: 1981432874}
+  - {fileID: 1900248207}
   - {fileID: 1364309834}
   - {fileID: 92880267}
   - {fileID: 1127721558}
   - {fileID: 7374967354558312659}
-  - {fileID: 1981432874}
-  - {fileID: 1900248207}

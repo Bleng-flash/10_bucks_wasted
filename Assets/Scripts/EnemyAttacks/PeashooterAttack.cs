@@ -4,7 +4,7 @@ public class PeashooterAttack : NonAutoAttack
 {
     [SerializeField] private float attackRadius = 10f;
     [SerializeField] private float speed = 10f;
-    [SerializeField] private BulletPool peaBulletPool;
+    public BulletPool PeaBulletPool { get; set; }
     [SerializeField] private Transform firePoint;
     [SerializeField] private LayerMask borderLayer;
 
@@ -14,13 +14,13 @@ public class PeashooterAttack : NonAutoAttack
     }
     protected override void PerformAttack()
     {
-        GameObject peaBulletObj = peaBulletPool.GetBullet();
+        GameObject peaBulletObj = PeaBulletPool.GetBullet();
         peaBulletObj.transform.position = firePoint.position;
         PeaBullet peaBullet = peaBulletObj.GetComponent<PeaBullet>();
         peaBullet.Speed = speed;
         peaBullet.Damage = damage;
         peaBullet.EnemyLayer = targetLayer;
-        peaBullet.Pool = peaBulletPool;
+        peaBullet.Pool = PeaBulletPool;
         peaBullet.BorderLayer = borderLayer;
     }
 
