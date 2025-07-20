@@ -6,8 +6,9 @@ using UnityEngine;
 public class LightningAttack : AutoAttack
 {
     [SerializeField] private GameObject lightningStrikePrefab;
-    [SerializeField] private int strikeCount = 3;
+    [SerializeField] private int strikeCount = 20;
     [SerializeField] private float warningTime = 1f;    // If we want to implement a red circle to mark out strike area
+    private float damageMultiplier = 2f; // damage = damageMultiplier * player ATK
     private float stageWidth = 60f;
     private float stageHeight = 40f;
 
@@ -46,9 +47,39 @@ public class LightningAttack : AutoAttack
 
     public override void Recalculate()
     {
-        return;
+        damage = Mathf.Max(0, damageMultiplier * owner.getATK());   
     }
     public override void UpgradeAttack()
     {
+        int tier = upgradeData.ApplyCount; // 0 to 5 (inclusive)
+
+        switch (tier)
+        {
+            case 0:
+                break;
+            case 1: // base case
+                damageMultiplier = 2f;
+                cooldown = 5f;
+                strikeCount = 20;
+                break;
+            case 2:
+                strikeCount = 30;
+                break;
+            case 3:
+                damageMultiplier = 3f;
+                break;
+            case 4:
+                strikeCount = 40;
+                break;
+            case 5:
+                damageMultiplier = 4f;
+                cooldown = 3.5f;
+                break;
+            default:
+                Debug.LogWarning("Invalid value: applyCount for LightningAttack");
+                break;
+        }
+
+        Recalculate();
     }
 }

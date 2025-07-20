@@ -2999,7 +2999,7 @@ MonoBehaviour:
     m_Bits: 0
   upgradeData: {fileID: 11400000, guid: 056f4299e329d5e48826f903a2d367d2, type: 2}
   lightningStrikePrefab: {fileID: 8814940937296321529, guid: deafd7f9ccab92f4095d1e4a7dd2e22a, type: 3}
-  strikeCount: 50
+  strikeCount: 20
   warningTime: 1
 --- !u!1 &1744102068
 GameObject:
