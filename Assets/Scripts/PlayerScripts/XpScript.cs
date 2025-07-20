@@ -22,11 +22,6 @@ public class XpScript : MonoBehaviour
         xpAmount = amount;
     }
 
-    public float GetXpAmount()
-    {
-        return xpAmount;
-    }
-
     public void PickUpXp(Transform player)
     {
         isPickingUp = true;

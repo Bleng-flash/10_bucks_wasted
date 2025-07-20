@@ -568,8 +568,7 @@ MonoBehaviour:
   HP: 100
   ATK: 20
   team: 0
-  xpScript: {fileID: 0}
-  xpPickUpRadius: 1
+  xpPickUpRadius: 1.5
   xpLayer:
     serializedVersion: 2
     m_Bits: 256

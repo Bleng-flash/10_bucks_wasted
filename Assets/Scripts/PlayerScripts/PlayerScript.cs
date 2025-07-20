@@ -20,7 +20,6 @@ public class PlayerScript : Entity
     private Dictionary<string, AutoAttack> allAttacks = new(); // keyed on attack scripts name
     private List<AutoAttack> activeAttacks = new();
     private bool hasTeleporter = false;
-    [SerializeField] private XpScript xpScript;
     public float xpPickUpRadius = 2.0f;
     [SerializeField] private LayerMask xpLayer;
     [SerializeField] private AutoAttack startingAttack;
@@ -120,15 +119,14 @@ public class PlayerScript : Entity
             XpScript xp = collider.GetComponent<XpScript>();
             if (xp != null)
             {
-                Debug.Log("Picked up " + xp.GetXpAmount() + " xp");
                 xp.PickUpXp(transform);
-                
             }
         }
     }
 
     public void AddXp(float amount)
     {
+        Debug.Log("Picked up " + amount + " xp");
         xpAmount += amount;
         Debug.Log("Current xp: " + xpAmount);
         UpdateXPDisplay();
