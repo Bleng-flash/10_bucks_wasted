@@ -126,8 +126,9 @@ public class AOEPunch : AutoAttack
         {
             case 0:
                 break;
-            case 1:
+            case 1: // base case
                 damageMultiplier = 1f;
+                cooldown = 2f;
                 break;
             case 2:
                 damageMultiplier = 1.5f;
