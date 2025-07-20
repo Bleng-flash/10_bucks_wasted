@@ -22,6 +22,8 @@ public abstract class Attack : MonoBehaviour
 
 
     // We call Initialise on attacks at runtime in the Start() method of the concrete attacks
+    // Start() is called exactly once for a script attached to a GameObject, 
+    // the first time that the GameObject becomes active
     protected void Initialise(float cooldown, float damage)
     {
         this.cooldown = cooldown;
@@ -34,8 +36,9 @@ public abstract class Attack : MonoBehaviour
             return;
         }
         SetTargetLayer();
-        Recalculate(); 
+        Recalculate();
     }
+    
 
     protected void SetTargetLayer()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 // set maxApplyCount = 5
 public class PickupXPRadius : Upgrade
 {
-    float pickupRadiusIncrement = 1f;
+    [SerializeField] private float pickupRadiusIncrement = 0.75f;
     public override void ApplyUpgrade(PlayerScript player)
     {
         base.ApplyUpgrade(player);

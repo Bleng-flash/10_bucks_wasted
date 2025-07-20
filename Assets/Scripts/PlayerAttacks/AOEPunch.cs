@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 
@@ -10,6 +11,7 @@ public class AOEPunch : AutoAttack
     [SerializeField] private Animator punchAnimator;
     [SerializeField] private PunchOverlay punchOverlay;
     private Vector2 originalOffset;
+    private float damageMultiplier = 1f; // damage = damageMultiplier * player ATK
 
     void Start()
     {
@@ -113,8 +115,39 @@ public class AOEPunch : AutoAttack
 
     public override void Recalculate()
     {
-        return;
+        damage = Mathf.Max(0, damageMultiplier * owner.getATK());
     }
 
+    public override void UpgradeAttack()
+    {
+        int tier = upgradeData.ApplyCount; // 0 to 5 (inclusive)
+
+        switch (tier)
+        {
+            case 0:
+                break;
+            case 1: // base case
+                damageMultiplier = 1f;
+                cooldown = 2f;
+                break;
+            case 2:
+                damageMultiplier = 1.5f;
+                break;
+            case 3:
+                damageMultiplier = 2f;
+                break;
+            case 4:
+                cooldown = 1f;
+                break;
+            case 5:
+                damageMultiplier = 3f;
+                break;
+            default:
+                Debug.LogWarning("Invalid value: applyCount for AOEPunch");
+                break;
+        }
+
+        Recalculate();
+    }
 
 }

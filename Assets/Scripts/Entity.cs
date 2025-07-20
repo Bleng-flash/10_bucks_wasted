@@ -67,6 +67,7 @@ public abstract class Entity : MonoBehaviour
     {
         ATK += inc;
         ConfigureActiveAttacks();
+        Debug.Log("Player ATK increased. Recalculating for all attacks");
     }
     public void DecreaseATKBy(float dec)
     {
@@ -111,7 +112,7 @@ public abstract class Entity : MonoBehaviour
     }
     public void ConfigureActiveAttacks()
     {
-        Attack[] attacks = GetComponentsInChildren<Attack>();
+        Attack[] attacks = GetComponentsInChildren<Attack>(); // only gets the active child gameobjects
         foreach (Attack attack in attacks)
         {
             attack.Recalculate();

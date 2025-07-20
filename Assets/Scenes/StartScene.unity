@@ -566,13 +566,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   HP: 100
-  ATK: 20
+  ATK: 10
   team: 0
   xpScript: {fileID: 0}
   xpPickUpRadius: 1
   xpLayer:
     serializedVersion: 2
     m_Bits: 256
+  startingAttack: {fileID: 1778996130}
 --- !u!95 &120402683
 Animator:
   serializedVersion: 7
@@ -1610,8 +1611,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2aa2cc2b772c640a2a354272c9e1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 5
-  damage: 100
+  cooldown: 4
+  damage: 50
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -2998,7 +2999,7 @@ MonoBehaviour:
     m_Bits: 0
   upgradeData: {fileID: 11400000, guid: 056f4299e329d5e48826f903a2d367d2, type: 2}
   lightningStrikePrefab: {fileID: 8814940937296321529, guid: deafd7f9ccab92f4095d1e4a7dd2e22a, type: 3}
-  strikeCount: 50
+  strikeCount: 20
   warningTime: 1
 --- !u!1 &1744102068
 GameObject:
