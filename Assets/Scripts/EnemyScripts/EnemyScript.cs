@@ -25,6 +25,7 @@ public class EnemyScript : Entity
     public override void Die()
     {
         animator.SetTrigger("Die");
+        GetComponent<Collider2D>().enabled = false;     // Turn off collider to stop collisions
         ScoreManager.Instance.AddScore(score);
         GameManager.Instance.xpSpawner.DropXp(xpAmount, transform.position);
         Debug.Log("Enemy killed!");
