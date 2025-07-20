@@ -573,6 +573,7 @@ MonoBehaviour:
   xpLayer:
     serializedVersion: 2
     m_Bits: 256
+  startingAttack: {fileID: 1778996130}
 --- !u!95 &120402683
 Animator:
   serializedVersion: 7

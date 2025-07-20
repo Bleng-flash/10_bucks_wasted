@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using System.Collections;
 
 /* 
     Player inherits from Entity
@@ -22,7 +23,7 @@ public class PlayerScript : Entity
     [SerializeField] private XpScript xpScript;
     public float xpPickUpRadius = 2.0f;
     [SerializeField] private LayerMask xpLayer;
-
+    [SerializeField] private AutoAttack startingAttack;
     private void Awake()
     {
         if (Instance == null)
@@ -54,9 +55,17 @@ public class PlayerScript : Entity
             attack.gameObject.SetActive(false);  // disable everything first
             allAttacks[attack.GetType().Name] = attack;  // use class name as key
         }
-
-        // Enable starting attack, set starting attack to applyCount 1 in inspector
-        UnlockOrUpgradeAttack("AOEPunch");
+#if UNITY_EDITOR
+        // Delay one frame to ensure ScriptableObjects were reset before applying upgrades
+        StartCoroutine(ApplyStartingUpgradeNextFrame());
+#else
+        startingAttack.upgradeData.ApplyUpgrade(this); // For actual builds
+#endif
+    }
+    private IEnumerator ApplyStartingUpgradeNextFrame()
+    {
+        yield return null; // wait for one frame
+        startingAttack.upgradeData.ApplyUpgrade(this);
     }
 
     // Every frame, pick up any xp in range and check if can level up
