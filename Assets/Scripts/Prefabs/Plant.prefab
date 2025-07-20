@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  movementSpeed: 4
+  movementSpeed: 2
   repelDuration: 0.5
 --- !u!114 &3765761884994426158
 MonoBehaviour:

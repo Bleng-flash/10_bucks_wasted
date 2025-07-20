@@ -6,8 +6,6 @@ public class PeaBullet : MonoBehaviour
     // Using public properties to set the private fields (instead of multiple setter methods)
     public float Speed { get; set; }
     public float Damage { get; set; }
-    public int MaxPierceCount { get; set; }
-    private int pierceCount = 0;
     public LayerMask EnemyLayer { get; set; }
     public Vector2 Direction { get; set; }
     public BulletPool Pool { get; set; }
@@ -26,11 +24,7 @@ public class PeaBullet : MonoBehaviour
             if (player != null && !player.IsDead())
             {
                 player.TakeDamage(Damage);
-                pierceCount++;
-                if (pierceCount >= MaxPierceCount)
-                {
-                    Pool.ReturnBullet(gameObject);    // Returns bullet to pool
-                }
+                Pool.ReturnBullet(gameObject);    // Returns bullet to pool
             }
         }
         else if (IsInLayerMask(other.gameObject, BorderLayer))
@@ -47,7 +41,6 @@ public class PeaBullet : MonoBehaviour
     // Needed for object pooling, since it applies each time the object is enabled (taken from pool)
     private void OnEnable()
     {
-        pierceCount = 0;
         CancelInvoke();
         Invoke(nameof(AutoReturn), 5f); // return if no hit after 5s
     }

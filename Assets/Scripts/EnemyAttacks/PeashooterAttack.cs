@@ -7,6 +7,7 @@ public class PeashooterAttack : NonAutoAttack
     public BulletPool PeaBulletPool { get; set; }
     [SerializeField] private Transform firePoint;
     [SerializeField] private LayerMask borderLayer;
+    private Transform player;
 
     void Start()
     {
@@ -16,10 +17,16 @@ public class PeashooterAttack : NonAutoAttack
     {
         GameObject peaBulletObj = PeaBulletPool.GetBullet();
         peaBulletObj.transform.position = firePoint.position;
+
+        Collider2D playerObject = Physics2D.OverlapCircle(owner.transform.position, attackRadius, targetLayer);
+        player = playerObject.GetComponent<Transform>();
+        Vector2 shootDir = (player.position - transform.position).normalized;
+
         PeaBullet peaBullet = peaBulletObj.GetComponent<PeaBullet>();
         peaBullet.Speed = speed;
         peaBullet.Damage = damage;
         peaBullet.EnemyLayer = targetLayer;
+        peaBullet.Direction = shootDir;
         peaBullet.Pool = PeaBulletPool;
         peaBullet.BorderLayer = borderLayer;
     }

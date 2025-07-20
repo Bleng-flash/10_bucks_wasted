@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Stage 1-1
   m_EditorClassIdentifier: 
   stageName: Chapter 1-1
-  spawnCounts: 000000000000000004000000
+  spawnCounts: 040000000000000000000000
   spawnIntervals:
+  - 3
   - 3
   - 3
   enemyHealthMultiplier: 1

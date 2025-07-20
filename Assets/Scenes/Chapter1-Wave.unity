@@ -2357,6 +2357,7 @@ MonoBehaviour:
   spawners:
   - {fileID: 1190689458}
   - {fileID: 756562431}
+  - {fileID: 109238678}
   teleporterPrefab: {fileID: 7314843430983317544, guid: be6e7f3be963dca41bc7816cb83d043d, type: 3}
   player: {fileID: 0}
 --- !u!1 &2060313051
