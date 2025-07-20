@@ -458,7 +458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0.5
-  damage: 5
+  damage: 10
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
