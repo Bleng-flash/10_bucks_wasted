@@ -123,9 +123,14 @@ public class PlayerScript : Entity
                 Debug.Log("Picked up " + xp.GetXpAmount() + " xp");
                 xpAmount += xp.PickUpXp();
                 Debug.Log("Current xp: " + xpAmount);
-                GameManager.Instance.UpdateXp(xpAmount, xpToNextLevel);
+                UpdateXPDisplay();
             }
         }
+    }
+
+    public void UpdateXPDisplay()
+    {
+        GameManager.Instance.UpdateXp(xpAmount, xpToNextLevel);
     }
 
     public void LevelUp()
@@ -135,7 +140,7 @@ public class PlayerScript : Entity
         isLevelingUp = true;
         LevelManager.Instance.LevelUp();
         UpdateXpToNextLevel();
-        GameManager.Instance.UpdateXp(xpAmount, xpToNextLevel);
+        UpdateXPDisplay();
         GameManager.Instance.ShowUpgradeScreen(OnUpgradeComplete);
     }
 
@@ -148,7 +153,7 @@ public class PlayerScript : Entity
     public void UpdateXpToNextLevel() // scales positively with current player level
     {
         // Temporary formula 
-        xpToNextLevel *= 1.5f;
+        xpToNextLevel *= 1.25f;
     }
 
     // UnlockOrUpgradeAttack will check if the attack is already unlocked:

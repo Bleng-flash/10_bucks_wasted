@@ -28,7 +28,7 @@ public class LevelManager : MonoBehaviour
         UpdateLevel();
     }
 
-    private void UpdateLevel()
+    public void UpdateLevel()
     {
         if (levelText != null)
             levelText.text = "Level " + currentLevel;
