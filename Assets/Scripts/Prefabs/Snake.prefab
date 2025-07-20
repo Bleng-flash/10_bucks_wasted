@@ -324,8 +324,8 @@ MonoBehaviour:
   HP: 10
   ATK: 3
   team: 0
-  xpAmount: 100
-  score: 1
+  xpAmount: 200
+  score: 5
 --- !u!114 &-3450078642619414841
 MonoBehaviour:
   m_ObjectHideFlags: 0
