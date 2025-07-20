@@ -121,11 +121,17 @@ public class PlayerScript : Entity
             if (xp != null)
             {
                 Debug.Log("Picked up " + xp.GetXpAmount() + " xp");
-                xpAmount += xp.PickUpXp();
-                Debug.Log("Current xp: " + xpAmount);
-                UpdateXPDisplay();
+                xp.PickUpXp(transform);
+                
             }
         }
+    }
+
+    public void AddXp(float amount)
+    {
+        xpAmount += amount;
+        Debug.Log("Current xp: " + xpAmount);
+        UpdateXPDisplay();
     }
 
     public void UpdateXPDisplay()

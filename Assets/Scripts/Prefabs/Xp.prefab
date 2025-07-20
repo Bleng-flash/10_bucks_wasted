@@ -101,6 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c4998b16b915b4baf670b4327d1b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!60 &5261858862173163449
 PolygonCollider2D:
   m_ObjectHideFlags: 0
