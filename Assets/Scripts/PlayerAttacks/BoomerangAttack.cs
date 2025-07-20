@@ -42,4 +42,8 @@ public class BoomerangAttack : AutoAttack
     {
         return;
     }
+    
+    public override void UpgradeAttack()
+    {
+    }
 }

@@ -48,4 +48,7 @@ public class LightningAttack : AutoAttack
     {
         return;
     }
+    public override void UpgradeAttack()
+    {
+    }
 }

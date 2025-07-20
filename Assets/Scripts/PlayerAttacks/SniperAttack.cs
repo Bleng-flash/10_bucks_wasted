@@ -38,4 +38,8 @@ public class SniperAttack : AutoAttack
         bullet.Pool = bulletPool;
         bullet.BorderLayer = borderLayer;
     }
+
+    public override void UpgradeAttack()
+    {
+    }
 }

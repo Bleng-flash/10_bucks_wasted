@@ -161,10 +161,18 @@ public class PlayerScript : Entity
             if (!attack.gameObject.activeSelf) // if gameobject is disabled, enable it
             {
                 attack.gameObject.SetActive(true);
+                // enabling the player attack for the first time will call its Start() method
+                // which calls Attack.Initialise
                 activeAttacks.Add(attack);
             }
-            attack.UpgradeAttack();
+            StartCoroutine(UpgradeAttackNextFrame(attack));
         }
     }
+    private IEnumerator UpgradeAttackNextFrame(AutoAttack attack)
+    {
+        yield return null; // wait for one frame
+        attack.UpgradeAttack();
+    }
+    
 
 }  

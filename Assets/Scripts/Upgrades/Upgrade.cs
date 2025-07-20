@@ -9,7 +9,7 @@ public abstract class Upgrade : ScriptableObject
     public string description;
     public Sprite icon;
     public float weight = 1f; // default likelihood weight = 1, weight >= 0 for all upgrades 
-        // weight is set in inspector, and never mutated at runtime
+                              // weight is set in inspector, and never mutated at runtime
 
     [SerializeField] private int applyCount = 0; // number of times this upgrade has been applied
     [SerializeField] private int maxApplyCount = -1; // -1 means upgrade can be applied unlimited times 
@@ -36,6 +36,7 @@ public abstract class Upgrade : ScriptableObject
         selectable = true;
     }
 
-    // Expose selectable status (used by UpgradeManager to filter)
+    // Expose selectable and applyCount for getters
     public bool Selectable => selectable;
+    public int ApplyCount => applyCount;
 }

@@ -60,4 +60,7 @@ public class RepulsiveField : AutoAttack
     {
         return;
     }
+    public override void UpgradeAttack()
+    {
+    }
 }

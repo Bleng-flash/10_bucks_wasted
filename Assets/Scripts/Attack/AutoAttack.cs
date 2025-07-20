@@ -13,8 +13,6 @@ public abstract class AutoAttack : Attack
         return true;
     }
 
-    public virtual void UpgradeAttack()
-    {
-    }
+    public abstract void UpgradeAttack(); 
 
 }
