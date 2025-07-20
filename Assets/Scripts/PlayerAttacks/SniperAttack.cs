@@ -10,6 +10,8 @@ public class SniperAttack : AutoAttack
     [SerializeField] private Transform firePoint;
     [SerializeField] private LayerMask borderLayer;
     private Vector2 originalOffset;
+    private float damageMultiplier = 5f; // damage = damageMultiplier * player ATK
+
 
     void Start()
     {
@@ -39,7 +41,43 @@ public class SniperAttack : AutoAttack
         bullet.BorderLayer = borderLayer;
     }
 
+   public override void Recalculate()
+    {
+        damage = Mathf.Max(0, damageMultiplier * owner.getATK());
+    }
+
     public override void UpgradeAttack()
     {
+        int tier = upgradeData.ApplyCount; // 0 to 5 (inclusive)
+
+        switch (tier)
+        {
+            case 0:
+                break;
+            case 1: // base case
+                damageMultiplier = 5f;
+                cooldown = 4f;
+                maxPierceCount = 1;
+                break;
+            case 2:
+                damageMultiplier = 7f;
+                maxPierceCount = 3;
+                break;
+            case 3:
+                cooldown = 2f;
+                break;
+            case 4:
+                damageMultiplier = 10f;
+                maxPierceCount = 5;
+                break;
+            case 5:
+                maxPierceCount = 7;
+                break;
+            default:
+                Debug.LogWarning("Invalid value: applyCount for SniperAttack");
+                break;
+        }
+
+        Recalculate();
     }
 }

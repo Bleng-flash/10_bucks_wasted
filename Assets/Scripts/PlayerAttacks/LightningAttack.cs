@@ -8,7 +8,7 @@ public class LightningAttack : AutoAttack
     [SerializeField] private GameObject lightningStrikePrefab;
     [SerializeField] private int strikeCount = 20;
     [SerializeField] private float warningTime = 1f;    // If we want to implement a red circle to mark out strike area
-    private float damageMultiplier = 2f; // damage = damageMultiplier * player ATK
+    private float damageMultiplier = 1f; // damage = damageMultiplier * player ATK
     private float stageWidth = 60f;
     private float stageHeight = 40f;
 
@@ -58,7 +58,7 @@ public class LightningAttack : AutoAttack
             case 0:
                 break;
             case 1: // base case
-                damageMultiplier = 2f;
+                damageMultiplier = 1f;
                 cooldown = 5f;
                 strikeCount = 20;
                 break;
@@ -66,13 +66,13 @@ public class LightningAttack : AutoAttack
                 strikeCount = 30;
                 break;
             case 3:
-                damageMultiplier = 3f;
+                damageMultiplier = 2f;
                 break;
             case 4:
                 strikeCount = 40;
                 break;
             case 5:
-                damageMultiplier = 4f;
+                damageMultiplier = 3f;
                 cooldown = 3.5f;
                 break;
             default:

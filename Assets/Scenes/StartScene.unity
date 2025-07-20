@@ -1611,8 +1611,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2aa2cc2b772c640a2a354272c9e1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 5
-  damage: 100
+  cooldown: 4
+  damage: 50
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
