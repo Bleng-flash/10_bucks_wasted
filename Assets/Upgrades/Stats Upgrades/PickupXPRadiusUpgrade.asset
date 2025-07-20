@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: PickupXPRadiusUpgrade
   m_EditorClassIdentifier: 
   upgradeName: Increase XP Pickup Radius
-  description: XP pickup radius +1
+  description: XP pickup radius +0.75
   icon: {fileID: -9182177788924653191, guid: a4970f398ccc36844b4507f749997be2, type: 3}
   weight: 1
   applyCount: 0
   maxApplyCount: 5
+  pickupRadiusIncrement: 0.75

@@ -40,10 +40,40 @@ public class BoomerangAttack : AutoAttack
 
     public override void Recalculate()
     {
-        return;
+        damage = Mathf.Max(0, 0.25f * owner.getATK()); 
     }
-    
+
     public override void UpgradeAttack()
     {
+        int tier = upgradeData.ApplyCount; // 0 to 5 (inclusive)
+
+        switch (tier)
+        {
+            case 0:
+                break;
+            case 1: // base case
+                boomerangCount = 1;
+                cooldown = 5f;
+                break;
+            case 2:
+                boomerangCount = 2;
+                break;
+            case 3:
+                boomerangCount = 3;
+                cooldown = 4f;
+                break;
+            case 4:
+                boomerangCount = 4;
+                break;
+            case 5:
+                boomerangCount = 5;
+                cooldown = 3f;
+                break;
+            default:
+                Debug.LogWarning("Invalid value: applyCount for BoomerangAttack");
+                break;
+        }
+
+        Recalculate();
     }
 }
