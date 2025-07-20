@@ -14,7 +14,8 @@ using UnityEngine;
 // This is not required for the actual game build
 // UpgradeResetOnPlay is only needed to manually reset the ScriptableObject state when you 
 // hit Play in the Unity Editor, because ScriptableObjects persist their state between Play Mode
-// sessions in the editor. That persistence does not happen in a game build -- each run starts fresh.
+// sessions in the editor. 
+// That persistence does not happen in a game build -- each run starts fresh.
 // For actual game build the method GameManager.ResetRun() should already do its job properly.
 
 [InitializeOnLoad]

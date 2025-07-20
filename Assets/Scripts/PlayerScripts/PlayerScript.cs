@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using System.Collections;
 
 /* 
     Player inherits from Entity
@@ -22,7 +23,7 @@ public class PlayerScript : Entity
     [SerializeField] private XpScript xpScript;
     public float xpPickUpRadius = 2.0f;
     [SerializeField] private LayerMask xpLayer;
-
+    [SerializeField] private AutoAttack startingAttack;
     private void Awake()
     {
         if (Instance == null)
@@ -54,9 +55,17 @@ public class PlayerScript : Entity
             attack.gameObject.SetActive(false);  // disable everything first
             allAttacks[attack.GetType().Name] = attack;  // use class name as key
         }
-
-        // Enable starting attack, set starting attack to applyCount 1 in inspector
-        UnlockOrUpgradeAttack("AOEPunch");
+#if UNITY_EDITOR
+        // Delay one frame to ensure ScriptableObjects were reset before applying upgrades
+        StartCoroutine(ApplyStartingUpgradeNextFrame());
+#else
+        startingAttack.upgradeData.ApplyUpgrade(this); // For actual builds
+#endif
+    }
+    private IEnumerator ApplyStartingUpgradeNextFrame()
+    {
+        yield return null; // wait for one frame
+        startingAttack.upgradeData.ApplyUpgrade(this);
     }
 
     // Every frame, pick up any xp in range and check if can level up
@@ -114,9 +123,14 @@ public class PlayerScript : Entity
                 Debug.Log("Picked up " + xp.GetXpAmount() + " xp");
                 xpAmount += xp.PickUpXp();
                 Debug.Log("Current xp: " + xpAmount);
-                GameManager.Instance.UpdateXp(xpAmount, xpToNextLevel);
+                UpdateXPDisplay();
             }
         }
+    }
+
+    public void UpdateXPDisplay()
+    {
+        GameManager.Instance.UpdateXp(xpAmount, xpToNextLevel);
     }
 
     public void LevelUp()
@@ -126,7 +140,7 @@ public class PlayerScript : Entity
         isLevelingUp = true;
         LevelManager.Instance.LevelUp();
         UpdateXpToNextLevel();
-        GameManager.Instance.UpdateXp(xpAmount, xpToNextLevel);
+        UpdateXPDisplay();
         GameManager.Instance.ShowUpgradeScreen(OnUpgradeComplete);
     }
 
@@ -139,7 +153,7 @@ public class PlayerScript : Entity
     public void UpdateXpToNextLevel() // scales positively with current player level
     {
         // Temporary formula 
-        xpToNextLevel *= 1.5f;
+        xpToNextLevel *= 1.25f;
     }
 
     // UnlockOrUpgradeAttack will check if the attack is already unlocked:
@@ -152,10 +166,18 @@ public class PlayerScript : Entity
             if (!attack.gameObject.activeSelf) // if gameobject is disabled, enable it
             {
                 attack.gameObject.SetActive(true);
+                // enabling the player attack for the first time will call its Start() method
+                // which calls Attack.Initialise
                 activeAttacks.Add(attack);
             }
-            attack.UpgradeAttack();
+            StartCoroutine(UpgradeAttackNextFrame(attack));
         }
     }
+    private IEnumerator UpgradeAttackNextFrame(AutoAttack attack)
+    {
+        yield return null; // wait for one frame
+        attack.UpgradeAttack();
+    }
+    
 
 }  

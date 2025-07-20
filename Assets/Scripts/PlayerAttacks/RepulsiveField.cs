@@ -3,7 +3,7 @@ using UnityEngine;
 public class RepulsiveField : AutoAttack
 {
     [SerializeField] private float attackRadius = 2.0f;
-    [SerializeField] private float force = 5.0f;
+    [SerializeField] private float force = 3f; // push force
     [SerializeField] private Animator fieldAnimator;
     [SerializeField] private RepulsiveFieldOverlay fieldOverlay;
 
@@ -59,5 +59,36 @@ public class RepulsiveField : AutoAttack
     public override void Recalculate()
     {
         return;
+    }
+    public override void UpgradeAttack()
+    {
+        int tier = upgradeData.ApplyCount; // 0 to 5 (inclusive)
+
+        switch (tier)
+        {
+            case 0:
+                break;
+            case 1: // base case
+                cooldown = 3f;
+                force = 3f;
+                break;
+            case 2:
+                force = 3.5f;
+                break;
+            case 3:
+                cooldown = 2.5f;
+                break;
+            case 4:
+                force = 4f;
+                break;
+            case 5:
+                cooldown = 2f;
+                break;
+            default:
+                Debug.LogWarning("Invalid value: applyCount for RepulsiveField");
+                break;
+        }
+
+        Recalculate();
     }
 }

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 826ce85b781ee0b4392a4a3b781d8103, type: 3}
+  m_Name: Stage 1-Boss
+  m_EditorClassIdentifier: 
+  stageName: Chapter 1-BOSS
+  spawnCounts: 
+  spawnIntervals: []
+  enemyHealthMultiplier: 1
+  enemyAttackMultiplier: 1
+  XPDropMultiplier: 1
+  scoreMultiplier: 1

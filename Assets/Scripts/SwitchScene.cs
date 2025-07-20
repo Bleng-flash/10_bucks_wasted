@@ -85,6 +85,7 @@ public class SwitchScene : MonoBehaviour
         {
             GameManager.Instance.playerUI = playerUIManager;
             Debug.Log("Assigned PlayerUIManager");
+            GameManager.Instance.player.UpdateXPDisplay();
         }
 
         if (xpSpawner != null)
@@ -113,6 +114,7 @@ public class SwitchScene : MonoBehaviour
             if (levelText != null)
             {
                 LevelManager.Instance.levelText = levelText;
+                LevelManager.Instance.UpdateLevel();
                 Debug.Log("Assigned Level Text");
             }
         }

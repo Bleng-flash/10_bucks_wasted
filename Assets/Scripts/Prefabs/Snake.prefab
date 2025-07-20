@@ -324,7 +324,7 @@ MonoBehaviour:
   HP: 10
   ATK: 3
   team: 0
-  xpAmount: 50
+  xpAmount: 100
   score: 1
 --- !u!114 &-3450078642619414841
 MonoBehaviour:

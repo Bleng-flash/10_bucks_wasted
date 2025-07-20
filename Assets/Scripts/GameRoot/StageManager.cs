@@ -54,7 +54,19 @@ public class StageManager : MonoBehaviour
                 stageData.XPDropMultiplier, stageData.scoreMultiplier);
             DisplayStageName(stageData.stageName);
             ConfigureTeleporter(stageWidth, stageHeight);
-            TeleportPlayer(stageWidth, stageHeight);
+            TeleportPlayerRandomly(stageWidth, stageHeight);
+        }
+
+        if (sceneType == Scene.Chapter1Boss || sceneType == Scene.Chapter2Boss)
+        {
+            if (stages.Count != 1)
+            {
+                Debug.LogWarning("Wrong stages count for boss stage, need 1 only");
+                return;
+            }
+            StageData bossStage = stages[0];
+            DisplayStageName(bossStage.stageName);
+            TeleportPlayerToOrigin();
         }
 
     }
@@ -109,7 +121,7 @@ public class StageManager : MonoBehaviour
     }
 
     // Spawns player somewhere within the boundary
-    private void TeleportPlayer(float width, float height)
+    private void TeleportPlayerRandomly(float width, float height)
     {
         width -= 0.5f; // don't spawn on border
         height -= 0.5f;
@@ -117,6 +129,11 @@ public class StageManager : MonoBehaviour
         float yPos = Random.Range(-height / 2, height / 2);
         Vector2 spawnPos = new Vector2(xPos, yPos);
         player.transform.position = spawnPos;
+    }
+
+    private void TeleportPlayerToOrigin()
+    {
+        player.transform.position = Vector3.zero;
     }
 
     public void ProceedToNextStage(SwitchScene sceneSwitcher)
@@ -127,7 +144,7 @@ public class StageManager : MonoBehaviour
             switch (sceneType)
             {
                 case Scene.Chapter1Wave:
-                    sceneSwitcher.LoadWinScene();
+                    sceneSwitcher.LoadChapter1Boss();
                     break;
                 case Scene.Chapter1Boss:
                     sceneSwitcher.LoadWinScene();
