@@ -30,9 +30,10 @@ public class RockStrike : MonoBehaviour
         }
     }
 
-    // Used as an animation event in the last frame of animation to delete lightning strike
+    // Used as an animation event in the last frame of animation to delete rock strike
     public void DestroySelf()
     {
-        Destroy(gameObject);
+        Debug.Log("Destroying parent RockContainer");
+        Destroy(transform.parent.gameObject);
     }
 }

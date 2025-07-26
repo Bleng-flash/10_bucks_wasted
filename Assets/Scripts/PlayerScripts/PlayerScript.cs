@@ -88,6 +88,11 @@ public class PlayerScript : Entity
             GameManager.Instance.TeleportPlayer();
         }
 
+        // For testing
+        if (Keyboard.current.tKey.wasPressedThisFrame)
+        {
+            EnableTeleport();
+        }
     }
     public override void Die()
     {
@@ -98,7 +103,6 @@ public class PlayerScript : Entity
     {
         hasTeleporter = true;
     }
-
 
     // Overriding Takedamage to send out event whenever player receives damage
     public override void TakeDamage(float dmg)
