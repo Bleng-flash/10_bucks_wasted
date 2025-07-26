@@ -4,7 +4,12 @@ public class PeashooterAttack : NonAutoAttack
 {
     [SerializeField] private float attackRadius = 10f;
     [SerializeField] private float speed = 10f;
-    public BulletPool PeaBulletPool { get; set; }
+    [SerializeField] private BulletPool peaBulletPool;
+    public BulletPool PeaBulletPool
+    {
+        get => peaBulletPool;
+        set => peaBulletPool = value;
+    }
     [SerializeField] private Transform firePoint;
     [SerializeField] private LayerMask borderLayer;
     private Transform player;

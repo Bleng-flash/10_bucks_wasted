@@ -133,7 +133,8 @@ public class StageManager : MonoBehaviour
 
     private void TeleportPlayerToOrigin()
     {
-        player.transform.position = Vector3.zero;
+        Debug.Log("Teleporting to boss stage!");
+        player.transform.position = new Vector3(-5,0,0);
     }
 
     public void ProceedToNextStage(SwitchScene sceneSwitcher)

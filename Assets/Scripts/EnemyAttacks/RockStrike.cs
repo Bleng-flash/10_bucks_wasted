@@ -15,17 +15,19 @@ public class RockStrike : MonoBehaviour
     {
         // Detects player
         Collider2D collider = Physics2D.OverlapCircle(transform.position, radius, TargetLayer);
-        PlayerScript player = collider.GetComponent<PlayerScript>();
-        if (player != null)
+        if (collider != null)
         {
-            Debug.Log($"Rock Strike {collider.name} with {Damage} damage!");
-            player.TakeDamage(Damage);
+            PlayerScript player = collider.GetComponent<PlayerScript>();
+            if (player != null)
+            {
+                Debug.Log($"Rock Strike {collider.name} with {Damage} damage!");
+                player.TakeDamage(Damage);
+            }
+            else
+            {
+                Debug.LogWarning("PlayerScript missing on: " + collider.name);
+            }
         }
-        else
-        {
-            Debug.LogWarning("PlayerScript missing on: " + collider.name);
-        }
-
     }
 
     // Used as an animation event in the last frame of animation to delete lightning strike
