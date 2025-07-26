@@ -27,6 +27,7 @@ public class StageManager : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("Scene type: " + sceneType);
         currentStageIndex = 0;
         LoadStage(currentStageIndex);
     }
@@ -59,6 +60,7 @@ public class StageManager : MonoBehaviour
 
         if (sceneType == Scene.Chapter1Boss || sceneType == Scene.Chapter2Boss)
         {
+            Debug.Log("Boss scene detected. Stages count: " + stages.Count);
             if (stages.Count != 1)
             {
                 Debug.LogWarning("Wrong stages count for boss stage, need 1 only");

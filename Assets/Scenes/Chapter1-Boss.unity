@@ -550,7 +550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ac2530de32516b4b9222660e3cb3b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0
+  cooldown: 0.5
   damage: 30
   targetLayer:
     serializedVersion: 2
@@ -1329,7 +1329,7 @@ Transform:
   m_GameObject: {fileID: 1332223493}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.2, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1944,7 +1944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b4941333a51774faa79fcff78fcb91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0.2
+  cooldown: 0.5
   damage: 100
   targetLayer:
     serializedVersion: 2
@@ -2374,7 +2374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb578e879f2a9b84f89a6ac220fc4f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneType: 0
+  sceneType: 2
   stages:
   - {fileID: 11400000, guid: f9e809476f4f96d4699880d3ba30e6d3, type: 2}
   spawners: []
