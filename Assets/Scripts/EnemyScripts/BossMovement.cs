@@ -1,18 +1,25 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class BossMovement : MonoBehaviour
 {
-    [SerializeField] private Transform player;
+    private Transform playerTransform;
     void Start()
     {
+        if (PlayerScript.Instance != null)
+        {
+            playerTransform = PlayerScript.Instance.transform;
+        }
+        else
+        {
+            Debug.LogWarning("PlayerScript.Instance is null! Player may not be loaded yet.");
+        }
         transform.position = Vector2.left;      // Face left at start
     }
 
     // Face the player
     void Update()
     {
-        float dir = player.position.x - transform.position.x;
+        float dir = playerTransform.position.x - transform.position.x;
         if (dir <= 0)
         {
             transform.localScale = new Vector3(-1, 1, 1); // facing left
