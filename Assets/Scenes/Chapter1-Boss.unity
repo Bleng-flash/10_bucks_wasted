@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 60070083}
   - component: {fileID: 60070084}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rock Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,7 +516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 521475057}
   - component: {fileID: 521475058}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bash Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1313,7 +1313,7 @@ GameObject:
   - component: {fileID: 1332223500}
   - component: {fileID: 1332223499}
   - component: {fileID: 1332223503}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1910,7 +1910,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1801121465}
   - component: {fileID: 1801121466}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Projectile Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2074,7 +2074,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1987307183}
   - component: {fileID: 1987307184}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Projectile Pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
