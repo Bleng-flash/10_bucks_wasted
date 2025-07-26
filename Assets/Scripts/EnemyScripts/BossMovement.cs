@@ -3,8 +3,10 @@ using UnityEngine;
 public class BossMovement : MonoBehaviour
 {
     private Transform playerTransform;
+    private SpriteRenderer spriteRenderer;
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         if (PlayerScript.Instance != null)
         {
             playerTransform = PlayerScript.Instance.transform;
@@ -13,20 +15,12 @@ public class BossMovement : MonoBehaviour
         {
             Debug.LogWarning("PlayerScript.Instance is null! Player may not be loaded yet.");
         }
-        transform.localScale = new Vector3(-1, 1, 1);      // Face left at start
+        spriteRenderer.flipX = true;      // Face left at start
     }
 
     // Face the player
     void Update()
     {
-        float dir = playerTransform.position.x - transform.position.x;
-        if (dir <= 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1); // facing left
-        }
-        else
-        {
-            transform.localScale = new Vector3(1, 1, 1); // facing right
-        }
+        spriteRenderer.flipX = playerTransform.position.x < transform.position.x;
     }
 }
