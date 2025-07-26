@@ -29,7 +29,7 @@ public class RockAttack : NonAutoAttack
         yield return new WaitForSeconds(warningTime);
 
         GameObject rockStrike = Instantiate(rockPrefab, position, Quaternion.identity);
-        RockStrike strike = rockStrike.GetComponent<RockStrike >();
+        RockStrike strike = rockStrike.GetComponentInChildren<RockStrike>();
         strike.Damage = damage;
         strike.TargetLayer = targetLayer;
     }
