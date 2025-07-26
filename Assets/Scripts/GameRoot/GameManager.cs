@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public UpgradeManager upgradeManager;
     public StageManager stageManager;
     public MessageDisplay messageDisplayer;
+    public BossHealthUI bossUI;
 
     void Awake()
     {
@@ -42,6 +43,15 @@ public class GameManager : MonoBehaviour
     public void OnPlayerDamage(float current, float max)
     {
         playerUI.UpdateHealth(current, max);
+    }
+
+    // Tells bosshealthUI to update health when boss receives damage
+    public void OnBossDamage(float current, float max)
+    {
+        if (bossUI != null)
+        {
+            bossUI.UpdateBossHealth(current, max);
+        }
     }
 
     public void UpdateXp(float current, float max)

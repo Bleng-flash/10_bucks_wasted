@@ -102,6 +102,10 @@ public abstract class Entity : MonoBehaviour
         if (isDead) return;     // Don't trigger take damage animation when enemy is dying
         animator.SetTrigger("TakeDamage");
         DecreaseHealthBy(dmg);
+        if (CompareTag("Boss"))
+        {
+            GameManager.Instance.OnBossDamage(HP, maxHP);
+        }
     }
 
     public abstract void Die();

@@ -68,6 +68,7 @@ public class StageManager : MonoBehaviour
             }
             StageData bossStage = stages[0];
             DisplayStageName(bossStage.stageName);
+            GameManager.Instance.bossUI = FindAnyObjectByType<BossHealthUI>();
             TeleportPlayerToOrigin();
         }
 
