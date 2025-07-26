@@ -13,7 +13,7 @@ public class BossMovement : MonoBehaviour
         {
             Debug.LogWarning("PlayerScript.Instance is null! Player may not be loaded yet.");
         }
-        transform.position = Vector2.left;      // Face left at start
+        transform.localScale = new Vector3(-1, 1, 1);      // Face left at start
     }
 
     // Face the player
