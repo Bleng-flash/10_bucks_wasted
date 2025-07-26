@@ -6,8 +6,8 @@ public class RockAttack : NonAutoAttack
     [SerializeField] private GameObject rockPrefab;
     [SerializeField] private int strikeCount = 20;
     [SerializeField] private float warningTime = 1f;    // If we want to implement a red circle to mark out strike area
-    private float stageWidth = 60f;
-    private float stageHeight = 40f;
+    private float stageWidth = 20f;
+    private float stageHeight = 20f;
     void Start()
     {
         Initialise(this.cooldown, this.damage);
