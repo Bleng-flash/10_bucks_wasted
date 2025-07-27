@@ -65,7 +65,7 @@ public class PlayerScript : Entity
 #if UNITY_EDITOR && !UNITY_TEST
         // Delay one frame to ensure ScriptableObjects were reset before applying upgrades
         StartCoroutine(ApplyStartingUpgradeNextFrame());
-#elif UNITY_TEST
+// #elif UNITY_TEST
         // Skip upgrade during tests
 #else
         startingAttack.upgradeData.ApplyUpgrade(this); // For actual builds
