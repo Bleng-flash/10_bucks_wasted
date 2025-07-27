@@ -192,5 +192,7 @@ public class PlayerScript : Entity
 
     public float CurrentXp => xpAmount;
     public float CurrentHp => HP;
+    public float MaxHp => maxHP;
+    public float CurrentATK => ATK;
 
 }  
