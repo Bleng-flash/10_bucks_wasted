@@ -40,7 +40,7 @@ public class BoomerangAttack : AutoAttack
 
     public override void Recalculate()
     {
-        damage = Mathf.Max(0, 0.25f * owner.getATK()); 
+        damage = Mathf.Max(0, 0.25f * owner.GetATK()); 
     }
 
     public override void UpgradeAttack()

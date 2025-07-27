@@ -10,7 +10,7 @@ public class RestoreLostHealth : Upgrade
     public override void ApplyUpgrade(PlayerScript player)
     {
         base.ApplyUpgrade(player);
-        float extraHP = (float)Math.Round(percentageRestored * player.getLostHealth(), 2);
+        float extraHP = (float)Math.Round(percentageRestored * player.GetLostHealth(), 2);
         player.IncreaseHealthBy(extraHP);
     }
 }

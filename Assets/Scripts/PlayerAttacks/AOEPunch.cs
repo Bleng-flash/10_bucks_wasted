@@ -70,7 +70,7 @@ public class AOEPunch : AutoAttack
 
     public override void Recalculate()
     {
-        damage = Mathf.Max(0, damageMultiplier * owner.getATK());
+        damage = Mathf.Max(0, damageMultiplier * owner.GetATK());
     }
 
     public override void UpgradeAttack()

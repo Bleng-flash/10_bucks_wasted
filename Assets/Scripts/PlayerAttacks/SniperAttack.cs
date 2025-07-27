@@ -9,7 +9,6 @@ public class SniperAttack : AutoAttack
     [SerializeField] private BulletPool bulletPool;
     [SerializeField] private Transform firePoint;
     [SerializeField] private LayerMask borderLayer;
-    private Vector2 originalOffset;
     private float damageMultiplier = 5f; // damage = damageMultiplier * player ATK
 
 
@@ -17,7 +16,6 @@ public class SniperAttack : AutoAttack
     {
         Initialise(this.cooldown, this.damage);
         playerMovement = GetComponentInParent<PlayerMovement>();
-        originalOffset = transform.localPosition;
     }
 
     protected override void PerformAttack()
@@ -43,7 +41,7 @@ public class SniperAttack : AutoAttack
 
    public override void Recalculate()
     {
-        damage = Mathf.Max(0, damageMultiplier * owner.getATK());
+        damage = Mathf.Max(0, damageMultiplier * owner.GetATK());
     }
 
     public override void UpgradeAttack()

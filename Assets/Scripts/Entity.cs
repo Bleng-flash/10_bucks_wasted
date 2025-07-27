@@ -55,11 +55,11 @@ public abstract class Entity : MonoBehaviour
     {
         maxHP = newMaxHP;
     }
-    public float getHealthPercentage()
+    public float GetHealthPercentage()
     {
         return HP / maxHP;
     }
-    public float getLostHealth()
+    public float GetLostHealth()
     {
         return maxHP - HP;
     }
@@ -74,7 +74,7 @@ public abstract class Entity : MonoBehaviour
         ATK = Mathf.Max(0, ATK - dec);      // Ensure minimum is 0
         ConfigureActiveAttacks();
     }
-    public float getATK()
+    public float GetATK()
     {
         return ATK;
     }

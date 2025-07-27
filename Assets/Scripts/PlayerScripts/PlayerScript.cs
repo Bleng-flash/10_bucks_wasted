@@ -87,12 +87,12 @@ public class PlayerScript : Entity
             GameManager.Instance.DisplayMessage("Teleporting", 1f, 48);
             GameManager.Instance.TeleportPlayer();
         }
-
-        // For testing
-        if (Keyboard.current.tKey.wasPressedThisFrame)
-        {
-            EnableTeleport();
-        }
+        /*
+                // For testing
+                if (Keyboard.current.tKey.wasPressedThisFrame)
+                {
+                    EnableTeleport();
+                }*/
     }
     public override void Die()
     {
@@ -138,7 +138,10 @@ public class PlayerScript : Entity
 
     public void UpdateXPDisplay()
     {
-        GameManager.Instance.UpdateXp(xpAmount, xpToNextLevel);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.UpdateXp(xpAmount, xpToNextLevel);
+        }
     }
 
     public void LevelUp()
@@ -186,7 +189,8 @@ public class PlayerScript : Entity
         yield return null; // wait for one frame
         attack.UpgradeAttack();
     }
-    
+
     public float CurrentXp => xpAmount;
+    public float CurrentHp => HP;
 
 }  
