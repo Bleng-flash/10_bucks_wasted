@@ -9,8 +9,8 @@ public class SkipStageOrScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // press 'S' key to jump to Chapter1-Boss
-        if (Keyboard.current.sKey.wasPressedThisFrame)
+        // press 'J' key to jump to next stage or scene
+        if (Keyboard.current.jKey.wasPressedThisFrame)
         {
             if (GameManager.Instance.stageManager != null)
             {

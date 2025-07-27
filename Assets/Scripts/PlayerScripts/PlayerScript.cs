@@ -187,5 +187,6 @@ public class PlayerScript : Entity
         attack.UpgradeAttack();
     }
     
+    public float CurrentXp => xpAmount;
 
 }  
