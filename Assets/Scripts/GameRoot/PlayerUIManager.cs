@@ -21,4 +21,10 @@ public class PlayerUIManager : MonoBehaviour
         // Scale xp bar horizontally
         xpBar.transform.localScale = new Vector3(percent, 1f, 1f);  // arguments are x, y, and z axis scaling
     }
+
+    // To assign image in testing environment
+    public void SetXpBar(Image image)
+    {
+        xpBar = image;
+    }
 }

@@ -45,7 +45,14 @@ public class PlayerScript : Entity
 
     void Start()
     {
-        GameManager.Instance.UpdateXp(xpAmount, xpToNextLevel);     // Initialise xp bar to be empty
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.UpdateXp(xpAmount, xpToNextLevel);      // Initialise xp bar to be empty
+        }
+        else
+        {
+            Debug.LogWarning("GameManager.Instance is null in PlayerScript.Start");
+        }
 
         // Find all attack components in children 
         AutoAttack[] attacks = GetComponentsInChildren<AutoAttack>(true); // include inactive
@@ -54,13 +61,17 @@ public class PlayerScript : Entity
             attack.gameObject.SetActive(false);  // disable everything first
             allAttacks[attack.GetType().Name] = attack;  // use class name as key
         }
-#if UNITY_EDITOR
+
+#if UNITY_EDITOR && !UNITY_TEST
         // Delay one frame to ensure ScriptableObjects were reset before applying upgrades
         StartCoroutine(ApplyStartingUpgradeNextFrame());
+#elif UNITY_TEST
+        // Skip upgrade during tests
 #else
         startingAttack.upgradeData.ApplyUpgrade(this); // For actual builds
 #endif
     }
+
     private IEnumerator ApplyStartingUpgradeNextFrame()
     {
         yield return null; // wait for one frame
@@ -194,5 +205,6 @@ public class PlayerScript : Entity
     public float CurrentHp => HP;
     public float MaxHp => maxHP;
     public float CurrentATK => ATK;
+    public int Level => level;
 
 }  
