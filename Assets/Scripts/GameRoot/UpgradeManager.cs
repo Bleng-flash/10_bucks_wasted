@@ -4,8 +4,6 @@ using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
 using TMPro;
-using System.Data;
-using UnityEditor.Rendering.Universal;
 
 // Upon every level up of the player, the game freezes and 3 upgrade cards appear on the screen (UI)
 // the player will pick 1 of the 3 upgrades

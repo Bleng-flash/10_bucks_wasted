@@ -7,6 +7,7 @@ public class PlayerIntegrationTests
 {
     private GameObject playerGO;
     private GameObject gmGO;
+    private PlayerScript player;
 
     [UnitySetUp]
     public IEnumerator SetUp()
@@ -18,7 +19,8 @@ public class PlayerIntegrationTests
         // Create and init Player
         playerGO = new GameObject("Player");
         playerGO.AddComponent<Animator>(); // required by PlayerScript
-        var player = playerGO.AddComponent<PlayerScript>();
+        player = playerGO.AddComponent<PlayerScript>();
+        player.Initialise(100f, 100f, 10f);     // manually initialize base class values
 
         yield return null; // wait one frame for Awake and Start
     }
@@ -34,7 +36,7 @@ public class PlayerIntegrationTests
     [UnityTest]
     public IEnumerator Player_GainsXp_LevelsUp_WhenEnoughXpIsAdded()
     {
-        var player = playerGO.GetComponent<PlayerScript>();
+        player = playerGO.GetComponent<PlayerScript>();
 
         // Add XP over time
         player.AddXp(120f);  // more than 100 should trigger level up
