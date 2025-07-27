@@ -47,6 +47,9 @@ public class PeaBullet : MonoBehaviour
 
     void AutoReturn()
     {
-        Pool.ReturnBullet(gameObject);
+        if (Pool != null)
+        {
+            Pool.ReturnBullet(gameObject);
+        }
     }
 }

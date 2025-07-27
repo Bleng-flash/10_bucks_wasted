@@ -54,6 +54,9 @@ public class Bullet : MonoBehaviour
 
     void AutoReturn()
     {
-        Pool.ReturnBullet(gameObject);
+        if (Pool != null)
+        {
+            Pool.ReturnBullet(gameObject);
+        }
     }
 }
