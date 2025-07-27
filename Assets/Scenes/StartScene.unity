@@ -602,7 +602,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 120402675}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1df46fe8841d1e45a7d5d25a6ac9c96, type: 3}
   m_Name: 
@@ -2796,6 +2796,7 @@ MonoBehaviour:
   upgradeManager: {fileID: 434095953}
   stageManager: {fileID: 0}
   messageDisplayer: {fileID: 0}
+  bossUI: {fileID: 0}
 --- !u!4 &1584500712
 Transform:
   m_ObjectHideFlags: 0
