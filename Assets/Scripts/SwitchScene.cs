@@ -6,7 +6,7 @@ using UnityEngine.UI;
 // singleton class
 public class SwitchScene : MonoBehaviour
 {
-    private static SwitchScene instance;
+    public static SwitchScene instance;
     private void Awake()
     {
         if (instance == null)

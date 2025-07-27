@@ -29,6 +29,10 @@ public class EnemyScript : Entity
         ScoreManager.Instance.AddScore(score);
         GameManager.Instance.xpSpawner.DropXp(xpAmount, transform.position);
         Debug.Log("Enemy killed!");
+        if (CompareTag("Boss"))
+        {
+            SwitchScene.instance.LoadWinScene();
+        }
     }
 
     // This method is called as an event in the last frame of the death animation, which then destroys the object
